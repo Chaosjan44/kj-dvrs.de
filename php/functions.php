@@ -96,12 +96,12 @@ function check_style() {
 			return 'light';
 		}
 	} else {
-		return 'light';
+		return 'dark';
 	}
 }
 
 function check_cookie() {
-	return true; // Remove this line to get the cookie modal back
+	// return true; // Remove this line to get the cookie modal back
 	if(isset($_COOKIE['acceptCookies'])) {
 		return true;
 	} else {
@@ -109,7 +109,16 @@ function check_cookie() {
 	}
 }
 
-$dateMMM = new IntlDateFormatter('de_DE', IntlDateFormatter::FULL, IntlDateFormatter::NONE, pattern:'MMM');
-$datedd = new IntlDateFormatter('de_DE', IntlDateFormatter::FULL, IntlDateFormatter::NONE, pattern:'dd');
+function check_kjonstruction_cookie() {
+	// return true; // Remove this line to get the KJonstruction modal back
+	if(isset($_COOKIE['acceptKJonstruction'])) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+// $dateMMM = new IntlDateFormatter('de_DE', IntlDateFormatter::FULL, IntlDateFormatter::NONE, pattern:'MMM');
+// $datedd = new IntlDateFormatter('de_DE', IntlDateFormatter::FULL, IntlDateFormatter::NONE, pattern:'dd');
 
 ?>

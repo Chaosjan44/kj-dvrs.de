@@ -27,7 +27,7 @@
 #
 #
 User-agent: *
-Sitemap: https://jugend.kolping-schorndorf.de/sitemap.xml
+Sitemap: https://kj-dvrs.de/sitemap.xml
 Disallow: /internal/
 Disallow: /hidden/
 Disallow: /internal.php

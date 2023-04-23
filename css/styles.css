@@ -30,6 +30,13 @@
     display: none;
 }
 
+.header-line {
+    width: 100%;
+    background-color: #FF8C00;
+    padding: 0;
+    margin: 0;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -43,6 +50,15 @@
 a {
     text-decoration: none !important;
     font-weight: 300;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.navbar-kolping {
+    display: inline-block;
+    height: 50px;
 }
 
 .shadow1 {

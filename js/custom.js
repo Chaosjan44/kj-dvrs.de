@@ -3,25 +3,27 @@ setStyle();
 function toggleStyle() {
   if (getCookie("style") == "dark") {
     setCookie("style", "light", 365);
-  } else {
+  } else if (getCookie("style") == "light") {
     setCookie("style", "dark", 365);
+  } else {
+    setCookie("style", "light", 365);
   }
   setStyle();
 }
 
 function setStyle() {
-  if (getCookie("style") == "dark") {
-    if (getCookie("acceptCookies") == "true") {
-      setCookie("style", "dark", 365);
-    }
-    document.querySelectorAll("link[href='/css/dark.css']")[0].disabled = false;
-    document.querySelectorAll("link[href='/css/light.css']")[0].disabled = true;
-  } else {
+  if (getCookie("style") == "light") {
     if (getCookie("acceptCookies") == "true") {
       setCookie("style", "light", 365);
     }
     document.querySelectorAll("link[href='/css/dark.css']")[0].disabled = true;
     document.querySelectorAll("link[href='/css/light.css']")[0].disabled = false;
+  } else {
+    if (getCookie("acceptCookies") == "true") {
+      setCookie("style", "dark", 365);
+    }
+    document.querySelectorAll("link[href='/css/dark.css']")[0].disabled = false;
+    document.querySelectorAll("link[href='/css/light.css']")[0].disabled = true;
   }
 }
 

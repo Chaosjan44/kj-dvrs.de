@@ -14,15 +14,11 @@ $crdate = "2023";
                         </li>
                         <li>
                             <i class="bi bi-chevron-right"></i>
-                            <a href="/termine.php" class="link ctext ps-2">Termine</a>
+                            <a href="/login.php" class="link ctext ps-2">Anmelden</a>
                         </li>
                         <li>
                             <i class="bi bi-chevron-right"></i>
-                            <a href="/nachrichten.php" class="link ctext ps-2">Nachrichten</a>
-                        </li>
-                        <li>
-                            <i class="bi bi-chevron-right"></i>
-                            <a href="/wir.php" class="link ctext ps-2">Wir</a>
+                            <a href="https://jugend.kolping-dvrs.de/" class="link ctext ps-2">Hauptwebseite</a>
                         </li>
                     </ul>
                 </div>
@@ -40,16 +36,12 @@ $crdate = "2023";
                             <i class="bi bi-chevron-right"></i>
                             <a href="/datenschutz.php" class="link ctext ps-2">Datenschutz</a>
                         </li>
-                        <li>
-                            <i class="bi bi-chevron-right"></i>
-                            <a href="/internal.php" class="link ctext ps-2">Intern</a>
-                        </li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="row justify-content-end align-items-center">
-            <div class="col-4 text-center ctext light"><a href="/internal.php" class="text-center ctext light">&copy; <?=$crdate?> Kolpingsfamilie Schorndorf e.V.</a></div>
+            <div class="col-4 text-center ctext light"><a href="https://jugend.kolping-dvrs.de/" class="text-center ctext light">&copy; <?=$crdate?> Kolpingjugend Diözesanverband Rottenburg-Stuttgart</a></div>
             <div class="col-4 d-flex justify-content-end">
                 <input onchange="toggleStyle()" class="styleswitcher" type="checkbox" name="switch" id="style_switch" <?php if (check_style() == "dark"): print("checked"); endif; ?> >
                 <label class="styleswitcherlabel" for="style_switch"></label>
@@ -68,15 +60,11 @@ $crdate = "2023";
                         </li>
                         <li>
                             <i class="bi bi-chevron-right"></i>
-                            <a href="/termine.php" class="link ctext ps-2">Termine</a>
+                            <a href="/login.php" class="link ctext ps-2">Anmelden</a>
                         </li>
                         <li>
                             <i class="bi bi-chevron-right"></i>
-                            <a href="/nachrichten.php" class="link ctext ps-2">Nachrichten</a>
-                        </li>
-                        <li>
-                            <i class="bi bi-chevron-right"></i>
-                            <a href="/wir.php" class="link ctext ps-2">Wir</a>
+                            <a href="https://jugend.kolping-dvrs.de/" class="link ctext ps-2">Hauptwebseite</a>
                         </li>
                     </ul>
                 </div>
@@ -94,16 +82,12 @@ $crdate = "2023";
                             <i class="bi bi-chevron-right"></i>
                             <a href="/datenschutz.php" class="link ctext ps-2">Datenschutz</a>
                         </li>
-                        <li>
-                            <i class="bi bi-chevron-right"></i>
-                            <a href="/internal.php" class="link ctext ps-2">Intern</a>
-                        </li>
                     </ul>
                 </div>
                 <div class="row justify-content-between align-items-center">
-                    <div class="col-4 ctext text-start light ps-0"><a href="/internal.php" class="ctext light">&copy; <?=$crdate?> Kolpingsfamilie Schorndorf e.V.</a></div>
+                    <div class="col-4 ctext text-start light ps-0"><a href="https://jugend.kolping-dvrs.de/" class="ctext light">&copy; <?=$crdate?> Kolpingjugend Diözesanverband Rottenburg-Stuttgart</a></div>
                     <div class="col-4 d-flex justify-content-end">
-                        <input onchange="toggleStyle()" class="styleswitcher" type="checkbox" name="switch" id="style_switch" <?php if (check_style() == "dark"): print("checked"); endif; ?> >
+                        <input onchange="toggleStyle()" class="styleswitcher" type="checkbox" name="switch" id="style_switch" <?php if (check_style() != "light"): print("checked"); endif; ?> >
                         <label class="styleswitcherlabel" for="style_switch"></label>
                     </div>
                 </div>
