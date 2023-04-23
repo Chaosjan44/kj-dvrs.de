@@ -1,0 +1,54 @@
+* {
+    color: #ffffff;
+}
+
+html, body {
+    background-color: #2d3238 !important;
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+}
+
+button {
+    color: #2d3238 !important;
+}
+
+.navbar-icon_light {
+    display: none;
+    height: 70px;
+}
+
+.navbar-icon_dark {
+    display: inline-block;
+    height: 70px;
+}
+
+.footer {
+    background-color: #212529;
+}
+
+.cbg {
+    background-color: #2d3238 !important;
+}
+
+.cbg2 {
+    background-color: #212529 !important;
+}
+
+.ctext {
+    color: #ffffff !important;
+}
+
+.clink {
+    color: #ffffff !important;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(45,50,56,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E") !important;
+}
+
+  .navbar-toggler {
+    background-color: #FF8C00 !important;
+} 

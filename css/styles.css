@@ -1,0 +1,284 @@
+/* ubuntu-300 - latin */
+@font-face {
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 300;
+    src: url('fonts/ubuntu-v20-latin-300.eot'); /* IE9 Compat Modes */
+    src: local(''),
+         url('fonts/ubuntu-v20-latin-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('fonts/ubuntu-v20-latin-300.woff2') format('woff2'), /* Super Modern Browsers */
+         url('fonts/ubuntu-v20-latin-300.woff') format('woff'), /* Modern Browsers */
+         url('fonts/ubuntu-v20-latin-300.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('fonts/ubuntu-v20-latin-300.svg#Ubuntu') format('svg'); /* Legacy iOS */
+}
+/* ubuntu-regular - latin */
+@font-face {
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+    src: url('fonts/ubuntu-v20-latin-regular.eot'); /* IE9 Compat Modes */
+    src: local(''),
+            url('fonts/ubuntu-v20-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+            url('fonts/ubuntu-v20-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+            url('fonts/ubuntu-v20-latin-regular.woff') format('woff'), /* Modern Browsers */
+            url('fonts/ubuntu-v20-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+            url('fonts/ubuntu-v20-latin-regular.svg#Ubuntu') format('svg'); /* Legacy iOS */
+}
+
+/* remove scrollbar */
+::-webkit-scrollbar {
+    display: none;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    font-family: "Ubuntu", sans-serif;
+    font-size: medium;
+    font-weight: 300;
+}
+
+a {
+    text-decoration: none !important;
+    font-weight: 300;
+}
+
+.shadow1 {
+    box-shadow: 5px 5px 15px 1px rgba(0, 0, 0, 0.495);
+}
+
+.light {
+    font-weight: 100;
+    font-size: small;
+}
+
+.text-size-xx-small {
+    font-size: xx-small !important;
+}
+
+.text-size-x-small {
+    font-size: x-small !important;
+}
+
+.text-size-smaller {
+    font-size: smaller !important;
+}
+
+.text-size-small {
+    font-size: small !important;
+}
+
+.text-size-medium {
+    font-size: medium !important;
+}
+
+.text-size-large {
+    font-size: large !important;
+}
+
+.text-size-larger {
+    font-size: larger !important;
+}
+
+.text-size-x-large {
+    font-size: x-large !important;
+}
+
+.text-size-xx-large {
+    font-size: xx-large !important;
+}
+
+
+
+.white {
+    background-color: #ffffff;
+}
+
+/* Kolping (Jugend) Farben */
+.kolping-orange {
+    background-color: #FF8C00;
+}
+.text-kolping-orange {
+    color: #FF8C00;
+}
+
+.grau {
+    background-color: #EDEDED;
+}
+.text-grau {
+    background-color: #EDEDED;
+}
+
+.kolping-schwarz {
+    background-color: #000000;
+}
+.text-kolping-schwarz {
+    color: #000000;
+}
+
+.hellblau {
+    background-color: #449cdb;
+}
+.text-hellblau {
+    color: #449cdb;
+}
+
+.hellgruen {
+    background-color: #b2ce36 ;
+}
+.text-hellgruen {
+    color: #b2ce36 ;
+}
+
+.purpur {
+    background-color: #9b0687 ;
+}
+.text-purpur {
+    color: #9b0687 ;
+}
+
+.gelb {
+    background-color: #e8c424 ;
+}
+.text-gelb {
+    color: #e8c424 ;
+}
+
+.petrol {
+    background-color: #41a0a0 ;
+}
+.text-petrol {
+    color: #41a0a0 ;
+}
+
+.dunkelblau {
+    background-color: #285da6 ;
+}
+.text-dunkelblau {
+    color: #285da6 ;
+}
+
+.smaragd {
+    background-color: #1d728a ;
+}
+.text-smaragd {
+    color: #1d728a ;
+}
+
+.violett {
+    background-color: #74056f ;
+}
+.text-violett {
+    color: #74056f ;
+}
+
+.terra {
+    background-color: #aa9c7c ;
+}
+.text-terra {
+    color: #aa9c7c ;
+}
+
+/* Light/Dark mode Switch */
+.styleswitcher {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+.styleswitcherlabel {
+    display: block;
+    width: 70px;
+    height: 30px;
+    background-color: #EDEDED;
+    border-radius: 15px;
+    position: relative;
+    cursor: pointer;
+    transition: 0.5s;
+    box-shadow: 0 0 2px #000000;
+}
+
+.styleswitcherlabel::after {
+    content: "";
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    border-radius: 5px;
+    top: 3px;
+    left: 5px;
+    transition: 0.5s;
+    background-image: url("/images/light.png");
+    background-size: 24px;
+}
+
+.styleswitcher:checked + .styleswitcherlabel:after {
+    left: calc(100% - 5px);
+    transform: translateX(-100%);
+    background-image: url("/images/dark.png");
+    background-size: 24px;
+}
+
+.styleswitcher:checked + .styleswitcherlabel {
+    background-color: #212529;
+    box-shadow: 0 0 2px #ffffff;
+}
+
+.link {
+    color: #FF8C00 !important;
+}
+
+/* Bootstrap stuff but with custom colors :0 */
+/* Button in Kolping Orange */
+.btn-kolping {
+    color: #fff;
+    background-color: #FF8C00 !important;
+    border-color: #ef8400 !important;
+}
+
+.btn-kolping:hover {
+    color: #fff;
+    background-color: #da7800 !important;
+    border-color: #bd6901 !important;
+}
+
+.btn-check:focus+.btn-kolping,.btn-kolping:focus {
+    color: #fff;
+    background-color: #FF8C00 !important;
+    border-color: #ef8400 !important;
+    box-shadow: 0 0 0 .25rem rgba(255, 140, 0, .75) !important;
+}
+
+.btn-check:active+.btn-kolping,.btn-check:checked+.btn-kolping,.btn-kolping.active,.btn-kolping:active,.show>.btn-kolping.dropdown-toggle {
+    color: #fff;
+    background-color: #FF8C00 !important;
+    border-color: #ef8400 !important;
+}
+
+.btn-check:active+.btn-kolping:focus,.btn-check:checked+.btn-kolping:focus,.btn-kolping.active:focus,.btn-kolping:active:focus,.show>.btn-kolping.dropdown-toggle:focus {
+    box-shadow: 0 0 0 .25rem rgba(255, 140, 0, .75) !important;
+}
+
+.btn-kolping.disabled,.btn-kolping:disabled {
+    color: #fff;
+    background-color: #ffa83ebb !important;
+    border-color: #ca8531bb !important;
+}
+
+/* Checkbox in Kolping Orange */
+.checkbox-kolping:checked {
+    background-color: #FF8C00 !important;
+    border-color: #ef8400 !important;
+}
+
+.checkbox-kolping:focus+.checkbox-kolping,.checkbox-kolping:focus {
+    background-color: #FF8C00 !important;
+    border-color: #ef8400 !important;
+    box-shadow: 0 0 0 .25rem rgba(255, 140, 0, .75) !important;
+}
+
+.checkbox-kolping:active+.checkbox-kolping:focus,.checkbox-kolping:checked+.checkbox-kolping:focus,.checkbox-kolping.active:focus,.checkbox-kolping:active:focus,.show>.checkbox-kolping.dropdown-toggle:focus {
+    border-color: #ef8400 !important;
+    box-shadow: 0 0 0 .25rem rgba(255, 140, 0, .75) !important;
+}
