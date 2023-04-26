@@ -107,7 +107,7 @@ if (check_user() != NULL && check_user() !=FALSE) {
 </div>
 
 
-<!-- uncomment the following to disable under KJonstruction -->
+<!-- comment the following to disable under KJonstruction -->
 <div class="modal fade" id="underKJonstructionModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="underKJonstructionModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content cbg">
