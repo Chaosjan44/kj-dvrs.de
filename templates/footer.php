@@ -1,7 +1,9 @@
 <?php 
 $crdate = "2023";
 ?>
+
 </body>
+
 <?php if (!isMobile()): ?>
     <footer class="container-fluid cbg2 footer py-3">
         <div class="container">

@@ -9,6 +9,7 @@ $buffer = preg_replace('/(<title>)(.*?)(<\/title>)/i', '$1' . $title . '$3', $bu
 echo $buffer;
 
 ?>
+
 <div class="container-fluid px-0 pt-0 pb-3">
     <?php if (!isMobile()): ?>
     <div class="container-xxl">
