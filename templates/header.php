@@ -2,36 +2,22 @@
 require_once("php/functions.php");
 setlocale (LC_ALL, 'de_DE.UTF-8', 'de_DE@euro', 'de_DE', 'de', 'ge', 'de_DE.ISO_8859-1', 'German_Germany');
 session_start();
-
-$loggedin = false;
-if (check_user() != NULL && check_user() !=FALSE) {
-    $loggedin = true;
+$user = check_user();
+$isadmin = false;
+if (isset($user) && $user != null) {
+    $stmt = $pdo->prepare("SELECT * FROM kolpingjugend WHERE kolpingjugend_id = ?");
+    $stmt->bindValue(1, $user['kolpingjugend_id']);
+    $stmt->execute();
+    if ($stmt->rowCount() != 1) {
+        errorPage('Du scheinst keiner Kolpingjugend zugeordnet zu sein, melde dich bitte bei <a href="mailto:admin@kj-dvrs.de" class="link">admin@kj-dvrs.de</a>');
+    }
+    $kolpingjugend = $stmt->fetch();
+    if ($user['perm_admin'] == 1) {
+        $isadmin = true;
+    }
 }
+require_once("templates/imports.php");
 ?>
-
-<!DOCTYPE html>
-
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Verbandsspiel der Kolpingjugend DVRS">
-    <meta name="author" content="Developed by Jan">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <script defer data-domain="kj-dvrs.de" src="https://plausible.schniebs.dev/js/script.js"></script>
-    <link rel="stylesheet" href="/css/styles.css">          <!-- Link Stylesheet -->
-    <link rel="stylesheet" href="/css/dark.css" disabled>   <!-- Link Dark Stylesheet and disable it -->
-    <link rel="stylesheet" href="/css/light.css" disabled>  <!-- Link Light Stylesheet and disable it -->
-    <link rel="icon" type="image/png" href="/favicon.png" sizes="1024x1024" />
-    <link rel="apple-touch-icon" href="/favicon.png"/>
-    <title>Verbandsspiel Kolpingjugend DVRS</title>
-</head>
-
 
 <header class="sticky-top">
     <nav class="navbar navbar-expand-lg cbg ctext">
@@ -45,25 +31,32 @@ if (check_user() != NULL && check_user() !=FALSE) {
             </button>
             <div class="collapse navbar-collapse cbg" tabindex="-1" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <?php if($loggedin == true):?>
-                        <li class="nav-item text-size-x-large">
-                            <a class="nav-link clink" aria-current="page" href="/allekj.php">Alle Kolpingjugenden</a>
+                    <?php if(isset($user) && $user != null):?>
+                        <li class="nav-item text-size-x-large mx-1">
+                            <a class="nav-link clink" aria-current="page" href="/overview.php">Alle Häuser</a>
                         </li>
-                        <li class="nav-item text-size-x-large">
-                            <a class="nav-link clink" href="/nachricht.php">Nachrichten</a>
+                        <li class="nav-item text-size-x-large mx-1">
+                            <a class="nav-link clink" href="/kolpingjugend.php?id=<?=$user['kolpingjugend_id']?>">Das Haus von <?=$kolpingjugend['kolpingjugend_name']?></a>
                         </li>
-                        <li class="nav-item text-size-x-large">
-                            <a class="nav-link clink clink" href="/wir.php">Wir</a>
+                    <?php endif;?>
+                    <?php if($isadmin == true):?>
+                        <li class="nav-item text-size-x-large mx-1">
+                            <a class="nav-link clink" href="/admin/admin.php">Administration</a>
                         </li>
                     <?php endif;?>
                 </ul>
                 <ul class="navbar-nav mb-2 mb-lg-0">
-                    <?php if($loggedin == false):?>
-                        <li class="nav-item text-size-x-large">
-                            <a class="nav-link clink clink" href="/login.php">Anmelden</a>
+                    <?php if(isset($user) && $user != null):?>
+                        <li class="nav-item text-size-x-large mx-1">
+                            <a class="nav-link clink" href="/settings.php">Einstellungen</a>
+                        </li>
+                    <?php endif;?>
+                    <?php if(!isset($user) || $user == null):?>
+                        <li class="nav-item text-size-x-large mx-1">
+                            <a class="nav-link clink" href="/login.php">Anmelden</a>
                         </li>
                     <?php else:?>
-                        <li class="nav-item text-size-x-large">
+                        <li class="nav-item text-size-x-large mx-1">
                             <a class="nav-link clink clink" href="/logout.php">Abmelden</a>
                         </li>
                     <?php endif;?>
@@ -120,7 +113,7 @@ if (check_user() != NULL && check_user() !=FALSE) {
                     <p class="text-center">Wir arbeiten aktuell noch an dieser Webseite. <i class="bi bi-cone-striped"></i><br>
                     Nicht wundern wenn noch nicht alles funktioniert.<br>
                     Feedback trotzdem gerne an:<br>
-                    <a href="mailto:entwicklung@kj-dvrs.de" class="pe-1 link">entwicklung@kj-dvrs.de</a>
+                    <a href="mailto:entwicklung@kj-dvrs.de" class="link">entwicklung@kj-dvrs.de</a>
                     </p>
                 </div>
             </div>

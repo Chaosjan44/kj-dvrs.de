@@ -3,7 +3,7 @@ require_once("php/mysql.php");
 
 function check_user() {
 	global $pdo;
-	if(!isset($_SESSION['userid']) && isset($_COOKIE['identifier']) && isset($_COOKIE['securitytoken'])) {
+	if (isset($_SESSION['userid']) && isset($_COOKIE['identifier']) && isset($_COOKIE['securitytoken'])) {
 		$identifier = $_COOKIE['identifier'];
 		$securitytoken = $_COOKIE['securitytoken'];
 		$stmt = $pdo->prepare("SELECT * FROM securitytokens WHERE identifier = ?");
@@ -16,7 +16,34 @@ function check_user() {
 		if(sha1($securitytoken) !== $securitytoken_row['securitytoken']) {
 			setcookie("identifier","del",time()-(3600*12),'/'); // valid for -12 hours
 			setcookie("securitytoken","del",time()-(3600*12),'/'); // valid for -12 hours
-			header("Refresh:0");
+			print("<script>location.href='/logout.php'</script>");
+			exit;
+		} if(!isset($_SESSION['userid'])) {
+			return FALSE;
+		} else {
+			$stmt = $pdo->prepare("SELECT * FROM users WHERE user_id = ?");
+			$stmt->bindValue(1, $_SESSION['userid'], PDO::PARAM_INT);
+			$result = $stmt->execute();
+			if (!$result) {
+				error_log("Error while pulling user with id: " + $_SESSION['userid'] + " from Database");
+			}
+			$user = $stmt->fetch();
+			return $user;
+		}
+	} elseif(!isset($_SESSION['userid']) && isset($_COOKIE['identifier']) && isset($_COOKIE['securitytoken'])) {
+		$identifier = $_COOKIE['identifier'];
+		$securitytoken = $_COOKIE['securitytoken'];
+		$stmt = $pdo->prepare("SELECT * FROM securitytokens WHERE identifier = ?");
+		$stmt->bindValue(1, $identifier);
+		$result = $stmt->execute();
+		if (!$result) {
+			exit;
+		}
+		$securitytoken_row = $stmt->fetch();
+		if(sha1($securitytoken) !== $securitytoken_row['securitytoken']) {
+			setcookie("identifier","del",time()-(3600*12),'/'); // valid for -12 hours
+			setcookie("securitytoken","del",time()-(3600*12),'/'); // valid for -12 hours
+			print("<script>location.href='/logout.php'</script>");
 			exit;
 		} else { //Token war korrekt
 			//Setze neuen Token
@@ -45,8 +72,11 @@ function check_user() {
 			$user = $stmt->fetch();
 			return $user;
 		}
+	} else {
+		return FALSE;
 	}
 }
+
 
 function sqlError($error_msg) {
 	global $pdo;
@@ -60,7 +90,12 @@ function sqlError($error_msg) {
 	exit;
 }
 
-
+function errorPage($error_msg) {
+	require_once("php/functions.php");
+	require_once("templates/imports.php");
+	include_once("templates/error.php");
+	exit();
+}
 
 function error($error_msg) {
 	global $pdo;
@@ -70,10 +105,7 @@ function error($error_msg) {
 	} else {
 		error_log($backtrace[count($backtrace)-1]['file'] . ':' . $backtrace[count($backtrace)-1]['line'] . ':' . $error_msg);
 	}
-	include_once("templates/header.php");
-	include_once("templates/error.php");
-	include_once("templates/footer.php");
-	exit();
+	errorPage($error_msg);
 }
 
 function pdo_debugStrParams($stmt) {

@@ -16,11 +16,11 @@ echo $buffer;
         <div class="row ctext">
             <h1 class="display-4 text-center">Verbandsspiel der Kolpingjugend DVRS</h1>
             <span class="text-center text-size-larger">
-                w
-        </span>
+                Weitere Informationen zum Verbandsspiel findest du <a href="https://jugend.kolping-dvrs.de/verbandsspiel" class="text-size-large link">hier</a>.<br>
+                <a href="https://jugend.kolping-dvrs.de/" class="text-size-large link">Hier</a> gehts zur Webseite der Kolpingjugend Diözesanverband Rottenburg-Stuttgart<br>
+            </span>
         </div>
         <div class="row gx-5 pt-3">
-
         </div>
     </div>
     <?php else: ?>
@@ -28,8 +28,9 @@ echo $buffer;
         <div class="row ctext">
             <h1 class="display-4 text-center">Verbandsspiel der Kolpingjugend DVRS</h1>
             <span class="text-center text-size-larger">
-                w
-        </span>
+                Weitere Informationen zum Verbandsspiel findest du <a href="https://jugend.kolping-dvrs.de/verbandsspiel" class="text-size-large link">hier</a>.<br>
+                <a href="https://jugend.kolping-dvrs.de/" class="text-size-large link">Hier</a> gehts zur Webseite der Kolpingjugend Diözesanverband Rottenburg-Stuttgart<br>
+            </span>
         </div>
         <div class="row gx-5 pt-3 justify-content-center">
             <div class="col-11">
