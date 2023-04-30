@@ -2,7 +2,9 @@
 require_once("php/functions.php");
 setlocale (LC_ALL, 'de_DE.UTF-8', 'de_DE@euro', 'de_DE', 'de', 'ge', 'de_DE.ISO_8859-1', 'German_Germany');
 session_start();
-$user = check_user();
+if ($disheadercheck != true) {
+    $user = check_user();
+}
 $isadmin = false;
 if (isset($user) && $user != null) {
     $stmt = $pdo->prepare("SELECT * FROM kolpingjugend WHERE kolpingjugend_id = ?");

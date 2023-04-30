@@ -1,6 +1,11 @@
 <?php 
 require_once("php/functions.php");
 
+if (isset($user)) {
+    print("<script>location.href='/logout.php'</script>");
+    exit;
+} 
+
 $error_msg = "";
 if (isset($_POST['action'])) {
     if ($_POST['action'] == 'login') {
@@ -46,7 +51,16 @@ if (isset($_POST['action'])) {
         }
     }
 }
-require_once("templates/header.php"); ?>
+ob_start();
+require_once("templates/header.php");
+$buffer=ob_get_contents();
+ob_end_clean();
+
+$title = "Verbandsspiel Kolpingjugend DVRS - Login";
+$buffer = preg_replace('/(<title>)(.*?)(<\/title>)/i', '$1' . $title . '$3', $buffer);
+echo $buffer; 
+
+?>
 
 <div class="container py-3" style="min-height: 80vh;">
 	<div class="row justify-content-center">

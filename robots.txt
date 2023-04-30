@@ -28,6 +28,7 @@
 #
 User-agent: *
 Sitemap: https://kj-dvrs.de/sitemap.xml
-Disallow: /internal/
-Disallow: /hidden/
-Disallow: /internal.php
+Disallow: /admin/*
+Disallow: /hidden/*
+Disallow: /overview.php
+Disallow: /kolpingjugend.php
