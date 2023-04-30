@@ -57,13 +57,13 @@ if(isset($_POST['action'])) {
         }
         // Ziehe alle Daten zu gegebenen User aus der Datenbank
         $stmt = $pdo->prepare('SELECT * FROM kolpingjugend WHERE kolpingjugend_id = ?');
+        error_log( $_POST['kj_id']);
         $stmt->bindValue(1, $_POST['kj_id']);
         $result1 = $stmt->execute();
         if (!$result1) {
             error('Datenbank Fehler!', pdo_debugStrParams($stmt));
         }
-        $kolpingjugend = $stmt->fetch();
-
+        $kolpingjugend2 = $stmt->fetch();
         if(isset($_POST['kj_name']) and isset($_POST['kj_ort']) and !empty($_POST['kj_name']) and !empty($_POST['kj_ort'])) {
             $stmt = $pdo->prepare("UPDATE kolpingjugend SET kolpingjugend_name = ?, kolpingjugend_ort = ? WHERE kolpingjugend_id = ?");
             $stmt->bindValue(1, $_POST['kj_name']);
@@ -90,17 +90,17 @@ if(isset($_POST['action'])) {
             <div>
                 <form action="kolpingjugenden.php" method="post">
                     <div class="container cbg2 p-3 rounded">
-                        <h1 class="text-center text-kolping-orange pb-2">Einstellungen für <?=$kolpingjugend['kolpingjugend_name']?></h1>
+                        <h1 class="text-center text-kolping-orange pb-2">Einstellungen für <?=$kolpingjugend2['kolpingjugend_name']?></h1>
                         <div class="input-group py-2">
                             <span class="input-group-text" for="inputVorname" style="min-width: 150px;">Kolpingjugend Name</span>
-                            <input class="form-control" id="inputVorname" name="kj_name" type="text" value="<?=$kolpingjugend['kolpingjugend_name']?>" required>
+                            <input class="form-control" id="inputVorname" name="kj_name" type="text" value="<?=$kolpingjugend2['kolpingjugend_name']?>" required>
                         </div>
                         <div class="input-group py-2">
                             <span class="input-group-text" for="inputNachname" style="min-width: 150px;">Kolpingjugend Ort</span>
-                            <input class="form-control" id="inputNachname" name="kj_ort" type="text" value="<?=$kolpingjugend['kolpingjugend_ort']?>" required>
+                            <input class="form-control" id="inputNachname" name="kj_ort" type="text" value="<?=$kolpingjugend2['kolpingjugend_ort']?>" required>
                         </div>
                         <div class="d-flex justify-content-between pt-2">
-                            <input type="number" value="<?=$kolpingjugend['kolpingjugend_id']?>" name="kj_id" style="display: none;" required>
+                            <input type="number" value="<?=$kolpingjugend2['kolpingjugend_id']?>" name="kj_id" style="display: none;" required>
                             <button type="submit" name="action" value="mod" class="btn btn-success" aria-label="Speichern"><i class="bi bi-sd-card"></i></button>
                             <button type="submit" name="action" value="cancel" class="btn btn-danger" aria-label="Abbrechen"><i class="bi bi-x-circle"></i></button>
                         </div>
@@ -172,7 +172,7 @@ echo $buffer;
                                     <strong><?=$kolpingjugend1['kolpingjugend_name']?></strong>
                                 </td>
                                 <td class="border-0 text-center">
-                                    <strong><?=$kolpingjugend['kolpingjugend_ort']?></strong>
+                                    <strong><?=$kolpingjugend1['kolpingjugend_ort']?></strong>
                                 </td>
                                 <td class="border-0 text-end">
                                     <strong><?=$kolpingjugend1['created_at']?></strong>

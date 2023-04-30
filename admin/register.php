@@ -54,6 +54,7 @@ if (isset($_POST['action'])) {
                     exit;
                 }
                 $error_msg = "<span class='text-success'>User erfolgreich angelegt. :)<br><br></span>";
+                echo("<script>location.href='user.php'</script>");
             } else {
                 $error_msg = "<span class='text-danger'>Die angegebenen Passwörter stimmen nicht überein.<br><br></span>";
             }
