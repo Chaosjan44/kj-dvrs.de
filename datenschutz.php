@@ -9,7 +9,7 @@ $buffer = preg_replace('/(<title>)(.*?)(<\/title>)/i', '$1' . $title . '$3', $bu
 echo $buffer;
 ?>
 <div class="container py-3">
-    <div>
+    <div style="min-height: 72vh;">
         <h1 class="display-3 text-center text-kolping-orange">Datenschutzerklärung</h1>
         <h3>1 . Datenschutz auf einen Blick</h3>
         <h5 class="mb-1">Allgemeine Hinweise</h5>

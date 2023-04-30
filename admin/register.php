@@ -7,7 +7,7 @@ require_once("templates/header.php");
 $buffer=ob_get_contents();
 ob_end_clean();
 
-$title = "ADMIN - Verbandsspiel Kolpingjugend DVRS - Adminbreich";
+$title = "ADMIN - Verbandsspiel Kolpingjugend DVRS - Anwender*in anlegen";
 $buffer = preg_replace('/(<title>)(.*?)(<\/title>)/i', '$1' . $title . '$3', $buffer);
 echo $buffer;
 
@@ -64,7 +64,7 @@ if (isset($_POST['action'])) {
 }
 
 ?>
-<div class="container py-3" style="min-height: 80vh;">
+<div class="container py-3" style="min-height: 72vh;">
 	<div class="row justify-content-center">
 		<div class="col">
 			<div class="card cbg2">

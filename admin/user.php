@@ -3,7 +3,7 @@ chdir ($_SERVER['DOCUMENT_ROOT']);
 require_once("php/functions.php");
 $user = check_user();
 $disheadercheck = true;
-if ($user == false) {
+if (!isset($user)) {
     print("<script>location.href='/login.php'</script>");
 }
 if ($user['perm_admin'] != 1) {
@@ -29,21 +29,6 @@ if(isset($_POST['action'])) {
                 if (!$result) {
                     error('Datenbank Fehler!', pdo_debugStrParams($stmt));
                 }
-
-                $stmt = $pdo->prepare('UPDATE events SET created_by = 0 WHERE created_by = ?');
-                $stmt->bindValue(1, $_POST['user_id'], PDO::PARAM_INT);
-                $result = $stmt->execute();
-                if (!$result) {
-                    error('Datenbank Fehler!', pdo_debugStrParams($stmt));
-                }
-
-                $stmt = $pdo->prepare('UPDATE blog_entrys SET created_by = 0 WHERE created_by = ?');
-                $stmt->bindValue(1, $_POST['user_id'], PDO::PARAM_INT);
-                $result = $stmt->execute();
-                if (!$result) {
-                    error('Datenbank Fehler!', pdo_debugStrParams($stmt));
-                }
-
 
                 $stmt = $pdo->prepare('DELETE FROM users WHERE user_id = ?');
                 $stmt->bindValue(1, $_POST['user_id'], PDO::PARAM_INT);
@@ -119,7 +104,7 @@ if(isset($_POST['action'])) {
             echo $buffer;
         ?>
         <!-- Formular zur Bearbeitung des Users anzeigen -->
-        <div class="px-3 py-3" style="min-height: 80vh;">
+        <div class="px-3 py-3" style="min-height: 72vh;">
             <h1>Einstellungen für <?=$user1['login']?></h1>
             <div>
                 <form action="user.php" method="post">
@@ -201,7 +186,7 @@ $title = "ADMIN - Verbandsspiel Kolpingjugend DVRS - Anwender*innen";
 $buffer = preg_replace('/(<title>)(.*?)(<\/title>)/i', '$1' . $title . '$3', $buffer);
 echo $buffer;
 ?>
-<div class="container users content-wrapper py-3 px-3" style="min-height: 80vh;">
+<div class="container users content-wrapper py-3 px-3" style="min-height: 72vh;">
     <div class="row">
         <div class="py-3 px-3 cbg ctext rounded">
             <div class="d-flex justify-content-between">

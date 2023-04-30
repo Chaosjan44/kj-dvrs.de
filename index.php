@@ -12,7 +12,7 @@ echo $buffer;
 
 <div class="container-fluid px-0 pt-0 pb-3">
     <?php if (!isMobile()): ?>
-    <div class="container-xxl">
+    <div class="container-xxl" style="min-height: 72vh;">
         <div class="row ctext">
             <h1 class="display-4 text-center">Verbandsspiel der Kolpingjugend DVRS</h1>
             <span class="text-center text-size-larger">
