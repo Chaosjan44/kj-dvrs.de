@@ -43,8 +43,8 @@ if (isset($_POST['action'])) {
 }
 
 ?>
-<div class="container py-3" style="min-height: 72vh;">
-	<div class="row justify-content-center">
+<div class="container py-3">
+	<div class="row justify-content-center" style="min-height: 73.3vh;">
 		<div class="col">
 			<div class="card cbg2">
                 <div class="card-body">

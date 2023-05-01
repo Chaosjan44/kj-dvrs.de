@@ -104,66 +104,132 @@ if(isset($_POST['action'])) {
             echo $buffer;
         ?>
         <!-- Formular zur Bearbeitung des Users anzeigen -->
-        <div class="px-3 py-3" style="min-height: 72vh;">
-            <h1>Einstellungen für <?=$user1['login']?></h1>
-            <div>
+        <div class="p-3">
+            <div style="min-height: 73.3vh;">
                 <form action="user.php" method="post">
-                    <div class="row d-flex justify-content-between">
-                        <div class="col-6">
-                            <div class="input-group py-2">
-                                <span class="input-group-text" for="inputVorname" style="min-width: 150px;">Vorname</span>
-                                <input class="form-control" id="inputVorname" name="vorname" type="text" value="<?=$user1['vorname']?>" required>
+                    <?php if (!isMobile()): ?>
+                        <div class="row d-flex justify-content-between">
+                            <h1>Einstellungen für <?=$user1['login']?></h1>
+                            <div class="col-6">
+                                <div class="input-group py-2">
+                                    <span class="input-group-text" for="inputVorname" style="min-width: 150px;">Vorname</span>
+                                    <input class="form-control" id="inputVorname" name="vorname" type="text" value="<?=$user1['vorname']?>" required>
+                                </div>
+                                <div class="input-group py-2">
+                                    <span class="input-group-text" for="inputNachname" style="min-width: 150px;">Nachname</span>
+                                    <input class="form-control" id="inputNachname" name="nachname" type="text" value="<?=$user1['nachname']?>" required>
+                                </div>
+                                <div class="input-group py-2">
+                                    <span class="input-group-text" for="inputEmail" style="min-width: 150px;">E-Mail</span>
+                                    <input class="form-control" id="inputEmail" name="email" type="text" value="<?=$user1['email']?>" required>
+                                </div>
+                                <div class="input-group py-2">
+                                    <span class="input-group-text" for="kj-id" style="min-width: 150px;">Kolpingjugend</span>
+                                    <select class="form-select" id="kj-id" name="kj_id">
+                                        <?php foreach ($kolpingjugenden as $kolpingjugend):?>
+                                            <option class="text-dark" value="<?=$kolpingjugend['kolpingjugend_id']?>" <?php if ($kolpingjugend['kolpingjugend_id'] == $user1['kolpingjugend_id']) { print("selected"); }?>><?=$kolpingjugend['kolpingjugend_name']?></option>
+                                        <?php endforeach;?>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="input-group py-2">
-                                <span class="input-group-text" for="inputNachname" style="min-width: 150px;">Nachname</span>
-                                <input class="form-control" id="inputNachname" name="nachname" type="text" value="<?=$user1['nachname']?>" required>
-                            </div>
-                            <div class="input-group py-2">
-                                <span class="input-group-text" for="inputEmail" style="min-width: 150px;">E-Mail</span>
-                                <input class="form-control" id="inputEmail" name="email" type="text" value="<?=$user1['email']?>" required>
-                            </div>
-                            <div class="input-group py-2">
-                                <span class="input-group-text" for="kj-id" style="min-width: 150px;">Kolpingjugend</span>
-                                <select class="form-select" id="kj-id" name="kj_id">
-                                    <?php foreach ($kolpingjugenden as $kolpingjugend):?>
-                                        <option class="text-dark" value="<?=$kolpingjugend['kolpingjugend_id']?>" <?php if ($kolpingjugend['kolpingjugend_id'] == $user1['kolpingjugend_id']) { print("selected"); }?>><?=$kolpingjugend['kolpingjugend_name']?></option>
-                                    <?php endforeach;?>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="input-group py-2">
-                                <span class="input-group-text" for="inputPasswortNeu" style="min-width: 300px;">Neues Passwort</span>
-                                <input class="form-control" id="inputPasswortNeu" name="passwortNeu" type="password">
-                            </div>
-                            <div class="input-group py-2">
-                                <span class="input-group-text" for="inputPasswortNeu2" style="min-width: 300px;">Neues Passwort (wiederholen)</span>
-                                <input class="form-control" id="inputPasswortNeu2" name="passwortNeu2" type="password">
-                            </div>
-                            <div class="col mb-3">
-                                <div class="input-group justify-content-center">
-                                    <label for="perm_login" class="input-group-text">Anmelde Berechtigungen?</label>
-                                    <div class="input-group-text">
-                                        <input value="remember-me" id="perm_login" type="checkbox" name="perm_login" value="1" class="form-check-input checkbox-kolping my-0" <?php if ($user1['perm_login'] == 1) print("checked");?>>
+                            <div class="col-6">
+                                <div class="input-group py-2">
+                                    <span class="input-group-text" for="inputPasswortNeu" style="min-width: 300px;">Neues Passwort</span>
+                                    <input class="form-control" id="inputPasswortNeu" name="passwortNeu" type="password">
+                                </div>
+                                <div class="input-group py-2">
+                                    <span class="input-group-text" for="inputPasswortNeu2" style="min-width: 300px;">Neues Passwort (wiederholen)</span>
+                                    <input class="form-control" id="inputPasswortNeu2" name="passwortNeu2" type="password">
+                                </div>
+                                <div class="col mb-3">
+                                    <div class="input-group justify-content-center">
+                                        <label for="perm_login" class="input-group-text">Anmelde Berechtigungen?</label>
+                                        <div class="input-group-text">
+                                            <input value="remember-me" id="perm_login" type="checkbox" name="perm_login" value="1" class="form-check-input checkbox-kolping my-0" <?php if ($user1['perm_login'] == 1) print("checked");?>>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col mb-3">
+                                    <div class="input-group justify-content-center">
+                                        <label for="perm_admin" class="input-group-text">Admin Berechtigungen?</label>
+                                        <div class="input-group-text">
+                                            <input value="remember-me" id="perm_admin" type="checkbox" name="perm_admin" value="1" class="form-check-input checkbox-kolping my-0" <?php if ($user1['perm_admin'] == 1) print("checked");?>>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col mb-3">
-                                <div class="input-group justify-content-center">
-                                    <label for="perm_admin" class="input-group-text">Admin Berechtigungen?</label>
-                                    <div class="input-group-text">
-                                        <input value="remember-me" id="perm_admin" type="checkbox" name="perm_admin" value="1" class="form-check-input checkbox-kolping my-0" <?php if ($user1['perm_admin'] == 1) print("checked");?>>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <input type="number" value="<?=$_POST['user_id']?>" name="user_id" style="display: none;" required>
+                            <button type="submit" name="action" value="mod" class="btn btn-success" aria-label="Speichern"><i class="bi bi-sd-card"></i></button>
+                            <button type="submit" name="action" value="cancel" class="btn btn-danger" aria-label="Abbrechen"><i class="bi bi-x-circle"></i></button>
+                        </div>
+                    <?php else: ?>
+                        <div class="card cbg2 p-0 my-3">
+                            <div class="card-body">
+                                <h3 class="card-title ctext text-center">Einstellungen für <?=$user1['login']?></h3>
+                                <div class="card-text">
+                                    <div class="input-group py-2">
+                                        <span class="input-group-text" for="inputVorname" style="min-width: 150px;">Vorname</span>
+                                        <input class="form-control" id="inputVorname" name="vorname" type="text" value="<?=$user1['vorname']?>" required>
+                                    </div>
+                                    <div class="input-group py-2">
+                                        <span class="input-group-text" for="inputNachname" style="min-width: 150px;">Nachname</span>
+                                        <input class="form-control" id="inputNachname" name="nachname" type="text" value="<?=$user1['nachname']?>" required>
+                                    </div>
+                                    <div class="input-group py-2">
+                                        <span class="input-group-text" for="inputEmail" style="min-width: 150px;">E-Mail</span>
+                                        <input class="form-control" id="inputEmail" name="email" type="text" value="<?=$user1['email']?>" required>
+                                    </div>
+                                    <div class="input-group py-2">
+                                        <span class="input-group-text" for="kj-id" style="min-width: 150px;">Kolpingjugend</span>
+                                        <select class="form-select" id="kj-id" name="kj_id">
+                                            <?php foreach ($kolpingjugenden as $kolpingjugend):?>
+                                                <option class="text-dark" value="<?=$kolpingjugend['kolpingjugend_id']?>" <?php if ($kolpingjugend['kolpingjugend_id'] == $user1['kolpingjugend_id']) { print("selected"); }?>><?=$kolpingjugend['kolpingjugend_name']?></option>
+                                            <?php endforeach;?>
+                                        </select>
+                                    </div>
+                                    <div class="input-group py-2">
+                                        <span class="input-group-text" for="inputPasswortNeu" style="min-width: 150px;">Neues PW</span>
+                                        <input class="form-control" id="inputPasswortNeu" name="passwortNeu" type="password">
+                                    </div>
+                                    <div class="input-group py-2">
+                                        <span class="input-group-text" for="inputPasswortNeu2" style="min-width: 150px;">Neues PW</span>
+                                        <input class="form-control" id="inputPasswortNeu2" name="passwortNeu2" type="password">
+                                    </div>
+                                    <div class="col py-2">
+                                        <div class="input-group justify-content-center">
+                                            <label for="perm_login" class="input-group-text">Anmelde Berechtigungen?</label>
+                                            <div class="input-group-text">
+                                                <input value="remember-me" id="perm_login" type="checkbox" name="perm_login" value="1" class="form-check-input checkbox-kolping my-0" <?php if ($user1['perm_login'] == 1) print("checked");?>>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col py-2">
+                                        <div class="input-group justify-content-center">
+                                            <label for="perm_admin" class="input-group-text">Admin Berechtigungen?</label>
+                                            <div class="input-group-text">
+                                                <input value="remember-me" id="perm_admin" type="checkbox" name="perm_admin" value="1" class="form-check-input checkbox-kolping my-0" <?php if ($user1['perm_admin'] == 1) print("checked");?>>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <input type="number" value="<?=$_POST['user_id']?>" name="user_id" style="display: none;" required>
+                                        <button type="submit" name="action" value="mod" class="btn btn-success" aria-label="Speichern"><i class="bi bi-sd-card"></i></button>
+                                        <button type="submit" name="action" value="cancel" class="btn btn-danger" aria-label="Abbrechen"><i class="bi bi-x-circle"></i></button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <input type="number" value="<?=$_POST['user_id']?>" name="user_id" style="display: none;" required>
-                        <button type="submit" name="action" value="mod" class="btn btn-success" aria-label="Speichern"><i class="bi bi-sd-card"></i></button>
-                        <button type="submit" name="action" value="cancel" class="btn btn-danger" aria-label="Abbrechen"><i class="bi bi-x-circle"></i></button>
-                    </div>
 
+                        <div class="col-6">
+                            
+                        </div>
+                        <div class="col-6">
+                            
+                        </div>
+                    
+                    <?php endif;?>
                 </form>
             </div>
         </div>
@@ -186,12 +252,12 @@ $title = "ADMIN - Verbandsspiel Kolpingjugend DVRS - Anwender*innen";
 $buffer = preg_replace('/(<title>)(.*?)(<\/title>)/i', '$1' . $title . '$3', $buffer);
 echo $buffer;
 ?>
-<div class="container users content-wrapper py-3 px-3" style="min-height: 72vh;">
-    <div class="row">
+<div class="container users content-wrapper p-3">
+    <div class="row" style="min-height: 73.3vh;">
         <div class="py-3 px-3 cbg ctext rounded">
             <div class="d-flex justify-content-between">
                 <div class="col-4">
-                    <h1>Anwender*innenverwaltung</h1>
+                    <h1>Anwender*innen<?php if (isMobile()) print("-<br>");?>verwaltung</h1>
                 </div>
                 <div class="col-4 d-flex justify-content-end">
                     <div>
@@ -200,6 +266,7 @@ echo $buffer;
                 </div>
             </div>
             <p><?php print($total_users); ?> Anwender*innen</p>
+            <?php if (!isMobile()): ?>
             <div class="table-responsive">
                 <table class="table align-middle table-borderless table-hover">
                     <thead>
@@ -285,7 +352,57 @@ echo $buffer;
                         <?php endforeach; ?>
                     </tbody>
                 </table>
-            </div>         
+            </div> 
+            <?php else: ?>
+                <?php foreach ($users as $user1): 
+                    $stmt = $pdo->prepare('SELECT * FROM kolpingjugend WHERE kolpingjugend_id = ?');
+                    $stmt->bindValue(1, $user1['kolpingjugend_id'], PDO::PARAM_INT);
+                    $result = $stmt->execute();
+                    if (!$result) {
+                        error('Datenbank Fehler!', pdo_debugStrParams($stmt));
+                    }
+                    $kolpingjugend = $stmt->fetch();?>
+                    <div class="card cbg2 p-0 my-3">
+                        <div class="card-body">
+                            <h3 class="card-title ctext text-center"><?=$user1['login']?></h3>
+                            <div class="card-text">
+                                User ID: <?=$user1['user_id']?><br>
+                                Vorname: <?=$user1['vorname']?><br>
+                                Nachname: <?=$user1['nachname']?><br>
+                                E-Mail: <?=$user1['email']?><br>
+                                Kolpingjugend: <?=$kolpingjugend['kolpingjugend_ort']?><br>
+                                Erstellt: <?=$user1['created_at']?>
+                                <?php if ($user1['user_id'] != 0):?>
+                                    <form action="user.php" method="post" class="d-flex justify-content-between mt-2">
+                                        <div class="">
+                                            <input type="number" value="<?=$user1['user_id']?>" name="user_id" style="display: none;" required>
+                                            <button type="submit" name="action" value="mod" class="btn btn-kolping"><i class="bi bi-pencil"></i></button>
+                                        </div>
+                                        <div class="">
+                                            <input type="number" value="<?=$user1['user_id']?>" name="user_id" style="display: none;" required>
+                                            <button class="btn btn-danger" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas<?=$user1['user_id']?>" aria-controls="offcanvas<?=$user1['user_id']?>"><i class="bi bi-person-dash"></i></button>
+                                            <div class="offcanvas offcanvas-end cbg" data-bs-scroll="true" tabindex="-1" id="offcanvas<?=$user1['user_id']?>" aria-labelledby="offcanvas<?=$user1['user_id']?>Label">
+                                                <div class="offcanvas-header">
+                                                    <h2 class="offcanvas-title ctext" id="offcanvas<?=$user1['user_id']?>Label">Wirklich Löschen?</h2>
+                                                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                                </div>
+                                                <div class="offcanvas-body">
+                                                    <span class="pb-3">Eine Löschung lässt sich nicht rückgängig machen!<br></span>
+                                                    <button class="btn btn-success mx-2" type="submit" name="action" value="deleteconfirm">Ja</button>
+                                                    <button class="btn btn-danger mx-2" type="button" data-bs-dismiss="offcanvas" aria-label="Close">Nein</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                        <td class="border-0 actions text-center">
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php endif; ?>        
         </div>
     </div>
 </div> 

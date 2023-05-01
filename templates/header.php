@@ -32,7 +32,7 @@ require_once("templates/imports.php");
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse cbg" tabindex="-1" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav me-auto mb-lg-0">
                     <?php if(isset($user) && $user != null):?>
                         <li class="nav-item text-size-x-large mx-1">
                             <a class="nav-link clink" aria-current="page" href="/overview.php">Alle Häuser</a>
@@ -47,7 +47,7 @@ require_once("templates/imports.php");
                         </li>
                     <?php endif;?>
                 </ul>
-                <ul class="navbar-nav mb-2 mb-lg-0">
+                <ul class="navbar-nav mb-lg-0">
                     <?php if(isset($user) && $user != null):?>
                         <li class="nav-item text-size-x-large mx-1">
                             <a class="nav-link clink" href="/settings.php">Einstellungen</a>

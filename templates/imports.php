@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="/css/styles.css">          <!-- Link Stylesheet -->
     <link rel="stylesheet" href="/css/dark.css" disabled>   <!-- Link Dark Stylesheet and disable it -->
     <link rel="stylesheet" href="/css/light.css" disabled>  <!-- Link Light Stylesheet and disable it -->
-    <link rel="icon" type="image/png" href="/favicon.png" sizes="1024x1024" />
-    <link rel="apple-touch-icon" href="/favicon.png"/>
+    <link rel="icon" type="image/png" href="/favicon_dark.png" sizes="1024x1024" />
+    <link rel="apple-touch-icon" href="/favicon_dark.png"/>
     <title>Verbandsspiel Kolpingjugend DVRS</title>
 </head>

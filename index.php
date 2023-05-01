@@ -10,9 +10,9 @@ echo $buffer;
 
 ?>
 
-<div class="container-fluid px-0 pt-0 pb-3">
+<div class="container-fluid px-0 py-3">
     <?php if (!isMobile()): ?>
-    <div class="container-xxl" style="min-height: 72vh;">
+    <div class="container-xxl" style="min-height: 73.3vh;">
         <div class="row ctext">
             <h1 class="display-4 text-center">Verbandsspiel der Kolpingjugend DVRS</h1>
             <span class="text-center text-size-larger">
@@ -24,7 +24,7 @@ echo $buffer;
         </div>
     </div>
     <?php else: ?>
-    <div class="container">
+    <div class="container" style="min-height: 80vh;">
         <div class="row ctext">
             <h1 class="display-4 text-center">Verbandsspiel der Kolpingjugend DVRS</h1>
             <span class="text-center text-size-larger">

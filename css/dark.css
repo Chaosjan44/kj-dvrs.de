@@ -41,6 +41,16 @@ button {
     color: #ffffff !important;
 }
 
+.hoverlink {
+    transition: 0.5s;
+    color: #ffffff !important;
+}
+
+.hoverlink:hover {
+    transition: 0.5s;
+    color: #FF8C00 !important;
+}
+
 .clink {
     color: #ffffff !important;
 }

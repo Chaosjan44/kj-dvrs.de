@@ -17,8 +17,8 @@ if (!isset($user) || $user['perm_admin'] != 1) {
 
 
 <div class="container py-3">
-    <div style="min-height: 72vh;">
-        <div class="card cbg2 my-3 py-3 px-3">
+    <div style="min-height: 73.3vh;">
+        <div class="card cbg2 px-3">
             <div class="card-body text-center">
                 <h1 class="card-title display-3 text-center mb-4 text-kolping-orange">Administrations Bereich</h1>
                 <?php if (!isMobile()): ?>
@@ -29,13 +29,15 @@ if (!isset($user) || $user['perm_admin'] != 1) {
                         <button class="btn btn-kolping mx-1 my-2" type="button" onclick="window.location.href = '/admin/room_templates.php';">Raum Vorlagen</button>
                     </div>
                 <?php else: ?>
-                    <div class="card-text my-1">
-                    </div>
-                        <button class="btn btn-kolping mx-1" type="button" onclick="window.location.href = '/admin/kolpingjugenden.php';">Kolpingjugenden</button>
-                        <button class="btn btn-kolping mx-1" type="button" onclick="window.location.href = '/admin/user.php';">Anwender*innen</button>
-                    <div class="card-text my-1">
-                        <button class="btn btn-kolping mx-1" type="button" onclick="window.location.href = '/admin/houses.php';">Häuser</button>
-                        <button class="btn btn-kolping mx-1" type="button" onclick="window.location.href = '/admin/room_templates.php';">Raum Vorlagen</button>
+                    <div class="card-text">
+                        <div class="my-2">
+                            <button class="btn btn-kolping mx-1" type="button" onclick="window.location.href = '/admin/kolpingjugenden.php';">Kolpingjugenden</button>
+                            <button class="btn btn-kolping mx-1" type="button" onclick="window.location.href = '/admin/user.php';">Anwender*innen</button>
+                        </div>
+                        <div class="my-2">
+                            <button class="btn btn-kolping mx-1" type="button" onclick="window.location.href = '/admin/houses.php';">Häuser</button>
+                            <button class="btn btn-kolping mx-1" type="button" onclick="window.location.href = '/admin/room_templates.php';">Raum Vorlagen</button>
+                        </div>
                     </div>
                 <?php endif;?>
             </div>
