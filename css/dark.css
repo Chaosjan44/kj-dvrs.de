@@ -42,7 +42,6 @@ button {
 }
 
 .hoverlink {
-    transition: 0.5s;
     color: #ffffff !important;
 }
 

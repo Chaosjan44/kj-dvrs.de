@@ -1,3 +1,6 @@
+ErrorDocument 404 https://kj-dvrs.de/404.php
+
+
 RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.php -f
@@ -7,6 +10,7 @@ RewriteRule ^(.*)$ $1.html [NC,L]
 RewriteCond %{HTTPS} off
 RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
 RedirectMatch permanent /hidden(.*) /index.php
+
 
 <IfModule mod_headers.c>
     # Caching
