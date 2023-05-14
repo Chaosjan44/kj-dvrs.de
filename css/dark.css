@@ -37,8 +37,10 @@ button {
     background-color: #212529 !important;
 }
 
-.ctext {
+.ctext,
+.st111 {
     color: #ffffff !important;
+    fill: #ffffff !important;
 }
 
 .hoverlink {

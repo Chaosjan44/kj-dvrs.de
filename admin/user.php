@@ -105,7 +105,7 @@ if(isset($_POST['action'])) {
         ?>
         <!-- Formular zur Bearbeitung des Users anzeigen -->
         <div class="p-3">
-            <div style="min-height: 73.3vh;">
+            <div style="min-height: 75vh;">
                 <form action="user.php" method="post">
                     <?php if (!isMobile()): ?>
                         <div class="row d-flex justify-content-between">
@@ -253,7 +253,7 @@ $buffer = preg_replace('/(<title>)(.*?)(<\/title>)/i', '$1' . $title . '$3', $bu
 echo $buffer;
 ?>
 <div class="container users content-wrapper p-3">
-    <div class="row" style="min-height: 73.3vh;">
+    <div class="row" style="min-height: 75vh;">
         <div class="py-3 px-3 cbg ctext rounded">
             <div class="d-flex justify-content-between">
                 <div class="col-4">

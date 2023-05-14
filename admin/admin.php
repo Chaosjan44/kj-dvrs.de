@@ -17,7 +17,7 @@ if (!isset($user) || $user['perm_admin'] != 1) {
 
 
 <div class="container py-3">
-    <div style="min-height: 73.3vh;">
+    <div style="min-height: 75vh;">
         <div class="card cbg2 px-3">
             <div class="card-body text-center">
                 <h1 class="card-title display-3 text-center mb-4 text-kolping-orange">Administrations Bereich</h1>

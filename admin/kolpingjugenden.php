@@ -87,7 +87,7 @@ if(isset($_POST['action'])) {
         ?>
         <!-- Formular zur Bearbeitung des Users anzeigen -->
         <div class="p-3">
-            <div style="min-height: 73.3vh;">
+            <div style="min-height: 75vh;">
                 <form action="kolpingjugenden.php" method="post">
                     <div class="container cbg2 p-3 rounded">
                         <h1 class="text-center text-kolping-orange pb-2">Einstellungen für <?=$kolpingjugend2['kolpingjugend_name']?></h1>
@@ -128,7 +128,7 @@ $buffer = preg_replace('/(<title>)(.*?)(<\/title>)/i', '$1' . $title . '$3', $bu
 echo $buffer;
 ?>
 <div class="container users content-wrapper p-3">
-    <div class="row" style="min-height: 73.3vh;">
+    <div class="row" style="min-height: 75vh;">
         <div class="p-3 cbg ctext">
             <div class="d-flex justify-content-between">
                 <div class="col-4">

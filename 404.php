@@ -10,7 +10,7 @@ echo $buffer;
 ?>
 
 <div class="container-fluid py-3">
-    <div style="min-height: 73.3vh;">
+    <div style="min-height: 75vh;">
         <h2 class="display-4 text-kolping-orange text-center">404 - Seite nicht gefunden!</h2>
         <div class="row justify-content-center <?php if(isMobile()) print("row-cols-1");?>" style="max-height: 50vh;">
             <div class="py-2 col d-flex justify-content-<?php if(!isMobile()) print("end"); else print("center");?>">

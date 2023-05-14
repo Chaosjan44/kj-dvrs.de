@@ -63,7 +63,7 @@ echo $buffer;
 ?>
 
 <div class="container py-3">
-	<div class="row justify-content-center" style="min-height: 73.3vh;">
+	<div class="row justify-content-center" style="min-height: 75vh;">
 		<div class="col">
 			<div class="card cbg2">
                 <div class="card-body">

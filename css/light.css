@@ -37,9 +37,13 @@ button {
     background-color: #EDEDED !important;
 }
 
-.ctext {
+.ctext,
+.st111 {
     color: #000000 !important;
+    fill: #000000 !important;
 }
+
+
 
 .hoverlink {
     color: #000000 !important;
