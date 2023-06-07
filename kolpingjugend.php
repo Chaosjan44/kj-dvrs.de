@@ -535,40 +535,118 @@ $Aufgabenpacket3 = false;
                 <path id="path105625" inkscape:original-d="m 147.08176,140.60883 c -0.0137,-1.002 -0.0276,-2.00426 -0.0418,-3.00679" inkscape:path-effect="#path-effect105627" class="st86" d="M416.9,398.6l-0.1-8.5"/>
                 <path id="path105629" inkscape:original-d="m 148.41811,143.03096 c -0.0276,-1.32217 -0.0276,-2.58891 -0.0418,-3.88376" inkscape:path-effect="#path-effect105631" class="st86" d="M420.7,405.4l-0.1-11"/>
                 <path id="path105633" inkscape:original-d="m 145.66189,142.48807 c -0.0137,-1.1412 -0.0833,-2.33835 -0.12528,-3.50792" inkscape:path-effect="#path-effect105635" class="st86" d="M412.9,403.9l-0.4-9.9"/>
+                <!-- Räume mit variabler Anzeige -->
                 <g id="rooms" inkscape:groupmode="layer" inkscape:label="Räume">
-                    <rect id="1" x="259.3" y="631.3" class="st87" width="130.7" height="87.8"/>
-                    <?php if ($Aufgabenpacket1 == true) print('<text transform="matrix(1 0 0 1 294.7285 679.8555)" class="st111">Partykeller</text>');?>
+                    <!-- Raum 2 Partykeller -->
+                    <?php if ($Aufgabenpacket1 == true):
+                        print('<text transform="matrix(1 0 0 1 294.7285 679.8555)" class="st111" onclick="trigger2();">Partykeller</text>');
+                        print('<rect id="1" x="259.3" y="631.3" class="st87" width="130.7" height="87.8" onclick="trigger2();"/>');
+                    else:
+                        print('<rect id="1" x="259.3" y="631.3" class="st87" width="130.7" height="87.8" onclick="triggerwaitmodal();"/>');
+                    endif; ?>
+                    <!-- Treppe -->
                     <polygon id="Treppe" class="st88" points="190.5,686 207,686 207,703.3 224,703.3 224,719.1 259.3,719.1 259.3,631.3 157,631.3 157,651.5 172.8,651.5 172.8,668.9 190.5,668.8"/>
-                    <rect id="7" x="390" y="463.2" class="st89" width="190" height="187.7"/>
-                    <?php if ($Aufgabenpacket2 == true) print('<text transform="matrix(1 0 0 1 466.3105 561.7061)" class="st111">Garten</text>');?>
-                    <rect id="9" x="304.8" y="548.6" class="st90" width="85.2" height="82.7"/>
-                    <?php if ($Aufgabenpacket2 == true) print('<text transform="matrix(1 0 0 1 319.9805 594.6055)" class="st111">Werkstatt</text>');?>
-                    <rect id="12" x="157" y="548.6" class="st91" width="79.5" height="82.7"/>
-                    <?php if ($Aufgabenpacket3 == true) print('<text transform="matrix(1 0 0 1 167.6387 594.6055)" class="st111">Garderobe</text>');?>
-                    <rect id="13" x="82.8" y="474.4" class="st92" width="74.2" height="156.9"/>
-                    <?php if ($Aufgabenpacket3 == true) print('<text transform="matrix(1 0 0 1 96.4224 550.3057)"><tspan x="0" y="0" class="st111">Boulder</tspan><tspan x="43.4" y="0" class="st111">-</tspan><tspan x="8.7" y="14.4" class="st111">wand</tspan></text>');?>
-                    <rect id="3" x="252" y="466.3" class="st93" width="138" height="82.3"/>
-                    <?php if ($Aufgabenpacket1 == true) print('<text transform="matrix(1 0 0 1 279.2886 504.9053)"><tspan x="0" y="0" class="st111">Wohnzimmer &amp; </tspan><tspan x="15.8" y="14.4" class="st111">Heimkino</tspan></text>');?>
-                    <rect id="2" x="157" y="466.3" class="st94" width="95" height="82.3"/>
-                    <?php if ($Aufgabenpacket1 == true) print('<text transform="matrix(1 0 0 1 179.5762 512.1055)" class="st111">Essküche</text>');?>
-                    <rect id="5" x="157.1" y="386.9" class="st95" width="232.9" height="79.4"/>
-                    <?php if ($Aufgabenpacket1 == true) print('<text transform="matrix(1 0 0 1 236.7104 431.2559)" class="st111">Schlafzimmer</text>');?>
-                    <rect id="11" x="328.6" y="310.2" class="st96" width="118.5" height="76.7"/>
-                    <?php if ($Aufgabenpacket3 == true) print('<text transform="matrix(1 0 0 1 377.3262 353.2061)" class="st111">Bad</text>');?>
-                    <rect id="6" x="245.9" y="310.2" class="st97" width="82.7" height="76.7"/>
-                    <?php if ($Aufgabenpacket2 == true) print('<text transform="matrix(1 0 0 1 253.8901 353.2061)" class="st111">Fitnessraum</text>');?>
-                    <rect id="15" x="157.1" y="310.2" class="st98" width="88.8" height="76.7"/>
-                    <?php if ($Aufgabenpacket3 == true) print('<text transform="matrix(1 0 0 1 179.9185 346.0059)"><tspan x="0" y="0" class="st111">Arbeits-</tspan><tspan x="1.2" y="14.4" class="st111">zimmer</tspan></text>');?>
+                    <!-- Raum 7 - Garten -->
+                    <?php if ($Aufgabenpacket2 == true):
+                        print('<text transform="matrix(1 0 0 1 466.3105 561.7061)" class="st111" onclick="trigger7();">Garten</text>');
+                        print('<rect id="7" x="390" y="463.2" class="st89" width="190" height="187.7" onclick="trigger7();"/>');
+                    else:
+                        print('<rect id="7" x="390" y="463.2" class="st89" width="190" height="187.7" onclick="triggerwaitmodal();"/>');
+                    endif; ?>
+                    <!-- Raum 8 - Werkstatt -->
+                    <?php if ($Aufgabenpacket2 == true):
+                        print('<text transform="matrix(1 0 0 1 319.9805 594.6055)" class="st111" onclick="trigger8();">Werkstatt</text>');
+                        print('<rect id="9" x="304.8" y="548.6" class="st90" width="85.2" height="82.7" onclick="trigger8();"/>');
+                    else:
+                        print('<rect id="9" x="304.8" y="548.6" class="st90" width="85.2" height="82.7" onclick="triggerwaitmodal();"/>');
+                    endif; ?>
+                    <!-- Raum 12 - Garderobe -->
+                    <?php if ($Aufgabenpacket3 == true):
+                        print('<text transform="matrix(1 0 0 1 167.6387 594.6055)" class="st111" onclick="trigger12();">Garderobe</text>');
+                        print('<rect id="12" x="157" y="548.6" class="st91" width="79.5" height="82.7" onclick="trigger12();"/>');
+                    else:
+                        print('<rect id="12" x="157" y="548.6" class="st91" width="79.5" height="82.7" onclick="triggerwaitmodal();"/>');
+                    endif; ?>
+                    <!-- Raum 13 - Boulderwand -->
+                    <?php if ($Aufgabenpacket3 == true):
+                        print('<text transform="matrix(1 0 0 1 96.4224 550.3057)"><tspan x="0" y="0" class="st111" onclick="trigger13();">Boulder</tspan><tspan x="43.4" y="0" class="st111" onclick="trigger13();">-</tspan><tspan x="8.7" y="14.4" class="st111" onclick="trigger13();">wand</tspan></text>');
+                        print('<rect id="13" x="82.8" y="474.4" class="st92" width="74.2" height="156.9" onclick="trigger13();"/>');
+                    else:
+                        print('<rect id="13" x="82.8" y="474.4" class="st92" width="74.2" height="156.9" onclick="triggerwaitmodal();"/>');
+                    endif; ?>
+                    <!-- Raum 3 - Wohnzimmer & Heimkino -->
+                    <?php if ($Aufgabenpacket1 == true):
+                        print('<text transform="matrix(1 0 0 1 279.2886 504.9053)"><tspan x="0" y="0" class="st111" onclick="trigger3();">Wohnzimmer &amp; </tspan><tspan x="15.8" y="14.4" class="st111" onclick="trigger3();">Heimkino</tspan></text>');
+                        print('<rect id="3" x="252" y="466.3" class="st93" width="138" height="82.3" onclick="trigger3();"/>');
+                    else:
+                        print('<rect id="3" x="252" y="466.3" class="st93" width="138" height="82.3" onclick="triggerwaitmodal();"/>');
+                    endif; ?>
+                    <!-- Raum 4 - Essküche -->
+                    <?php if ($Aufgabenpacket1 == true):
+                        print('<text transform="matrix(1 0 0 1 179.5762 512.1055)" class="st111" onclick="trigger4();">Essküche</text>');
+                        print('<rect id="2" x="157" y="466.3" class="st94" width="95" height="82.3" onclick="trigger4();"/>');
+                    else:
+                        print('<rect id="2" x="157" y="466.3" class="st94" width="95" height="82.3" onclick="triggerwaitmodal();"/>');
+                    endif; ?>
+                    <!-- Raum 5 - Schlafzimmer -->
+                    <?php if ($Aufgabenpacket1 == true):
+                        print('<text transform="matrix(1 0 0 1 236.7104 431.2559)" class="st111" onclick="trigger5();">Schlafzimmer</text>');
+                        print('<rect id="5" x="157.1" y="386.9" class="st95" width="232.9" height="79.4" onclick="trigger5();"/>');
+                    else:
+                        print('<rect id="5" x="157.1" y="386.9" class="st95" width="232.9" height="79.4" onclick="triggerwaitmodal();"/>');
+                    endif; ?>
+                    <!-- Raum 14 - Bad -->
+                    <?php if ($Aufgabenpacket3 == true):
+                        print('<text transform="matrix(1 0 0 1 377.3262 353.2061)" class="st111" onclick="trigger14();">Bad</text>');
+                        print('<rect id="11" x="328.6" y="310.2" class="st96" width="118.5" height="76.7" onclick="trigger14();"/>');
+                    else:
+                        print('<rect id="11" x="328.6" y="310.2" class="st96" width="118.5" height="76.7" onclick="triggerwaitmodal();"/>');
+                    endif; ?>
+                    <!-- Raum 9 - Fitnessraum -->
+                    <?php if ($Aufgabenpacket2 == true):
+                        print('<text transform="matrix(1 0 0 1 253.8901 353.2061)" class="st111" onclick="trigger9();">Fitnessraum</text>');
+                        print('<rect id="6" x="245.9" y="310.2" class="st97" width="82.7" height="76.7" onclick="trigger9();"/>');
+                    else:
+                        print('<rect id="6" x="245.9" y="310.2" class="st97" width="82.7" height="76.7" onclick="triggerwaitmodal();"/>');
+                    endif; ?>
+                    <!-- Raum 15 - Arbeitszimmer -->
+                    <?php if ($Aufgabenpacket3 == true):
+                        print('<text transform="matrix(1 0 0 1 179.9185 346.0059)"><tspan x="0" y="0" class="st111" onclick="trigger15();">Arbeits-</tspan><tspan x="1.2" y="14.4" class="st111" onclick="trigger15();">zimmer</tspan></text>');
+                        print('<rect id="15" x="157.1" y="310.2" class="st98" width="88.8" height="76.7" onclick="trigger15();"/>');
+                    else:
+                        print('<rect id="15" x="157.1" y="310.2" class="st98" width="88.8" height="76.7" onclick="triggerwaitmodal();"/>');
+                    endif; ?>
+                    <!-- Raum 1 - Kreativer_Freiraum -->
                     <rect id="Krativer_Freiraum" x="263.5" y="219.5" class="st99" width="183.6" height="90.7" onclick="trigger1();"/>
                     <text transform="matrix(1 0 0 1 304.2588 269.5059)" class="st111" onclick="trigger1();">Kreativer Freiraum</text>
-                    <rect id="10" x="157.1" y="219.5" class="st100" width="106.4" height="90.7"/>
-                    <?php if ($Aufgabenpacket2 == true) print('<text transform="matrix(1 0 0 1 176.7188 269.5059)" class="st111">Spielzimmer</text>');?>
-                    <polygon id="8" class="st101" points="302.6,148.8 403.9,148.8 425.2,168.8 447.1,189.3 447.1,219.5 302.6,219.5"/>
-                    <?php if ($Aufgabenpacket2 == true) print('<text transform="matrix(1 0 0 1 332.6416 188.8057)" class="st111">Musikzimmer</text>');?>
-                    <polygon id="4" class="st102" points="198.3,177.6 227.1,148.8 302.6,148.8 302.6,219.5 157.1,219.5 157.1,218.9"/>
-                    <?php if ($Aufgabenpacket1 == true) print('<text transform="matrix(1 0 0 1 231.4731 188.8057)" class="st111">Atelier</text>');?>
-                    <polygon id="14" class="st103" points="353.8,102 312.3,64.6 273.2,102.6 227.1,148.8 403.7,148.8"/>
-                    <?php if ($Aufgabenpacket3 == true) print('<text transform="matrix(1 0 0 1 280.5879 119.6235)" class="st111">Dachkapelle</text>');?>
+                    <!-- Raum 10 - Spielzimmer -->
+                    <?php if ($Aufgabenpacket2 == true):
+                        print('<text transform="matrix(1 0 0 1 176.7188 269.5059)" class="st111" onclick="trigger10();">Spielzimmer</text>');
+                        print('<rect id="10" x="157.1" y="219.5" class="st100" width="106.4" height="90.7" onclick="trigger10();"/>');
+                    else:
+                        print('<rect id="10" x="157.1" y="219.5" class="st100" width="106.4" height="90.7" onclick="triggerwaitmodal();"/>');
+                    endif; ?>
+                    <!-- Raum 11 - Musikzimmer -->
+                    <?php if ($Aufgabenpacket2 == true):
+                        print('<text transform="matrix(1 0 0 1 332.6416 188.8057)" class="st111" onclick="trigger11();">Musikzimmer</text>');
+                        print('<polygon id="8" class="st101" points="302.6,148.8 403.9,148.8 425.2,168.8 447.1,189.3 447.1,219.5 302.6,219.5" onclick="trigger11();"/>');
+                    else:
+                        print('<polygon id="8" class="st101" points="302.6,148.8 403.9,148.8 425.2,168.8 447.1,189.3 447.1,219.5 302.6,219.5" onclick="triggerwaitmodal();"/>');
+                    endif; ?>
+                    <!-- Raum 6 - Atelier -->
+                    <?php if ($Aufgabenpacket1 == true):
+                        print('<text transform="matrix(1 0 0 1 231.4731 188.8057)" class="st111" onclick="trigger6();">Atelier</text>');
+                        print('<polygon id="4" class="st102" points="198.3,177.6 227.1,148.8 302.6,148.8 302.6,219.5 157.1,219.5 157.1,218.9" onclick="trigger6();"/>');
+                    else:
+                        print('<polygon id="4" class="st102" points="198.3,177.6 227.1,148.8 302.6,148.8 302.6,219.5 157.1,219.5 157.1,218.9" onclick="triggerwaitmodal();"/>');
+                    endif; ?>
+                    <!-- Raum 16 - Dachkapelle -->
+                    <?php if ($Aufgabenpacket3 == true):
+                        print('<text transform="matrix(1 0 0 1 280.5879 119.6235)" class="st111" onclick="trigger16();">Dachkapelle</text>');
+                        print('<polygon id="14" class="st103" points="353.8,102 312.3,64.6 273.2,102.6 227.1,148.8 403.7,148.8" onclick="trigger16();"/>');
+                    else:
+                        print('<polygon id="14" class="st103" points="353.8,102 312.3,64.6 273.2,102.6 227.1,148.8 403.7,148.8" onclick="triggerwaitmodal();"/>');
+                    endif; ?>
                 </g>
                 <path id="path1017" inkscape:original-d="M 35.576272,97.114357 C 58.631148,75.580097 87.174428,43.839978 110.22877,22.305187" inkscape:path-effect="#path-effect1019" class="st104" d="
                 M100.8,275.3L312.5,63.2"/>
@@ -628,11 +706,36 @@ $Aufgabenpacket3 = false;
         </svg>
     </div>
 </div>
-<div class="modal fade" id="modal1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="1Label" aria-hidden="true">
+
+
+<!-- Wait Modal -->
+<div class="modal fade" id="modalWait" data-bs-backdrop="static" tabindex="-1" aria-labelledby="modalWaitLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content cbg">
             <div class="modal-header cbg">
-                <h4 class="modal-title ctext fw-bold" id="1Label">Under KJonstruction!</h4>
+                <h4 class="modal-title ctext fw-bold" id="modalWaitLabel">Hier wartet ein Raum</h4>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body ctext cbg fw-normal">
+                <div class="px-2">
+                    <p class="text-center">Dieser Raum ist aktuell noch nicht freigegeben!<br>
+                    Sobald das Aufgabenpacket in welchem dieser Raum ist freigegeben ist,<br>
+                    wird dieser Raum mit der Aufgabe verfügbar sein.
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer ctext cbg fw-bold justify-content-center">
+                <button type="button" class="btn btn-kolping" data-bs-dismiss="modal">Okay</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Kreativ Raum Modal -->
+<div class="modal fade" id="modal1" data-bs-backdrop="static" tabindex="-1" aria-labelledby="1Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content cbg">
+            <div class="modal-header cbg">
+                <h4 class="modal-title ctext fw-bold" id="1Label">Kreativer Raum</h4>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body ctext cbg fw-normal">
@@ -650,16 +753,413 @@ $Aufgabenpacket3 = false;
         </div>
     </div>
 </div>
-
-
+<?php if ($Aufgabenpacket1 == true):?>
+    <!-- Raum2 - Partykeller -->
+    <div class="modal fade" id="modal2" data-bs-backdrop="static" tabindex="-1" aria-labelledby="2Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content cbg">
+                <div class="modal-header cbg">
+                    <h4 class="modal-title ctext fw-bold" id="2Label">Partykeller</h4>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ctext cbg fw-normal">
+                    <div class="px-2">
+                        <p class="text-center">Raum2Text
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-footer ctext cbg fw-bold justify-content-center">
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal">Okay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Raum3 - Wohnzimmer & Heimkino -->
+    <div class="modal fade" id="modal3" data-bs-backdrop="static" tabindex="-1" aria-labelledby="3Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content cbg">
+                <div class="modal-header cbg">
+                    <h4 class="modal-title ctext fw-bold" id="3Label">Wohnzimmer & Heimkino</h4>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ctext cbg fw-normal">
+                    <div class="px-2">
+                        <p class="text-center">Raum3Text
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-footer ctext cbg fw-bold justify-content-center">
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal">Okay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Raum4 - Essküche -->
+    <div class="modal fade" id="modal4" data-bs-backdrop="static" tabindex="-1" aria-labelledby="4Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content cbg">
+                <div class="modal-header cbg">
+                    <h4 class="modal-title ctext fw-bold" id="4Label">Essküche</h4>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ctext cbg fw-normal">
+                    <div class="px-2">
+                        <p class="text-center">Raum4Text
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-footer ctext cbg fw-bold justify-content-center">
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal">Okay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Raum5 - Schlafzimmer -->
+    <div class="modal fade" id="modal5" data-bs-backdrop="static" tabindex="-1" aria-labelledby="5Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content cbg">
+                <div class="modal-header cbg">
+                    <h4 class="modal-title ctext fw-bold" id="5Label">Schlafzimmer</h4>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ctext cbg fw-normal">
+                    <div class="px-2">
+                        <p class="text-center">Raum5Text
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-footer ctext cbg fw-bold justify-content-center">
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal">Okay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Raum6 - Atelier -->
+    <div class="modal fade" id="modal6" data-bs-backdrop="static" tabindex="-1" aria-labelledby="6Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content cbg">
+                <div class="modal-header cbg">
+                    <h4 class="modal-title ctext fw-bold" id="6Label">Atelier</h4>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ctext cbg fw-normal">
+                    <div class="px-2">
+                        <p class="text-center">Raum6Text
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-footer ctext cbg fw-bold justify-content-center">
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal">Okay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+<?php if ($Aufgabenpacket2 == true):?>
+    <!-- Raum7 - Garten -->
+    <div class="modal fade" id="modal7" data-bs-backdrop="static" tabindex="-1" aria-labelledby="7Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content cbg">
+                <div class="modal-header cbg">
+                    <h4 class="modal-title ctext fw-bold" id="7Label">Garten</h4>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ctext cbg fw-normal">
+                    <div class="px-2">
+                        <p class="text-center">Raum7Text
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-footer ctext cbg fw-bold justify-content-center">
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal">Okay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Raum8 - Werkstatt -->
+    <div class="modal fade" id="modal8" data-bs-backdrop="static" tabindex="-1" aria-labelledby="8Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content cbg">
+                <div class="modal-header cbg">
+                    <h4 class="modal-title ctext fw-bold" id="8Label">Werkstatt</h4>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ctext cbg fw-normal">
+                    <div class="px-2">
+                        <p class="text-center">Raum8Text
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-footer ctext cbg fw-bold justify-content-center">
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal">Okay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Raum9 - Fitnessraum -->
+    <div class="modal fade" id="modal9" data-bs-backdrop="static" tabindex="-1" aria-labelledby="9Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content cbg">
+                <div class="modal-header cbg">
+                    <h4 class="modal-title ctext fw-bold" id="9Label">Fitnessraum</h4>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ctext cbg fw-normal">
+                    <div class="px-2">
+                        <p class="text-center">Raum9Text
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-footer ctext cbg fw-bold justify-content-center">
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal">Okay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Raum10 - Spielzimmer -->
+    <div class="modal fade" id="modal10" data-bs-backdrop="static" tabindex="-1" aria-labelledby="10Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content cbg">
+                <div class="modal-header cbg">
+                    <h4 class="modal-title ctext fw-bold" id="10Label">Spielzimmer</h4>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ctext cbg fw-normal">
+                    <div class="px-2">
+                        <p class="text-center">Raum10Text
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-footer ctext cbg fw-bold justify-content-center">
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal">Okay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Raum11 - Musikzimmer -->
+    <div class="modal fade" id="modal11" data-bs-backdrop="static" tabindex="-1" aria-labelledby="11Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content cbg">
+                <div class="modal-header cbg">
+                    <h4 class="modal-title ctext fw-bold" id="11Label">Musikzimmer</h4>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ctext cbg fw-normal">
+                    <div class="px-2">
+                        <p class="text-center">Raum11Text
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-footer ctext cbg fw-bold justify-content-center">
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal">Okay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+<?php if ($Aufgabenpacket3 == true):?>
+    <!-- Raum12 - Garderobe -->
+    <div class="modal fade" id="modal12" data-bs-backdrop="static" tabindex="-1" aria-labelledby="12Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content cbg">
+                <div class="modal-header cbg">
+                    <h4 class="modal-title ctext fw-bold" id="12Label">Garderobe</h4>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ctext cbg fw-normal">
+                    <div class="px-2">
+                        <p class="text-center">Raum12Text
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-footer ctext cbg fw-bold justify-content-center">
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal">Okay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Raum13 - Boulderwand -->
+    <div class="modal fade" id="modal13" data-bs-backdrop="static" tabindex="-1" aria-labelledby="13Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content cbg">
+                <div class="modal-header cbg">
+                    <h4 class="modal-title ctext fw-bold" id="13Label">Boulderwand</h4>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ctext cbg fw-normal">
+                    <div class="px-2">
+                        <p class="text-center">Raum13Text
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-footer ctext cbg fw-bold justify-content-center">
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal">Okay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Raum14 - Bad -->
+    <div class="modal fade" id="modal14" data-bs-backdrop="static" tabindex="-1" aria-labelledby="14Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content cbg">
+                <div class="modal-header cbg">
+                    <h4 class="modal-title ctext fw-bold" id="14Label">Bad</h4>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ctext cbg fw-normal">
+                    <div class="px-2">
+                        <p class="text-center">Raum14Text
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-footer ctext cbg fw-bold justify-content-center">
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal">Okay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Raum15 - Arbeitszimmer -->
+    <div class="modal fade" id="modal15" data-bs-backdrop="static" tabindex="-1" aria-labelledby="15Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content cbg">
+                <div class="modal-header cbg">
+                    <h4 class="modal-title ctext fw-bold" id="15Label">Arbeitszimmer</h4>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ctext cbg fw-normal">
+                    <div class="px-2">
+                        <p class="text-center">Raum15Text
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-footer ctext cbg fw-bold justify-content-center">
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal">Okay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Raum16 - Dachkapelle -->
+    <div class="modal fade" id="modal16" data-bs-backdrop="static" tabindex="-1" aria-labelledby="16Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content cbg">
+                <div class="modal-header cbg">
+                    <h4 class="modal-title ctext fw-bold" id="16Label">Dachkapelle</h4>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ctext cbg fw-normal">
+                    <div class="px-2">
+                        <p class="text-center">Raum16Text
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-footer ctext cbg fw-bold justify-content-center">
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal">Okay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
 
 <script type="text/javascript">
-        function trigger1() {
-            const modal1 = new bootstrap.Modal('#modal1');
-            const modal1Toggle = document.getElementById('modal1');
-            modal1.show(modal1Toggle);
+    function triggerwaitmodal() {
+        const modalWait = new bootstrap.Modal('#modalWait');
+        const modalWaitToggle = document.getElementById('modalWait');
+        modalWait.show(modalWaitToggle);
+    }
+    function trigger1() {
+        const modal1 = new bootstrap.Modal('#modal1');
+        const modal1Toggle = document.getElementById('modal1');
+        modal1.show(modal1Toggle);
+    }    
+</script>
+
+<?php if ($Aufgabenpacket1 == true):?>
+    <script type="text/javascript">
+        function trigger2() {
+            const modal2 = new bootstrap.Modal('#modal2');
+            const modal2Toggle = document.getElementById('modal2');
+            modal2.show(modal2Toggle);
+        }
+        function trigger3() {
+            const modal3 = new bootstrap.Modal('#modal3');
+            const modal3Toggle = document.getElementById('modal3');
+            modal3.show(modal3Toggle);
+        }
+        function trigger4() {
+            const modal4 = new bootstrap.Modal('#modal4');
+            const modal4Toggle = document.getElementById('modal4');
+            modal4.show(modal4Toggle);
+        }
+        function trigger5() {
+            const modal5 = new bootstrap.Modal('#modal5');
+            const modal5Toggle = document.getElementById('modal5');
+            modal5.show(modal5Toggle);
+        }
+        function trigger6() {
+            const modal6 = new bootstrap.Modal('#modal6');
+            const modal6Toggle = document.getElementById('modal6');
+            modal6.show(modal6Toggle);
         }
     </script>
+<?php endif; ?>
+<?php if ($Aufgabenpacket2 == true):?>
+    <script type="text/javascript">
+        function trigger7() {
+            const modal7 = new bootstrap.Modal('#modal7');
+            const modal7Toggle = document.getElementById('modal7');
+            modal7.show(modal7Toggle);
+        }
+        function trigger8() {
+            const modal8 = new bootstrap.Modal('#modal8');
+            const modal8Toggle = document.getElementById('modal8');
+            modal8.show(modal8Toggle);
+        }
+        function trigger9() {
+            const modal9 = new bootstrap.Modal('#modal9');
+            const modal9Toggle = document.getElementById('modal9');
+            modal9.show(modal9Toggle);
+        }
+        function trigger10() {
+            const modal10 = new bootstrap.Modal('#modal10');
+            const modal10Toggle = document.getElementById('modal10');
+            modal10.show(modal10Toggle);
+        }
+        function trigger11() {
+            const modal11 = new bootstrap.Modal('#modal11');
+            const modal11Toggle = document.getElementById('modal11');
+            modal11.show(modal11Toggle);
+        }
+    </script>
+<?php endif; ?>
+<?php if ($Aufgabenpacket3 == true):?>
+    <script type="text/javascript">
+        function trigger12() {
+            const modal12 = new bootstrap.Modal('#modal12');
+            const modal12Toggle = document.getElementById('modal12');
+            modal12.show(modal12Toggle);
+        }
+        function trigger13() {
+            const modal13 = new bootstrap.Modal('#modal13');
+            const modal13Toggle = document.getElementById('modal13');
+            modal13.show(modal13Toggle);
+        }
+        function trigger14() {
+            const modal14 = new bootstrap.Modal('#modal14');
+            const modal14Toggle = document.getElementById('modal14');
+            modal14.show(modal14Toggle);
+        }
+        function trigger15() {
+            const modal15 = new bootstrap.Modal('#modal15');
+            const modal15Toggle = document.getElementById('modal15');
+            modal15.show(modal15Toggle);
+        }
+        function trigger16() {
+            const modal16 = new bootstrap.Modal('#modal16');
+            const modal16Toggle = document.getElementById('modal16');
+            modal16.show(modal16Toggle);
+        }
+    </script>
+<?php endif; ?>
 
 
 

@@ -1,0 +1,17 @@
+Raum 2      -   Partykeller
+Raum 3      -   Wohnzimmer & Heimkino
+Raum 4      -   Essküche
+Raum 5      -   Schlafzimmer
+Raum 6      -   Atelier
+
+Raum 7      -   Garten
+Raum 8      -   Werkstatt
+Raum 9      -   Fitnessraum
+Raum 10     -   Spielzimmer
+Raum 11     -   Musikzimmer
+
+Raum 12     -   Garderobe
+Raum 13     -   Boulderwand
+Raum 14     -   Bad
+Raum 15     -   Arbeitszimmer
+Raum 16     -   Dachkapelle
