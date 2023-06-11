@@ -30,7 +30,38 @@ if(isset($_POST['action'])) {
                     error('Datenbank Fehler!', pdo_debugStrParams($stmt));
                 }
 
-                $stmt = $pdo->prepare('UPDATE houses SET kolpingjugend_id = 0 WHERE kolpingjugend_id = ?');
+                $stmt = $pdo->prepare('SELECT house_id FROM houses WHERE kolpingjugend_id = ?');
+                $stmt->bindValue(1, $_POST['kj_id'], PDO::PARAM_INT);
+                $result3 = $stmt->execute();
+                if (!$result3) {
+                    error('Datenbank Fehler!', pdo_debugStrParams($stmt));
+                }
+                $house_id = $stmt->fetch();
+
+                $stmt = $pdo->prepare('SELECT room_id FROM rooms WHERE house_id = ?');
+                $stmt->bindValue(1, $house_id['house_id'], PDO::PARAM_INT);
+                $result3 = $stmt->execute();
+                if (!$result3) {
+                    error('Datenbank Fehler!', pdo_debugStrParams($stmt));
+                }
+                $rooms = $stmt->fetchAll();
+                foreach ($rooms as $room) {
+                    $stmt = $pdo->prepare('DELETE FROM solution_pics WHERE room_id = ?');
+                    $stmt->bindValue(1, $room['room_id'], PDO::PARAM_INT);
+                    $result3 = $stmt->execute();
+                    if (!$result3) {
+                        error('Datenbank Fehler!', pdo_debugStrParams($stmt));
+                    }
+                }
+
+                $stmt = $pdo->prepare('DELETE FROM rooms WHERE house_id = ?');
+                $stmt->bindValue(1, $house_id['house_id'], PDO::PARAM_INT);
+                $result3 = $stmt->execute();
+                if (!$result3) {
+                    error('Datenbank Fehler!', pdo_debugStrParams($stmt));
+                }
+
+                $stmt = $pdo->prepare('DELETE FROM houses WHERE kolpingjugend_id = ?');
                 $stmt->bindValue(1, $_POST['kj_id'], PDO::PARAM_INT);
                 $result3 = $stmt->execute();
                 if (!$result3) {

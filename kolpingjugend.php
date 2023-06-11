@@ -9,14 +9,31 @@ ob_end_clean();
 $title = "Verbandsspiel Kolpingjugend DVRS - Haus";
 $buffer = preg_replace('/(<title>)(.*?)(<\/title>)/i', '$1' . $title . '$3', $buffer);
 echo $buffer;
-if (!isset($user) || $user['perm_admin'] != 1) {
+if (!isset($user)) {
     print("<script>location.href='/login.php'</script>");
     exit;
 }
 
-$Aufgabenpacket1 = false;
-$Aufgabenpacket2 = false;
-$Aufgabenpacket3 = false;
+$stmt = $pdo->prepare("SELECT * FROM houses WHERE kolpingjugend_id = ?");
+$stmt->bindValue(1, $_GET['id']);
+$stmt->execute();
+if ($stmt->rowCount() != 1) {
+    error_log("Fehler beim Abfragen der Datenbank - Fehler: 2 ".$_GET['id']);
+    exit;
+}
+$kj_house = $stmt->fetch();
+$stmt = $pdo->prepare("SELECT * FROM rooms WHERE house_id = ?");
+$stmt->bindValue(1, $kj_house['house_id']);
+$stmt->execute();
+if ($stmt->rowCount() < 16) {
+    error_log("Fehler beim Abfragen der Datenbank - Fehler: 3");
+    exit;
+}
+$kj_rooms = $stmt->fetchAll();
+
+$Aufgabenpacket1 = true;
+$Aufgabenpacket2 = true;
+$Aufgabenpacket3 = true;
 ?>
 
 <link rel="stylesheet" href="/css/haus.css">
@@ -539,8 +556,14 @@ $Aufgabenpacket3 = false;
                 <g id="rooms" inkscape:groupmode="layer" inkscape:label="Räume">
                     <!-- Raum 2 Partykeller -->
                     <?php if ($Aufgabenpacket1 == true):
-                        print('<text transform="matrix(1 0 0 1 294.7285 679.8555)" class="st111" onclick="trigger2();">Partykeller</text>');
-                        print('<rect id="1" x="259.3" y="631.3" class="st87" width="130.7" height="87.8" onclick="trigger2();"/>');
+                        if ($kj_rooms[1]['room_done'] == 1) {
+                            print('<image style="overflow:visible;" width="1597" height="1077" xlink:href="/images/rooms/Partykeller.png"  transform="matrix(8.160000e-02 0 0 8.160000e-02 260.2471 631.9055)"></image>');
+                            print('<rect id="1" x="259.3" y="631.3" class="st87" width="130.7" height="87.8" onclick="trigger2d();"/>');
+
+                        } else {
+                            print('<text transform="matrix(1 0 0 1 294.7285 679.8555)" class="st111" onclick="trigger2();">Partykeller</text>');
+                            print('<rect id="1" x="259.3" y="631.3" class="st87" width="130.7" height="87.8" onclick="trigger2();"/>');
+                        }
                     else:
                         print('<rect id="1" x="259.3" y="631.3" class="st87" width="130.7" height="87.8" onclick="triggerwaitmodal();"/>');
                     endif; ?>
@@ -555,15 +578,27 @@ $Aufgabenpacket3 = false;
                     endif; ?>
                     <!-- Raum 8 - Werkstatt -->
                     <?php if ($Aufgabenpacket2 == true):
-                        print('<text transform="matrix(1 0 0 1 319.9805 594.6055)" class="st111" onclick="trigger8();">Werkstatt</text>');
-                        print('<rect id="9" x="304.8" y="548.6" class="st90" width="85.2" height="82.7" onclick="trigger8();"/>');
+                        if ($kj_rooms[7]['room_done'] == 1) {
+                            print('<image style="overflow:visible;" width="1591" height="1542" xlink:href="/images/rooms/Werkstatt.png"  transform="matrix(5.520000e-02 0 0 5.520000e-02 304.6162 546.6565)"></image>');
+                            print('<rect id="9" x="304.8" y="548.6" class="st90" width="85.2" height="82.7" onclick="trigger8d();"/>');
+
+                        } else {
+                            print('<text transform="matrix(1 0 0 1 319.9805 594.6055)" class="st111" onclick="trigger8();">Werkstatt</text>');
+                            print('<rect id="9" x="304.8" y="548.6" class="st90" width="85.2" height="82.7" onclick="trigger8();"/>');
+                        }
                     else:
                         print('<rect id="9" x="304.8" y="548.6" class="st90" width="85.2" height="82.7" onclick="triggerwaitmodal();"/>');
                     endif; ?>
                     <!-- Raum 12 - Garderobe -->
                     <?php if ($Aufgabenpacket3 == true):
-                        print('<text transform="matrix(1 0 0 1 167.6387 594.6055)" class="st111" onclick="trigger12();">Garderobe</text>');
-                        print('<rect id="12" x="157" y="548.6" class="st91" width="79.5" height="82.7" onclick="trigger12();"/>');
+                        if ($kj_rooms[11]['room_done'] == 1) {
+                            print('<image style="overflow:visible;" width="1482" height="1538" xlink:href="/images/rooms/Garderobe.png"  transform="matrix(5.482080e-02 0 0 5.482080e-02 157.4139 547.9903)"></image>');
+                            print('<rect id="12" x="157" y="548.6" class="st91" width="79.5" height="82.7" onclick="trigger12d();"/>');
+
+                        } else {
+                            print('<text transform="matrix(1 0 0 1 167.6387 594.6055)" class="st111" onclick="trigger12();">Garderobe</text>');
+                            print('<rect id="12" x="157" y="548.6" class="st91" width="79.5" height="82.7" onclick="trigger12();"/>');
+                        }
                     else:
                         print('<rect id="12" x="157" y="548.6" class="st91" width="79.5" height="82.7" onclick="triggerwaitmodal();"/>');
                     endif; ?>
@@ -583,22 +618,40 @@ $Aufgabenpacket3 = false;
                     endif; ?>
                     <!-- Raum 4 - Essküche -->
                     <?php if ($Aufgabenpacket1 == true):
-                        print('<text transform="matrix(1 0 0 1 179.5762 512.1055)" class="st111" onclick="trigger4();">Essküche</text>');
-                        print('<rect id="2" x="157" y="466.3" class="st94" width="95" height="82.3" onclick="trigger4();"/>');
+                        if ($kj_rooms[3]['room_done'] == 1) {
+                            print('<image style="overflow:visible;" width="1606" height="1393" xlink:href="/images/rooms/Essküche.png"  transform="matrix(5.928000e-02 0 0 5.928000e-02 157.3142 466.0864)"></image>');
+                            print('<rect id="2" x="157" y="466.3" class="st94" width="95" height="82.3" onclick="trigger4d();"/>');
+
+                        } else {
+                            print('<text transform="matrix(1 0 0 1 179.5762 512.1055)" class="st111" onclick="trigger4();">Essküche</text>');
+                            print('<rect id="2" x="157" y="466.3" class="st94" width="95" height="82.3" onclick="trigger4();"/>');
+                        }
                     else:
                         print('<rect id="2" x="157" y="466.3" class="st94" width="95" height="82.3" onclick="triggerwaitmodal();"/>');
                     endif; ?>
                     <!-- Raum 5 - Schlafzimmer -->
                     <?php if ($Aufgabenpacket1 == true):
-                        print('<text transform="matrix(1 0 0 1 236.7104 431.2559)" class="st111" onclick="trigger5();">Schlafzimmer</text>');
-                        print('<rect id="5" x="157.1" y="386.9" class="st95" width="232.9" height="79.4" onclick="trigger5();"/>');
+                        if ($kj_rooms[4]['room_done'] == 1) {
+                            print('<image style="overflow:visible;" width="1670" height="576" xlink:href="/images/rooms/Schlafzimmer.png"  transform="matrix(0.1416 0 0 0.1416 156.0071 386.6325)"></image>');
+                            print('<rect id="5" x="157.1" y="386.9" class="st95" width="232.9" height="79.4" onclick="trigger5d();"/>');
+
+                        } else {
+                            print('<text transform="matrix(1 0 0 1 236.7104 431.2559)" class="st111" onclick="trigger5();">Schlafzimmer</text>');
+                            print('<rect id="5" x="157.1" y="386.9" class="st95" width="232.9" height="79.4" onclick="trigger5();"/>');
+                        }
                     else:
                         print('<rect id="5" x="157.1" y="386.9" class="st95" width="232.9" height="79.4" onclick="triggerwaitmodal();"/>');
                     endif; ?>
                     <!-- Raum 14 - Bad -->
                     <?php if ($Aufgabenpacket3 == true):
-                        print('<text transform="matrix(1 0 0 1 377.3262 353.2061)" class="st111" onclick="trigger14();">Bad</text>');
-                        print('<rect id="11" x="328.6" y="310.2" class="st96" width="118.5" height="76.7" onclick="trigger14();"/>');
+                        if ($kj_rooms[13]['room_done'] == 1) {
+                            print('<image style="overflow:visible;" width="1583" height="1031" xlink:href="/images/rooms/Badezimmer.png"  transform="matrix(7.449600e-02 0 0 7.449600e-02 329.2317 310.5911)"></image>');
+                            print('<rect id="11" x="328.6" y="310.2" class="st96" width="118.5" height="76.7" onclick="trigger14d();"/>');
+
+                        } else {
+                            print('<text transform="matrix(1 0 0 1 377.3262 353.2061)" class="st111" onclick="trigger14();">Bad</text>');
+                            print('<rect id="11" x="328.6" y="310.2" class="st96" width="118.5" height="76.7" onclick="trigger14();"/>');
+                        }
                     else:
                         print('<rect id="11" x="328.6" y="310.2" class="st96" width="118.5" height="76.7" onclick="triggerwaitmodal();"/>');
                     endif; ?>
@@ -616,13 +669,24 @@ $Aufgabenpacket3 = false;
                     else:
                         print('<rect id="15" x="157.1" y="310.2" class="st98" width="88.8" height="76.7" onclick="triggerwaitmodal();"/>');
                     endif; ?>
-                    <!-- Raum 1 - Kreativer_Freiraum -->
-                    <rect id="Krativer_Freiraum" x="263.5" y="219.5" class="st99" width="183.6" height="90.7" onclick="trigger1();"/>
-                    <text transform="matrix(1 0 0 1 304.2588 269.5059)" class="st111" onclick="trigger1();">Kreativer Freiraum</text>
+                    <!-- Raum 1 - Kreativer_Raum -->
+                    <?php if ($kj_rooms[0]['room_done'] = 1):
+                        print('<rect id="Krativer_Raum" x="263.5" y="219.5" class="st99" width="183.6" height="90.7" onclick="trigger1();"/>');
+                        print('<text transform="matrix(1 0 0 1 304.2588 269.5059)" class="st111" onclick="trigger1();">Kreativer Raum</text>');
+                    else:
+                        print('<rect id="Krativer_Raum" x="263.5" y="219.5" class="st99" width="183.6" height="90.7" onclick="trigger1();"/>');
+                        print('<text transform="matrix(1 0 0 1 304.2588 269.5059)" class="st111" onclick="trigger1();">Kreativer Raum</text>');
+                    endif; ?>
                     <!-- Raum 10 - Spielzimmer -->
                     <?php if ($Aufgabenpacket2 == true):
-                        print('<text transform="matrix(1 0 0 1 176.7188 269.5059)" class="st111" onclick="trigger10();">Spielzimmer</text>');
-                        print('<rect id="10" x="157.1" y="219.5" class="st100" width="106.4" height="90.7" onclick="trigger10();"/>');
+                        if ($kj_rooms[9]['room_done'] == 1) {
+                            print('<image style="overflow:visible;" width="1378" height="1176" xlink:href="/images/rooms/Spielzimmer.png" transform="matrix(7.680000e-02 0 0 7.680000e-02 157.5821 219.8236)"></image>');
+                            print('<rect id="10" x="157.1" y="219.5" class="st100" width="106.4" height="90.7" onclick="trigger10d();"/>');
+
+                        } else {
+                            print('<text transform="matrix(1 0 0 1 176.7188 269.5059)" class="st111" onclick="trigger10();">Spielzimmer</text>');
+                            print('<rect id="10" x="157.1" y="219.5" class="st100" width="106.4" height="90.7" onclick="trigger10();"/>');
+                        }
                     else:
                         print('<rect id="10" x="157.1" y="219.5" class="st100" width="106.4" height="90.7" onclick="triggerwaitmodal();"/>');
                     endif; ?>
@@ -635,8 +699,14 @@ $Aufgabenpacket3 = false;
                     endif; ?>
                     <!-- Raum 6 - Atelier -->
                     <?php if ($Aufgabenpacket1 == true):
-                        print('<text transform="matrix(1 0 0 1 231.4731 188.8057)" class="st111" onclick="trigger6();">Atelier</text>');
-                        print('<polygon id="4" class="st102" points="198.3,177.6 227.1,148.8 302.6,148.8 302.6,219.5 157.1,219.5 157.1,218.9" onclick="trigger6();"/>');
+                        if ($kj_rooms[5]['room_done'] == 1) {
+                            print('<image style="overflow:visible;enable-background:new;" width="1571" height="777" xlink:href="/images/rooms/Atelier.png" transform="matrix(9.594332e-02 0 0 9.594332e-02 158.6601 146.338)"></image>');
+                            print('<polygon id="4" class="st102" points="198.3,177.6 227.1,148.8 302.6,148.8 302.6,219.5 157.1,219.5 157.1,218.9" onclick="trigger6d();"/>');
+
+                        } else {
+                            print('<text transform="matrix(1 0 0 1 231.4731 188.8057)" class="st111" onclick="trigger6();">Atelier</text>');
+                            print('<polygon id="4" class="st102" points="198.3,177.6 227.1,148.8 302.6,148.8 302.6,219.5 157.1,219.5 157.1,218.9" onclick="trigger6();"/>');
+                        }
                     else:
                         print('<polygon id="4" class="st102" points="198.3,177.6 227.1,148.8 302.6,148.8 302.6,219.5 157.1,219.5 157.1,218.9" onclick="triggerwaitmodal();"/>');
                     endif; ?>
