@@ -14,10 +14,10 @@ echo $buffer;
         <h2 class="display-4 text-kolping-orange text-center">404 - Seite nicht gefunden!</h2>
         <div class="row justify-content-center <?php if(isMobile()) print("row-cols-1");?>" style="max-height: 50vh;">
             <div class="py-2 col d-flex justify-content-<?php if(!isMobile()) print("end"); else print("center");?>">
-                <img src="/images/Schnuffi_Rainbow.png" alt="" class="" style="max-height: 50vh; max-width: 90%;">
+                <img src="/images/404_mauli.svg" alt="Fehler 404 Bild - Bild eines Maulwurfs mit Pylone auf dem Kopf und Regenbogenflagge in der Hand." style="max-height: 50vh; max-width: 90%;">
             </div>
             <div class="py-2 col <?php if(!isMobile()) print("d-flex align-items-center"); else print("text-center");?>">
-                <span class="ctext text-size-larger">
+                <span class="ctext text-size-larger p-4 cbg2 rounded">
                     Du scheinst dich ein wenig verirrt zu haben.<br>
                     Hier kommst du wieder auf die <a href="/" class="link text-size-larger">Startseite</a>.<br>
                 </span>
@@ -25,7 +25,6 @@ echo $buffer;
         </div>
     </div>
 </div>
-
 
 <?php
 include_once("templates/footer.php");

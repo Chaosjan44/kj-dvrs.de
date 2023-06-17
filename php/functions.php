@@ -16,6 +16,7 @@ function check_user() {
 		if(sha1($securitytoken) !== $securitytoken_row['securitytoken']) {
 			setcookie("identifier","del",time()-(3600*12),'/'); // valid for -12 hours
 			setcookie("securitytoken","del",time()-(3600*12),'/'); // valid for -12 hours
+			error_log("forced logout from check_user #1");
 			print("<script>location.href='/logout.php'</script>");
 			exit;
 		} if(!isset($_SESSION['userid'])) {
@@ -43,6 +44,7 @@ function check_user() {
 		if(sha1($securitytoken) !== $securitytoken_row['securitytoken']) {
 			setcookie("identifier","del",time()-(3600*12),'/'); // valid for -12 hours
 			setcookie("securitytoken","del",time()-(3600*12),'/'); // valid for -12 hours
+			error_log("forced logout from check_user #2");
 			print("<script>location.href='/logout.php'</script>");
 			exit;
 		} else { //Token war korrekt

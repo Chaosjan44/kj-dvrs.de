@@ -14,7 +14,11 @@ $crdate = "2023";
                             <a href="/index.php" class="hoverlink"><i class="bi bi-chevron-right pe-2"></i>Start</a>
                         </li>
                         <li>
-                            <a href="/login.php" class="hoverlink"><i class="bi bi-chevron-right pe-2"></i>Anmelden</a>
+                            <?php if(isset($user) && $user != null):?>
+                                <a href="/logout.php" class="hoverlink"><i class="bi bi-chevron-right pe-2"></i>Abmelden</a>
+                            <?php else: ?>
+                                <a href="/login.php" class="hoverlink"><i class="bi bi-chevron-right pe-2"></i>Anmelden</a>
+                            <?php endif;?>
                         </li>
                         <li>
                             <a href="https://jugend.kolping-dvrs.de" class="hoverlink"><i class="bi bi-chevron-right pe-2"></i>Kolpingjugend DVRS</a>
@@ -54,7 +58,11 @@ $crdate = "2023";
                             <a href="/" class="link ctext"><i class="bi bi-chevron-right pe-2"></i>Start</a>
                         </li>
                         <li>
-                            <a href="/login.php" class="link ctext"><i class="bi bi-chevron-right pe-2"></i>Anmelden</a>
+                            <?php if(isset($user) && $user != null):?>
+                                <a href="/logout.php" class="link ctext"><i class="bi bi-chevron-right pe-2"></i>Abmelden</a>
+                            <?php else: ?>
+                                <a href="/login.php" class="link ctext"><i class="bi bi-chevron-right pe-2"></i>Anmelden</a>
+                            <?php endif;?>
                         </li>
                         <li>
                             <a href="https://jugend.kolping-dvrs.de" class="link ctext"><i class="bi bi-chevron-right pe-2"></i>Kolpingjugend DVRS</a>

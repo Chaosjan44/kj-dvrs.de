@@ -5,6 +5,8 @@ session_start();
 if ($disheadercheck != true) {
     $user = check_user();
 }
+
+
 $isadmin = false;
 if (isset($user) && $user != null) {
     $stmt = $pdo->prepare("SELECT * FROM kolpingjugend WHERE kolpingjugend_id = ?");

@@ -226,12 +226,12 @@ if (isset($_POST['action'])) {
                         <?=$error_msg?>
                         <form action="registerkj.php" method="post">
                             <div class="form-floating mb-3">
-                                <input id="kjName" type="text" name="kj_name" placeholder="Kolpingjugend Name" autofocus class="form-control border-0 ps-4 text-dark fw-bold" required>
-                                <label for="kjName" class="text-dark fw-bold">Name der Kolpingjugend</label>
+                                <input id="kjName" type="text" name="kj_name" placeholder="Kolpingjugend Name" autofocus class="form-control border-0 ps-4 text-dark" required>
+                                <label for="kjName" class="text-dark">Name der Kolpingjugend</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input id="kjOrt" type="text" name="kj_ort" placeholder="Kolpingjugend Ort" class="form-control border-0 ps-4 text-dark fw-bold" required>
-                                <label for="kjOrt" class="text-dark fw-bold">Ort der Kolpingjugend</label>
+                                <input id="kjOrt" type="text" name="kj_ort" placeholder="Kolpingjugend Ort" class="form-control border-0 ps-4 text-dark" required>
+                                <label for="kjOrt" class="text-dark">Ort der Kolpingjugend</label>
                             </div>
                             <div class="col text-center">
                                 <button type="submit" name="action" value="register" class="btn btn-kolping btn-floating">Kolpingjugend anlegen</button>

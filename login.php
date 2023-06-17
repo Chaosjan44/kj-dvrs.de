@@ -72,12 +72,12 @@ echo $buffer;
                         <?=$error_msg?>
                         <form action="login.php" method="post">
                             <div class="form-floating mb-3">
-                                <input id="inputUser" type="text" name="user" placeholder="User" autofocus class="form-control border-0 ps-4 text-dark fw-bold" required>
-                                <label for="inputUser" class="text-dark fw-bold">Anmeldename</label>
+                                <input id="inputUser" type="text" name="user" placeholder="User" autofocus class="form-control border-0 ps-4 text-dark" required>
+                                <label for="inputUser" class="text-dark">Anmeldename</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input id="inputPassword" type="password" name="passwort" placeholder="Passwort" class="form-control border-0 ps-4 text-dark fw-bold" required>
-                                <label for="inputPassword" class="text-dark fw-bold">Passwort</label>
+                                <input id="inputPassword" type="password" name="passwort" placeholder="Passwort" class="form-control border-0 ps-4 text-dark" required>
+                                <label for="inputPassword" class="text-dark">Passwort</label>
                             </div>
                             <div class="<?php if (!isMobile()) {print('row row-cols-2 justify-content-between');} ?>">
                                 <div class="col">

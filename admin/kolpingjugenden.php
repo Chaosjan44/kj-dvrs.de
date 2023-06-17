@@ -122,18 +122,18 @@ if(isset($_POST['action'])) {
                 <form action="kolpingjugenden.php" method="post">
                     <div class="container cbg2 p-3 rounded">
                         <h1 class="text-center text-kolping-orange pb-2">Einstellungen für <?=$kolpingjugend2['kolpingjugend_name']?></h1>
-                        <div class="input-group py-2">
-                            <span class="input-group-text" for="inputVorname" style="min-width: 150px;">Kolpingjugend Name</span>
-                            <input class="form-control" id="inputVorname" name="kj_name" type="text" value="<?=$kolpingjugend2['kolpingjugend_name']?>" required>
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="inputVorname" name="kj_name" type="text" placeholder="Kolpingjugend Name" value="<?=$kolpingjugend2['kolpingjugend_name']?>" required>
+                            <label for="inputVorname" class="text-dark">Kolpingjugend Name</label>
                         </div>
-                        <div class="input-group py-2">
-                            <span class="input-group-text" for="inputNachname" style="min-width: 150px;">Kolpingjugend Ort</span>
-                            <input class="form-control" id="inputNachname" name="kj_ort" type="text" value="<?=$kolpingjugend2['kolpingjugend_ort']?>" required>
+                        <div class="form-floating my-3">
+                            <input class="form-control" id="inputNachname" name="kj_ort" type="text" placeholder="Kolpingjugend Ort" value="<?=$kolpingjugend2['kolpingjugend_ort']?>" required>
+                            <label for="inputNachname" class="text-dark">Kolpingjugend Ort</label>
                         </div>
-                        <div class="d-flex justify-content-between pt-2">
+                        <div class="d-flex justify-content-center mt-3">
                             <input type="number" value="<?=$kolpingjugend2['kolpingjugend_id']?>" name="kj_id" style="display: none;" required>
-                            <button type="submit" name="action" value="mod" class="btn btn-success" aria-label="Speichern"><i class="bi bi-sd-card"></i></button>
-                            <button type="submit" name="action" value="cancel" class="btn btn-danger" aria-label="Abbrechen"><i class="bi bi-x-circle"></i></button>
+                            <button type="submit" name="action" value="mod" class="btn btn-success mx-2" aria-label="Speichern"><i class="bi bi-sd-card text-light"></i></button>
+                            <button class="btn btn-danger mx-2" aria-label="Abbrechen" onclick="window.location.href = '/admin/kolpingjugenden.php';"><i class="bi bi-x-circle text-light"></i></button>
                         </div>
                     </div>
                 </form>
@@ -167,14 +167,14 @@ echo $buffer;
                 </div>
                 <div class="col-4 d-flex justify-content-end">
                     <div>
-                        <button class="btn btn-success" onclick="window.location.href = 'registerkj.php';"><i class="bi bi-plus-circle"></i></button>
+                        <button class="btn btn-success" onclick="window.location.href = 'registerkj.php';"><i class="bi bi-plus-circle text-light"></i></button>
                     </div>
                 </div>
             </div>
             <p><?php print($total_kj); ?> Kolpingjugenden</p>
             <?php if (!isMobile()): ?>
-                <div class="table-responsive">
-                    <table class="table align-middle table-borderless table-hover">
+                <div class="table-responsive rounded">
+                    <table class="table align-middle table-borderless table-hover <?php if (check_style() == 'dark') print('table-dark');?>">
                         <thead>
                             <tr>
                                 <div class="cbg ctext rounded">
@@ -201,10 +201,10 @@ echo $buffer;
                                         <strong><?=$kolpingjugend1['kolpingjugend_id']?></strong>
                                     </td>
                                     <td class="border-0 text-center">
-                                        <strong><?=$kolpingjugend1['kolpingjugend_name']?></strong>
+                                        <strong class="text-break"><?=$kolpingjugend1['kolpingjugend_name']?></strong>
                                     </td>
                                     <td class="border-0 text-center">
-                                        <strong><?=$kolpingjugend1['kolpingjugend_ort']?></strong>
+                                        <strong class="text-break"><?=$kolpingjugend1['kolpingjugend_ort']?></strong>
                                     </td>
                                     <td class="border-0 text-end">
                                         <strong><?=$kolpingjugend1['created_at']?></strong>
@@ -214,11 +214,11 @@ echo $buffer;
                                         <form action="kolpingjugenden.php" method="post" class="d-grid gap-2 d-md-flex justify-content-md-end">
                                             <div class="">
                                                 <input type="number" value="<?=$kolpingjugend1['kolpingjugend_id']?>" name="kj_id" style="display: none;" required>
-                                                <button type="submit" name="action" value="mod" class="btn btn-kolping"><i class="bi bi-pencil"></i></button>
+                                                <button type="submit" name="action" value="mod" class="btn btn-kolping"><i class="bi bi-pencil text-light"></i></button>
                                             </div>
                                             <div class="">
                                                 <input type="number" value="<?=$kolpingjugend1['kolpingjugend_id']?>" name="kj_id" style="display: none;" required>
-                                                <button class="btn btn-danger" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas<?=$kolpingjugend1['kolpingjugend_id']?>" aria-controls="offcanvas<?=$kolpingjugend1['kolpingjugend_id']?>"><i class="bi bi-trash3"></i></button>
+                                                <button class="btn btn-danger" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas<?=$kolpingjugend1['kolpingjugend_id']?>" aria-controls="offcanvas<?=$kolpingjugend1['kolpingjugend_id']?>"><i class="bi bi-trash3 text-light"></i></button>
                                                 <div class="offcanvas offcanvas-end cbg" data-bs-scroll="true" tabindex="-1" id="offcanvas<?=$kolpingjugend1['kolpingjugend_id']?>" aria-labelledby="offcanvas<?=$kolpingjugend1['kolpingjugend_id']?>Label">
                                                     <div class="offcanvas-header">
                                                         <h2 class="offcanvas-title ctext" id="offcanvas<?=$kolpingjugend1['kolpingjugend_id']?>Label">Wirklich Löschen?</h2>
@@ -252,11 +252,11 @@ echo $buffer;
                                     <form action="kolpingjugenden.php" method="post" class="d-flex justify-content-between mt-2">
                                         <div class="">
                                             <input type="number" value="<?=$kolpingjugend1['kolpingjugend_id']?>" name="kj_id" style="display: none;" required>
-                                            <button type="submit" name="action" value="mod" class="btn btn-kolping"><i class="bi bi-pencil"></i></button>
+                                            <button type="submit" name="action" value="mod" class="btn btn-kolping"><i class="bi bi-pencil text-light"></i></button>
                                         </div>
                                         <div class="">
                                             <input type="number" value="<?=$kolpingjugend1['kolpingjugend_id']?>" name="kj_id" style="display: none;" required>
-                                            <button class="btn btn-danger" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas<?=$kolpingjugend1['kolpingjugend_id']?>" aria-controls="offcanvas<?=$kolpingjugend1['kolpingjugend_id']?>"><i class="bi bi-trash3"></i></button>
+                                            <button class="btn btn-danger" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas<?=$kolpingjugend1['kolpingjugend_id']?>" aria-controls="offcanvas<?=$kolpingjugend1['kolpingjugend_id']?>"><i class="bi bi-trash3 text-light"></i></button>
                                             <div class="offcanvas offcanvas-end cbg" data-bs-scroll="true" tabindex="-1" id="offcanvas<?=$kolpingjugend1['kolpingjugend_id']?>" aria-labelledby="offcanvas<?=$kolpingjugend1['kolpingjugend_id']?>Label">
                                                 <div class="offcanvas-header">
                                                     <h2 class="offcanvas-title ctext" id="offcanvas<?=$kolpingjugend1['kolpingjugend_id']?>Label">Wirklich Löschen?</h2>

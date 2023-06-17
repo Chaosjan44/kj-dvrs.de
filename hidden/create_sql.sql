@@ -17,6 +17,7 @@ CREATE TABLE `users` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `perm_login` tinyint(1) NOT NULL DEFAULT 0,
   `perm_admin` tinyint(1) NOT NULL DEFAULT 0,
+  `perm_edit_kj` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`user_id`),
   FOREIGN KEY (`kolpingjugend_id`) REFERENCES `kolpingjugend` (`kolpingjugend_id`)
 );
