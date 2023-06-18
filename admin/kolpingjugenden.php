@@ -158,90 +158,23 @@ $title = "ADMIN - Verbandsspiel Kolpingjugend DVRS - Kolpingjugenden";
 $buffer = preg_replace('/(<title>)(.*?)(<\/title>)/i', '$1' . $title . '$3', $buffer);
 echo $buffer;
 ?>
-<div class="container users content-wrapper p-3">
-    <div class="row" style="min-height: 75vh;">
-        <div class="p-3 cbg ctext">
-            <div class="d-flex justify-content-between">
-                <div class="col-4">
-                    <h1>Kolpingjugenden</h1>
-                </div>
-                <div class="col-4 d-flex justify-content-end">
-                    <div>
-                        <button class="btn btn-success" onclick="window.location.href = 'registerkj.php';"><i class="bi bi-plus-circle text-light"></i></button>
-                    </div>
+<div class="container p-3">
+    <div style="min-height: 75vh;">
+        <div class="d-flex justify-content-between">
+            <div class="col-4">
+                <h1>Kolpingjugenden</h1>
+            </div>
+            <div class="col-4 d-flex justify-content-end">
+                <div>
+                    <button class="btn btn-success" onclick="window.location.href = 'registerkj.php';"><i class="bi bi-plus-circle text-light"></i></button>
                 </div>
             </div>
-            <p><?php print($total_kj); ?> Kolpingjugenden</p>
-            <?php if (!isMobile()): ?>
-                <div class="table-responsive rounded">
-                    <table class="table align-middle table-borderless table-hover <?php if (check_style() == 'dark') print('table-dark');?>">
-                        <thead>
-                            <tr>
-                                <div class="cbg ctext rounded">
-                                    <th scope="col" class="border-0 text-start">
-                                        <div class="py-2 text-uppercase ctext">ID</div>
-                                    </th>
-                                    <th scope="col" class="border-0 text-center">
-                                        <div class="p-2 px-3 text-uppercase ctext">Kolpingjugend Name</div>
-                                    </th>
-                                    <th scope="col" class="border-0 text-center">
-                                        <div class="p-2 px-3 text-uppercase ctext">Kolpingjugend Ort</div>
-                                    </th>
-                                    <th scope="col" class="border-0 text-end">
-                                        <div class="py-2 text-uppercase ctext">Erstellt</div>
-                                    </th>
-                                    <th scope="col" class="border-0" style="width: 15%"></th>
-                                </div>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($kolpingjugenden as $kolpingjugend1): ?>
-                                <tr>
-                                    <td class="border-0 text-start">
-                                        <strong><?=$kolpingjugend1['kolpingjugend_id']?></strong>
-                                    </td>
-                                    <td class="border-0 text-center">
-                                        <strong class="text-break"><?=$kolpingjugend1['kolpingjugend_name']?></strong>
-                                    </td>
-                                    <td class="border-0 text-center">
-                                        <strong class="text-break"><?=$kolpingjugend1['kolpingjugend_ort']?></strong>
-                                    </td>
-                                    <td class="border-0 text-end">
-                                        <strong><?=$kolpingjugend1['created_at']?></strong>
-                                    </td>
-                                    <td class="border-0 actions text-center">
-                                        <?php if ($kolpingjugend1['kolpingjugend_id'] != 0):?>
-                                        <form action="kolpingjugenden.php" method="post" class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                            <div class="">
-                                                <input type="number" value="<?=$kolpingjugend1['kolpingjugend_id']?>" name="kj_id" style="display: none;" required>
-                                                <button type="submit" name="action" value="mod" class="btn btn-kolping"><i class="bi bi-pencil text-light"></i></button>
-                                            </div>
-                                            <div class="">
-                                                <input type="number" value="<?=$kolpingjugend1['kolpingjugend_id']?>" name="kj_id" style="display: none;" required>
-                                                <button class="btn btn-danger" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas<?=$kolpingjugend1['kolpingjugend_id']?>" aria-controls="offcanvas<?=$kolpingjugend1['kolpingjugend_id']?>"><i class="bi bi-trash3 text-light"></i></button>
-                                                <div class="offcanvas offcanvas-end cbg" data-bs-scroll="true" tabindex="-1" id="offcanvas<?=$kolpingjugend1['kolpingjugend_id']?>" aria-labelledby="offcanvas<?=$kolpingjugend1['kolpingjugend_id']?>Label">
-                                                    <div class="offcanvas-header">
-                                                        <h2 class="offcanvas-title ctext" id="offcanvas<?=$kolpingjugend1['kolpingjugend_id']?>Label">Wirklich Löschen?</h2>
-                                                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="offcanvas-body">
-                                                        <span class="pb-3">Alle Daten der Kolpingjugend werden an die KJ DVRS gegeben.<br>Eine Löschung lässt sich nicht rückgängig machen!<br></span>
-                                                        <button class="btn btn-success mx-2" type="submit" name="action" value="deleteconfirm">Ja</button>
-                                                        <button class="btn btn-danger mx-2" type="button" data-bs-dismiss="offcanvas" aria-label="Close">Nein</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                        <?php endif; ?>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
-                </div>  
-            <?php else: ?>
-                <?php foreach ($kolpingjugenden as $kolpingjugend1): ?>
-                    <div class="card cbg2 p-0 my-3">
+        </div>
+        <p><?php print($total_kj); ?> Kolpingjugenden</p>
+        <div class="row row-cols-<?=isMobile() ? '1' : '4' ?> gy-4">
+            <?php foreach ($kolpingjugenden as $kolpingjugend1): ?>
+                <div class="col">
+                    <div class="card cbg2">
                         <div class="card-body">
                             <h3 class="card-title ctext text-center"><?=$kolpingjugend1['kolpingjugend_name']?></h3>
                             <div class="card-text">
@@ -274,11 +207,8 @@ echo $buffer;
                             </div>
                         </div>
                     </div>
-                        <td class="border-0 actions text-center">
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            <?php endif; ?>
+                </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </div> 

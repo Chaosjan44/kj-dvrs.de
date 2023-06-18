@@ -13,10 +13,9 @@ echo $buffer;
 
 if (!isset($user)) {
     print("<script>location.href='/login.php'</script>");
-    exit;
 }
 if ($user['perm_admin'] != 1) {
-    errorPage('Unzureichende Berechtigungen!');
+    error('Unzureichende Berechtigungen!');
 }
 
 $stmt = $pdo->prepare('SELECT * FROM kolpingjugend ORDER BY kolpingjugend_name');

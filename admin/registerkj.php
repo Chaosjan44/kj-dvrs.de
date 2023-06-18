@@ -13,10 +13,9 @@ echo $buffer;
 
 if (!isset($user)) {
     print("<script>location.href='/login.php'</script>");
-    exit;
 }
 if ($user['perm_admin'] != 1) {
-    errorPage('Unzureichende Berechtigungen!');
+    error('Unzureichende Berechtigungen!');
 }
 
 $error_msg = "";
@@ -63,11 +62,10 @@ if (isset($_POST['action'])) {
                 exit;
             }
             $houseid = $stmt->fetch();
-            $random = generateRandomString(16);
             // Create room 1
             $stmt = $pdo->prepare("INSERT INTO rooms SET room_name = ?, house_id = ?, room_done = 0");
             $stmt->bindValue(1, 'Kreativer Raum');
-            $stmt->bindValue(2, $houseid);
+            $stmt->bindValue(2, $houseid['house_id']);
             $result2 = $stmt->execute();
             if (!$result2) {
                 error_log("Error #1 while creating room 1");
@@ -76,7 +74,7 @@ if (isset($_POST['action'])) {
             // Create room 2
             $stmt = $pdo->prepare("INSERT INTO rooms SET room_name = ?, house_id = ?, room_done = 0");
             $stmt->bindValue(1, 'Partykeller');
-            $stmt->bindValue(2, $houseid);
+            $stmt->bindValue(2, $houseid['house_id']);
             $result5 = $stmt->execute();
             if (!$result5) {
                 error_log("Error #1 while creating room 2");
@@ -85,7 +83,7 @@ if (isset($_POST['action'])) {
             // Create room 3
             $stmt = $pdo->prepare("INSERT INTO rooms SET room_name = ?, house_id = ?, room_done = 0");
             $stmt->bindValue(1, 'Wohnzimmer & Heimkino');
-            $stmt->bindValue(2, $houseid);
+            $stmt->bindValue(2, $houseid['house_id']);
             $result8 = $stmt->execute();
             if (!$result8) {
                 error_log("Error #1 while creating room 3");
@@ -94,7 +92,7 @@ if (isset($_POST['action'])) {
             // Create room 4
             $stmt = $pdo->prepare("INSERT INTO rooms SET room_name = ?, house_id = ?, room_done = 0");
             $stmt->bindValue(1, 'Essküche');
-            $stmt->bindValue(2, $houseid);
+            $stmt->bindValue(2, $houseid['house_id']);
             $result10 = $stmt->execute();
             if (!$result10) {
                 error_log("Error #1 while creating room 4");
@@ -103,7 +101,7 @@ if (isset($_POST['action'])) {
             // Create room 5
             $stmt = $pdo->prepare("INSERT INTO rooms SET room_name = ?, house_id = ?, room_done = 0");
             $stmt->bindValue(1, 'Schlafzimmer');
-            $stmt->bindValue(2, $houseid);
+            $stmt->bindValue(2, $houseid['house_id']);
             $result13 = $stmt->execute();
             if (!$result13) {
                 error_log("Error #1 while creating room 5");
@@ -112,7 +110,7 @@ if (isset($_POST['action'])) {
             // Create room 6
             $stmt = $pdo->prepare("INSERT INTO rooms SET room_name = ?, house_id = ?, room_done = 0");
             $stmt->bindValue(1, 'Atelier');
-            $stmt->bindValue(2, $houseid);
+            $stmt->bindValue(2, $houseid['house_id']);
             $result16 = $stmt->execute();
             if (!$result16) {
                 error_log("Error #1 while creating room 6");
@@ -121,7 +119,7 @@ if (isset($_POST['action'])) {
             // Create room 7
             $stmt = $pdo->prepare("INSERT INTO rooms SET room_name = ?, house_id = ?, room_done = 0");
             $stmt->bindValue(1, 'Garten');
-            $stmt->bindValue(2, $houseid);
+            $stmt->bindValue(2, $houseid['house_id']);
             $result19 = $stmt->execute();
             if (!$result19) {
                 error_log("Error #1 while creating room 7");
@@ -130,7 +128,7 @@ if (isset($_POST['action'])) {
             // Create room 8
             $stmt = $pdo->prepare("INSERT INTO rooms SET room_name = ?, house_id = ?, room_done = 0");
             $stmt->bindValue(1, 'Werkstatt');
-            $stmt->bindValue(2, $houseid);
+            $stmt->bindValue(2, $houseid['house_id']);
             $result22 = $stmt->execute();
             if (!$result22) {
                 error_log("Error #1 while creating room 8");
@@ -139,7 +137,7 @@ if (isset($_POST['action'])) {
             // Create room 9
             $stmt = $pdo->prepare("INSERT INTO rooms SET room_name = ?, house_id = ?, room_done = 0");
             $stmt->bindValue(1, 'Fitnessraum');
-            $stmt->bindValue(2, $houseid);
+            $stmt->bindValue(2, $houseid['house_id']);
             $result25 = $stmt->execute();
             if (!$result25) {
                 error_log("Error #1 while creating room 9");
@@ -148,7 +146,7 @@ if (isset($_POST['action'])) {
             // Create room 10
             $stmt = $pdo->prepare("INSERT INTO rooms SET room_name = ?, house_id = ?, room_done = 0");
             $stmt->bindValue(1, 'Spielzimmer');
-            $stmt->bindValue(2, $houseid);
+            $stmt->bindValue(2, $houseid['house_id']);
             $result28 = $stmt->execute();
             if (!$result28) {
                 error_log("Error #1 while creating room 10");
@@ -157,7 +155,7 @@ if (isset($_POST['action'])) {
             // Create room 11
             $stmt = $pdo->prepare("INSERT INTO rooms SET room_name = ?, house_id = ?, room_done = 0");
             $stmt->bindValue(1, 'Musikzimmer');
-            $stmt->bindValue(2, $houseid);
+            $stmt->bindValue(2, $houseid['house_id']);
             $result31 = $stmt->execute();
             if (!$result31) {
                 error_log("Error #1 while creating room 11");
@@ -166,7 +164,7 @@ if (isset($_POST['action'])) {
             // Create room 12
             $stmt = $pdo->prepare("INSERT INTO rooms SET room_name = ?, house_id = ?, room_done = 0");
             $stmt->bindValue(1, 'Garderobe');
-            $stmt->bindValue(2, $houseid);
+            $stmt->bindValue(2, $houseid['house_id']);
             $result34 = $stmt->execute();
             if (!$result34) {
                 error_log("Error #1 while creating room 12");
@@ -175,7 +173,7 @@ if (isset($_POST['action'])) {
             // Create room 13
             $stmt = $pdo->prepare("INSERT INTO rooms SET room_name = ?, house_id = ?, room_done = 0");
             $stmt->bindValue(1, 'Boulderwand');
-            $stmt->bindValue(2, $houseid);
+            $stmt->bindValue(2, $houseid['house_id']);
             $result37 = $stmt->execute();
             if (!$result37) {
                 error_log("Error #1 while creating room 13");
@@ -184,7 +182,7 @@ if (isset($_POST['action'])) {
             // Create room 14
             $stmt = $pdo->prepare("INSERT INTO rooms SET room_name = ?, house_id = ?, room_done = 0");
             $stmt->bindValue(1, 'Bad');
-            $stmt->bindValue(2, $houseid);
+            $stmt->bindValue(2, $houseid['house_id']);
             $result40 = $stmt->execute();
             if (!$result40) {
                 error_log("Error #1 while creating room 14");
@@ -193,7 +191,7 @@ if (isset($_POST['action'])) {
             // Create room 15
             $stmt = $pdo->prepare("INSERT INTO rooms SET room_name = ?, house_id = ?, room_done = 0");
             $stmt->bindValue(1, 'Arbeitszimmer');
-            $stmt->bindValue(2, $houseid);
+            $stmt->bindValue(2, $houseid['house_id']);
             $result43 = $stmt->execute();
             if (!$result43) {
                 error_log("Error #1 while creating room 15");
@@ -202,7 +200,7 @@ if (isset($_POST['action'])) {
             // Create room 16
             $stmt = $pdo->prepare("INSERT INTO rooms SET room_name = ?, house_id = ?, room_done = 0");
             $stmt->bindValue(1, 'Dachkapelle');
-            $stmt->bindValue(2, $houseid);
+            $stmt->bindValue(2, $houseid['house_id']);
             $result46 = $stmt->execute();
             if (!$result46) {
                 error_log("Error #1 while creating room 16");

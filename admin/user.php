@@ -194,129 +194,30 @@ $title = "ADMIN - Verbandsspiel Kolpingjugend DVRS - Anwender*innen";
 $buffer = preg_replace('/(<title>)(.*?)(<\/title>)/i', '$1' . $title . '$3', $buffer);
 echo $buffer;
 ?>
-<div class="container users content-wrapper p-3">
-    <div class="row" style="min-height: 75vh;">
-        <div class="py-3 px-3 cbg ctext rounded">
-            <div class="d-flex justify-content-between">
-                <div class="col-4">
-                    <h1>Anwender*innen<?php if (isMobile()) print("-<br>");?>verwaltung</h1>
-                </div>
-                <div class="col-4 d-flex justify-content-end">
-                    <div>
-                        <button class="btn btn-success" onclick="window.location.href = 'register.php';"><i class="bi bi-person-add text-light"></i></button>
-                    </div>
+<div class="container p-3">
+    <div style="min-height: 75vh;">
+        <div class="d-flex justify-content-between">
+            <div class="col-4">
+                <h1>Anwender*innen<?php if (isMobile()) print("-<br>");?>verwaltung</h1>
+            </div>
+            <div class="col-4 d-flex justify-content-end">
+                <div>
+                    <button class="btn btn-success" onclick="window.location.href = 'register.php';"><i class="bi bi-person-add text-light"></i></button>
                 </div>
             </div>
-            <p><?php print($total_users); ?> Anwender*innen</p>
-            <?php if (!isMobile()): ?>
-            <div class="table-responsive rounded">
-                <table class="table align-middle table-borderless table-hover <?php if (check_style() == 'dark') print('table-dark');?>">
-                    <thead>
-                        <tr>
-                            <div class="">
-                                <th scope="col" class="border-0 text-start">
-                                    <div class="py-2 text-uppercase">ID</div>
-                                </th>
-                                <th scope="col" class="border-0 text-center">
-                                    <div class="p-2 px-3 text-uppercase">Vorname</div>
-                                </th>
-                                <th scope="col" class="border-0 text-center">
-                                    <div class="p-2 px-3 text-uppercase">Nachname</div>
-                                </th>
-                                <th scope="col" class="border-0 text-center">
-                                    <div class="p-2 px-3 text-uppercase">E-Mail</div>
-                                </th>
-                                <th scope="col" class="border-0 text-center">
-                                    <div class="p-2 px-3 text-uppercase">Kolpingjugend</div>
-                                </th>
-                                <th scope="col" class="border-0 text-center">
-                                    <div class="p-2 px-3 text-uppercase">Admin</div>
-                                </th>
-                                <th scope="col" class="border-0 text-center">
-                                    <div class="p-2 px-3 text-uppercase">KJ Admin</div>
-                                </th>
-                                <th scope="col" class="border-0 text-end">
-                                    <div class="py-2 text-uppercase">Erstellt</div>
-                                </th>
-                                <th scope="col" class="border-0" style="width: 15%"></th>
-                            </div>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($users as $user1): 
-                            $stmt = $pdo->prepare('SELECT * FROM kolpingjugend WHERE kolpingjugend_id = ?');
-                            $stmt->bindValue(1, $user1['kolpingjugend_id'], PDO::PARAM_INT);
-                            $result = $stmt->execute();
-                            if (!$result) {
-                                error('Datenbank Fehler!', pdo_debugStrParams($stmt));
-                            }
-                            $kolpingjugend = $stmt->fetch();
-                            ?>
-                            <tr>
-                                <td class="border-0 text-start">
-                                    <strong><?=$user1['user_id']?></strong>
-                                </td>
-                                <td class="border-0 text-center">
-                                    <strong class="text-break"><?=$user1['vorname']?></strong>
-                                </td>
-                                <td class="border-0 text-center">
-                                    <strong class="text-break"><?=$user1['nachname']?></strong>
-                                </td>
-                                <td class="border-0 text-center">
-                                    <strong class="text-break"><?=$user1['email']?></strong>
-                                </td>
-                                <td class="border-0 text-center">
-                                    <strong class="text-break"><?=$kolpingjugend['kolpingjugend_name']?></strong>
-                                </td>
-                                <td class="border-0 text-center">
-                                    <strong><?=$user1['perm_admin']?'Ja':'Nein'?></strong>
-                                </td>
-                                <td class="border-0 text-center">
-                                    <strong><?=$user1['perm_edit_kj']?'Ja':'Nein'?></strong>
-                                </td>
-                                <td class="border-0 text-end">
-                                    <strong><?=$user1['created_at']?></strong>
-                                </td>
-                                <td class="border-0 actions text-center">
-                                    <?php if ($user1['user_id'] != 0):?>
-                                    <form action="user.php" method="post" class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                        <div class="">
-                                            <input type="number" value="<?=$user1['user_id']?>" name="user_id" style="display: none;" required>
-                                            <button type="submit" name="action" value="mod" class="btn btn-kolping"><i class="bi bi-pencil text-light"></i></button>
-                                        </div>
-                                        <div class="">
-                                            <input type="number" value="<?=$user1['user_id']?>" name="user_id" style="display: none;" required>
-                                            <button class="btn btn-danger" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas<?=$user1['user_id']?>" aria-controls="offcanvas<?=$user1['user_id']?>"><i class="bi bi-person-dash text-light"></i></button>
-                                            <div class="offcanvas offcanvas-end cbg" data-bs-scroll="true" tabindex="-1" id="offcanvas<?=$user1['user_id']?>" aria-labelledby="offcanvas<?=$user1['user_id']?>Label">
-                                                <div class="offcanvas-header">
-                                                    <h2 class="offcanvas-title ctext" id="offcanvas<?=$user1['user_id']?>Label">Wirklich Löschen?</h2>
-                                                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                                                </div>
-                                                <div class="offcanvas-body">
-                                                    <span class="pb-3">Eine Löschung lässt sich nicht rückgängig machen!<br></span>
-                                                    <button class="btn btn-success mx-2" type="submit" name="action" value="deleteconfirm">Ja</button>
-                                                    <button class="btn btn-danger mx-2" type="button" data-bs-dismiss="offcanvas" aria-label="Close">Nein</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                    <?php endif; ?>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-            </div> 
-            <?php else: ?>
-                <?php foreach ($users as $user1): 
-                    $stmt = $pdo->prepare('SELECT * FROM kolpingjugend WHERE kolpingjugend_id = ?');
-                    $stmt->bindValue(1, $user1['kolpingjugend_id'], PDO::PARAM_INT);
-                    $result = $stmt->execute();
-                    if (!$result) {
-                        error('Datenbank Fehler!', pdo_debugStrParams($stmt));
-                    }
-                    $kolpingjugend = $stmt->fetch();?>
-                    <div class="card cbg2 p-0 my-3">
+        </div>
+        <p><?php print($total_users); ?> Anwender*innen</p>
+        <div class="row row-cols-<?=isMobile() ? '1' : '4' ?> gy-4">
+            <?php foreach ($users as $user1): 
+                $stmt = $pdo->prepare('SELECT * FROM kolpingjugend WHERE kolpingjugend_id = ?');
+                $stmt->bindValue(1, $user1['kolpingjugend_id'], PDO::PARAM_INT);
+                $result = $stmt->execute();
+                if (!$result) {
+                    error('Datenbank Fehler!', pdo_debugStrParams($stmt));
+                }
+                $kolpingjugend = $stmt->fetch();?>
+                <div class="col">
+                    <div class="card cbg2">
                         <div class="card-body">
                             <h3 class="card-title ctext text-center"><?=$user1['login']?></h3>
                             <div class="card-text">
@@ -354,11 +255,9 @@ echo $buffer;
                             </div>
                         </div>
                     </div>
-                        <td class="border-0 actions text-center">
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            <?php endif; ?>        
+                </div>
+                
+            <?php endforeach; ?>
         </div>
     </div>
 </div> 
