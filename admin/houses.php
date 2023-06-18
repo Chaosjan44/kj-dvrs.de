@@ -17,7 +17,14 @@ if ($stmt->rowCount() == 0) {
 }
 $kjs = $stmt->fetchAll();
 $total_kjs = $stmt->rowCount();
-require_once("templates/header.php");
+ob_start();
+require_once("templates/header.php"); 
+$buffer=ob_get_contents();
+ob_end_clean();
+
+$title = "ADMIN - Verbandsspiel Kolpingjugend DVRS - Häuser";
+$buffer = preg_replace('/(<title>)(.*?)(<\/title>)/i', '$1' . $title . '$3', $buffer);
+echo $buffer;
 ?>
 <div class="container p-3">
     <div style="min-height: 75vh;">

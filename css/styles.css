@@ -56,6 +56,13 @@ ul {
     list-style-type: none;
 }
 
+ul.dots {
+    list-style-type: disc;   
+}
+li.orange {
+    color: #FF8C00 !important;;
+}
+
 .navbar-kolping {
     display: inline-block;
     height: 50px;
