@@ -46,7 +46,7 @@ CREATE TABLE `rooms` (
   `room_id` int(10) NOT NULL AUTO_INCREMENT,
   `house_id` int(10) nOT NULL,
   `room_name` varchar(255),
-  `room_desc` mediumtext
+  `room_desc` mediumtext,
   `room_solved` tinyint(1) NOT NULL DEFAULT 0,
   `room_done` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`room_id`),
