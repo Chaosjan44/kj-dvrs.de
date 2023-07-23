@@ -853,8 +853,9 @@ $Aufgabenpacket3 = true;
                     </p>
                 </div>
             </div>
-            <div class="modal-footer ctext cbg fw-bold justify-content-center">
-                <button type="button" class="btn btn-kolping" data-bs-dismiss="modal">Okay</button>
+            <div class="modal-footer ctext cbg fw-bold justify-content-end">
+                <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?s&kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[0]['room_id']?>';">Aufgabe Einreichen</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
             </div>
         </div>
     </div>
@@ -874,8 +875,9 @@ $Aufgabenpacket3 = true;
                         </p>
                     </div>
                 </div>
-                <div class="modal-footer ctext cbg fw-bold justify-content-center">
-                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal">Okay</button>
+                <div class="modal-footer ctext cbg fw-bold justify-content-end">
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?s&kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[1]['room_id']?>';">Aufgabe Einreichen</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
                 </div>
             </div>
         </div>
@@ -894,8 +896,9 @@ $Aufgabenpacket3 = true;
                         </p>
                     </div>
                 </div>
-                <div class="modal-footer ctext cbg fw-bold justify-content-center">
-                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal">Okay</button>
+                <div class="modal-footer ctext cbg fw-bold justify-content-end">
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?s&kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[2]['room_id']?>';">Aufgabe Einreichen</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
                 </div>
             </div>
         </div>
@@ -914,8 +917,9 @@ $Aufgabenpacket3 = true;
                         </p>
                     </div>
                 </div>
-                <div class="modal-footer ctext cbg fw-bold justify-content-center">
-                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal">Okay</button>
+                <div class="modal-footer ctext cbg fw-bold justify-content-end">
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?s&kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[3]['room_id']?>';">Aufgabe Einreichen</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
                 </div>
             </div>
         </div>
@@ -934,8 +938,9 @@ $Aufgabenpacket3 = true;
                         </p>
                     </div>
                 </div>
-                <div class="modal-footer ctext cbg fw-bold justify-content-center">
-                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal">Okay</button>
+                <div class="modal-footer ctext cbg fw-bold justify-content-end">
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?s&kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[4]['room_id']?>';">Aufgabe Einreichen</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
                 </div>
             </div>
         </div>
@@ -954,8 +959,9 @@ $Aufgabenpacket3 = true;
                         </p>
                     </div>
                 </div>
-                <div class="modal-footer ctext cbg fw-bold justify-content-center">
-                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal">Okay</button>
+                <div class="modal-footer ctext cbg fw-bold justify-content-end">
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?s&kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[5]['room_id']?>';">Aufgabe Einreichen</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
                 </div>
             </div>
         </div>
@@ -976,8 +982,9 @@ $Aufgabenpacket3 = true;
                         </p>
                     </div>
                 </div>
-                <div class="modal-footer ctext cbg fw-bold justify-content-center">
-                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal">Okay</button>
+                <div class="modal-footer ctext cbg fw-bold justify-content-end">
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?s&kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[6]['room_id']?>';">Aufgabe Einreichen</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
                 </div>
             </div>
         </div>
@@ -996,8 +1003,9 @@ $Aufgabenpacket3 = true;
                         </p>
                     </div>
                 </div>
-                <div class="modal-footer ctext cbg fw-bold justify-content-center">
-                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal">Okay</button>
+                <div class="modal-footer ctext cbg fw-bold justify-content-end">
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?s&kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[7]['room_id']?>';">Aufgabe Einreichen</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
                 </div>
             </div>
         </div>
@@ -1016,8 +1024,9 @@ $Aufgabenpacket3 = true;
                         </p>
                     </div>
                 </div>
-                <div class="modal-footer ctext cbg fw-bold justify-content-center">
-                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal">Okay</button>
+                <div class="modal-footer ctext cbg fw-bold justify-content-end">
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?s&kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[8]['room_id']?>';">Aufgabe Einreichen</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
                 </div>
             </div>
         </div>
@@ -1036,8 +1045,9 @@ $Aufgabenpacket3 = true;
                         </p>
                     </div>
                 </div>
-                <div class="modal-footer ctext cbg fw-bold justify-content-center">
-                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal">Okay</button>
+                <div class="modal-footer ctext cbg fw-bold justify-content-end">
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?s&kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[9]['room_id']?>';">Aufgabe Einreichen</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
                 </div>
             </div>
         </div>
@@ -1056,8 +1066,9 @@ $Aufgabenpacket3 = true;
                         </p>
                     </div>
                 </div>
-                <div class="modal-footer ctext cbg fw-bold justify-content-center">
-                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal">Okay</button>
+                <div class="modal-footer ctext cbg fw-bold justify-content-end">
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?s&kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[10]['room_id']?>';">Aufgabe Einreichen</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
                 </div>
             </div>
         </div>
@@ -1078,8 +1089,9 @@ $Aufgabenpacket3 = true;
                         </p>
                     </div>
                 </div>
-                <div class="modal-footer ctext cbg fw-bold justify-content-center">
-                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal">Okay</button>
+                <div class="modal-footer ctext cbg fw-bold justify-content-end">
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?s&kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[11]['room_id']?>';">Aufgabe Einreichen</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
                 </div>
             </div>
         </div>
@@ -1098,8 +1110,9 @@ $Aufgabenpacket3 = true;
                         </p>
                     </div>
                 </div>
-                <div class="modal-footer ctext cbg fw-bold justify-content-center">
-                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal">Okay</button>
+                <div class="modal-footer ctext cbg fw-bold justify-content-end">
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?s&kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[12]['room_id']?>';">Aufgabe Einreichen</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
                 </div>
             </div>
         </div>
@@ -1118,8 +1131,9 @@ $Aufgabenpacket3 = true;
                         </p>
                     </div>
                 </div>
-                <div class="modal-footer ctext cbg fw-bold justify-content-center">
-                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal">Okay</button>
+                <div class="modal-footer ctext cbg fw-bold justify-content-end">
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?s&kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[13]['room_id']?>';">Aufgabe Einreichen</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
                 </div>
             </div>
         </div>
@@ -1138,8 +1152,9 @@ $Aufgabenpacket3 = true;
                         </p>
                     </div>
                 </div>
-                <div class="modal-footer ctext cbg fw-bold justify-content-center">
-                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal">Okay</button>
+                <div class="modal-footer ctext cbg fw-bold justify-content-end">
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?s&kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[14]['room_id']?>';">Aufgabe Einreichen</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
                 </div>
             </div>
         </div>
@@ -1158,8 +1173,9 @@ $Aufgabenpacket3 = true;
                         </p>
                     </div>
                 </div>
-                <div class="modal-footer ctext cbg fw-bold justify-content-center">
-                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal">Okay</button>
+                <div class="modal-footer ctext cbg fw-bold justify-content-end">
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?s&kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[15]['room_id']?>';">Aufgabe Einreichen</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
                 </div>
             </div>
         </div>
@@ -1172,14 +1188,24 @@ $Aufgabenpacket3 = true;
         const modalWaitToggle = document.getElementById('modalWait');
         modalWait.show(modalWaitToggle);
     }
+
+    // Triggers for the "Kreativ Raum"
+    // Trigger for the task modal
     function trigger1() {
         const modal1 = new bootstrap.Modal('#modal1');
         const modal1Toggle = document.getElementById('modal1');
         modal1.show(modal1Toggle);
-    }    
+    }   
+    // Trigger for the "solution" modal
+    function trigger1d() {
+        const modal1d = new bootstrap.Modal('#modal1d');
+        const modal1dToggle = document.getElementById('modal1d');
+        modal1d.show(modal1Toggle);
+    }   
 </script>
 
 <?php if ($Aufgabenpacket1 == true):?>
+    <!-- Triggers for the task modal's -->
     <script type="text/javascript">
         function trigger2() {
             const modal2 = new bootstrap.Modal('#modal2');
@@ -1207,8 +1233,37 @@ $Aufgabenpacket3 = true;
             modal6.show(modal6Toggle);
         }
     </script>
+    <!-- Triggers for the "solution" modal's -->
+    <script type="text/javascript">
+        function trigger2d() {
+            const modal2d = new bootstrap.Modal('#modal2d');
+            const modal2dToggle = document.getElementById('modal2d');
+            modal2d.show(modal2dToggle);
+        }
+        function trigger3d() {
+            const modal3d = new bootstrap.Modal('#modal3d');
+            const modal3dToggle = document.getElementById('modal3d');
+            modal3d.show(modal3dToggle);
+        }
+        function trigger4d() {
+            const modal4d = new bootstrap.Modal('#modal4d');
+            const modal4dToggle = document.getElementById('modal4d');
+            modal4d.show(modal4dToggle);
+        }
+        function trigger5d() {
+            const modal5d = new bootstrap.Modal('#modal5d');
+            const modal5dToggle = document.getElementById('modal5d');
+            modal5d.show(modal5dToggle);
+        }
+        function trigger6d() {
+            const modal6d = new bootstrap.Modal('#modal6d');
+            const modal6dToggle = document.getElementById('modal6d');
+            modal6d.show(modal6dToggle);
+        }
+    </script>
 <?php endif; ?>
 <?php if ($Aufgabenpacket2 == true):?>
+    <!-- Triggers for the task modal's -->
     <script type="text/javascript">
         function trigger7() {
             const modal7 = new bootstrap.Modal('#modal7');
@@ -1236,8 +1291,37 @@ $Aufgabenpacket3 = true;
             modal11.show(modal11Toggle);
         }
     </script>
+    <!-- Triggers for the "solution" modal's -->
+    <script type="text/javascript">
+        function trigger7d() {
+            const modal7d = new bootstrap.Modal('#modal7d');
+            const modal7dToggle = document.getElementById('modal7d');
+            modal7d.show(modal7dToggle);
+        }
+        function trigger8d() {
+            const modal8d = new bootstrap.Modal('#modal8d');
+            const modal8dToggle = document.getElementById('modal8d');
+            modal8d.show(modal8dToggle);
+        }
+        function trigger9d() {
+            const modal9d = new bootstrap.Modal('#modal9d');
+            const modal9dToggle = document.getElementById('modal9d');
+            modal9d.show(modal9dToggle);
+        }
+        function trigger10d() {
+            const modal10d = new bootstrap.Modal('#modal10d');
+            const modal10dToggle = document.getElementById('modal10d');
+            modal10d.show(modal10dToggle);
+        }
+        function trigger11d() {
+            const modal11d = new bootstrap.Modal('#modal11d');
+            const modal11dToggle = document.getElementById('modal11d');
+            modal11d.show(modal11dToggle);
+        }
+    </script>
 <?php endif; ?>
 <?php if ($Aufgabenpacket3 == true):?>
+    <!-- Triggers for the task modal's -->
     <script type="text/javascript">
         function trigger12() {
             const modal12 = new bootstrap.Modal('#modal12');
@@ -1263,6 +1347,34 @@ $Aufgabenpacket3 = true;
             const modal16 = new bootstrap.Modal('#modal16');
             const modal16Toggle = document.getElementById('modal16');
             modal16.show(modal16Toggle);
+        }
+    </script>
+    <!-- Triggers for the "solution" modal's -->
+    <script type="text/javascript">
+        function trigger12d() {
+            const modal12d = new bootstrap.Modal('#modal12d');
+            const modal12dToggle = document.getElementById('modal12d');
+            modal12d.show(modal12dToggle);
+        }
+        function trigger13d() {
+            const modal13d = new bootstrap.Modal('#modal13d');
+            const modal13dToggle = document.getElementById('modal13d');
+            modal13d.show(modal13dToggle);
+        }
+        function trigger14d() {
+            const modal14d = new bootstrap.Modal('#modal14d');
+            const modal14dToggle = document.getElementById('modal14d');
+            modal14d.show(modal14dToggle);
+        }
+        function trigger15d() {
+            const modal15d = new bootstrap.Modal('#modal15d');
+            const modal15dToggle = document.getElementById('modal15d');
+            modal15d.show(modal15dToggle);
+        }
+        function trigger16d() {
+            const modal16d = new bootstrap.Modal('#modal16d');
+            const modal16dToggle = document.getElementById('modal16d');
+            modal16d.show(modal16dToggle);
         }
     </script>
 <?php endif; ?>
