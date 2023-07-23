@@ -613,8 +613,13 @@ $Aufgabenpacket3 = true;
                         endif; ?>
                         <!-- Raum 3 - Wohnzimmer & Heimkino -->
                         <?php if ($Aufgabenpacket1 == true):
-                            print('<text transform="matrix(1 0 0 1 279.2886 504.9053)"><tspan x="0" y="0" class="st111" onclick="trigger3();">Wohnzimmer &amp; </tspan><tspan x="15.8" y="14.4" class="st111" onclick="trigger3();">Heimkino</tspan></text>');
-                            print('<rect id="3" x="252" y="466.3" class="st93" width="138" height="82.3" onclick="trigger3();"/>');
+                            if ($kj_rooms[2]['room_done'] == 1) {
+                                print('<image style="overflow:visible;" width="1434" height="860" xlink:href="/images/rooms/Wohnzimmer.png"  transform="matrix(9.545454e-02 0 0 9.545454e-02 252.7516 466.2069)"></image>');
+                                print('<rect id="3" x="252" y="466.3" class="st93" width="138" height="82.3" onclick="trigger3d();"/>');
+                            } else {
+                                print('<text transform="matrix(1 0 0 1 279.2886 504.9053)"><tspan x="0" y="0" class="st111" onclick="trigger3();">Wohnzimmer &amp; </tspan><tspan x="15.8" y="14.4" class="st111" onclick="trigger3();">Heimkino</tspan></text>');
+                                print('<rect id="3" x="252" y="466.3" class="st93" width="138" height="82.3" onclick="trigger3();"/>');
+                            }
                         else:
                             print('<rect id="3" x="252" y="466.3" class="st93" width="138" height="82.3" onclick="triggerwaitmodal();"/>');
                         endif; ?>
@@ -672,8 +677,13 @@ $Aufgabenpacket3 = true;
                         endif; ?>
                         <!-- Raum 15 - Arbeitszimmer -->
                         <?php if ($Aufgabenpacket3 == true):
-                            print('<text transform="matrix(1 0 0 1 179.9185 346.0059)"><tspan x="0" y="0" class="st111" onclick="trigger15();">Arbeits-</tspan><tspan x="1.2" y="14.4" class="st111" onclick="trigger15();">zimmer</tspan></text>');
-                            print('<rect id="15" x="157.1" y="310.2" class="st98" width="88.8" height="76.7" onclick="trigger15();"/>');
+                            if ($kj_rooms[14]['room_done'] == 1) {
+                                print('<image style="overflow:visible;" width="1272" height="1100" xlink:href="/images/rooms/Arbeitszimmer.png"  transform="matrix(7.142857e-02 0 0 7.142857e-02 156.6387 310.425)"></image>');
+                                print('<rect id="15" x="157.1" y="310.2" class="st98" width="88.8" height="76.7" onclick="trigger15d();"/>');
+                            } else {
+                                print('<text transform="matrix(1 0 0 1 179.9185 346.0059)"><tspan x="0" y="0" class="st111" onclick="trigger15();">Arbeits-</tspan><tspan x="1.2" y="14.4" class="st111" onclick="trigger15();">zimmer</tspan></text>');;
+                                print('<rect id="15" x="157.1" y="310.2" class="st98" width="88.8" height="76.7" onclick="trigger15();"/>');
+                            }
                         else:
                             print('<rect id="15" x="157.1" y="310.2" class="st98" width="88.8" height="76.7" onclick="triggerwaitmodal();"/>');
                         endif; ?>
@@ -725,8 +735,13 @@ $Aufgabenpacket3 = true;
                         endif; ?>
                         <!-- Raum 16 - Dachkapelle -->
                         <?php if ($Aufgabenpacket3 == true):
-                            print('<text transform="matrix(1 0 0 1 280.5879 119.6235)" class="st111" onclick="trigger16();">Dachkapelle</text>');
-                            print('<polygon id="14" class="st103" points="353.8,102 312.3,64.6 273.2,102.6 227.1,148.8 403.7,148.8" onclick="trigger16();"/>');
+                            if ($kj_rooms[15]['room_done'] == 1) {
+                                print('<image style="overflow:visible;" width="2671" height="1274" xlink:href="/images/rooms/Dachkapelle.png"  transform="matrix(6.615000e-02 0 0 6.615000e-02 227.3459 64.5497)"></image>');
+                                print('<polygon id="14" class="st103" points="353.8,102 312.3,64.6 273.2,102.6 227.1,148.8 403.7,148.8" onclick="trigger16d();"/>');
+                            } else {
+                                print('<text transform="matrix(1 0 0 1 280.5879 119.6235)" class="st111" onclick="trigger16();">Dachkapelle</text>');
+                                print('<polygon id="14" class="st103" points="353.8,102 312.3,64.6 273.2,102.6 227.1,148.8 403.7,148.8" onclick="trigger16();"/>');
+                            }
                         else:
                             print('<polygon id="14" class="st103" points="353.8,102 312.3,64.6 273.2,102.6 227.1,148.8 403.7,148.8" onclick="triggerwaitmodal();"/>');
                         endif; ?>
