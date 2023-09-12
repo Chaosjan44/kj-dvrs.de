@@ -573,8 +573,14 @@ $Aufgabenpacket3 = true;
                         <polygon id="Treppe" class="st88" points="190.5,686 207,686 207,703.3 224,703.3 224,719.1 259.3,719.1 259.3,631.3 157,631.3 157,651.5 172.8,651.5 172.8,668.9 190.5,668.8"/>
                         <!-- Raum 7 - Garten -->
                         <?php if ($Aufgabenpacket2 == true):
-                            print('<text transform="matrix(1 0 0 1 466.3105 561.7061)" class="st111" onclick="trigger7();">Garten</text>');
-                            print('<rect id="7" x="390" y="463.2" class="st89" width="190" height="187.7" onclick="trigger7();"/>');
+                            if ($kj_rooms[6]['room_done'] == 1) {
+                                print('<image style="overflow:visible;" width="1503" height="1488" xlink:href="/images/rooms/Garten.png"  transform="matrix(0.1254 0 0 0.1254 390.6289 463.259)"></image>');
+                                print('<rect id="7" x="390" y="463.2" class="st89" width="190" height="187.7" onclick="trigger7d();"/>');
+
+                            } else {
+                                print('<text transform="matrix(1 0 0 1 466.3105 561.7061)" class="st111" onclick="trigger7();">Garten</text>');
+                                print('<rect id="7" x="390" y="463.2" class="st89" width="190" height="187.7" onclick="trigger7();"/>');
+                            }
                         else:
                             print('<rect id="7" x="390" y="463.2" class="st89" width="190" height="187.7" onclick="triggerwaitmodal();"/>');
                         endif; ?>
@@ -606,8 +612,13 @@ $Aufgabenpacket3 = true;
                         endif; ?>
                         <!-- Raum 13 - Boulderwand -->
                         <?php if ($Aufgabenpacket3 == true):
-                            print('<text transform="matrix(1 0 0 1 96.4224 550.3057)"><tspan x="0" y="0" class="st111" onclick="trigger13();">Boulder</tspan><tspan x="43.4" y="0" class="st111" onclick="trigger13();">-</tspan><tspan x="8.7" y="14.4" class="st111" onclick="trigger13();">wand</tspan></text>');
-                            print('<rect id="13" x="82.8" y="474.4" class="st92" width="74.2" height="156.9" onclick="trigger13();"/>');
+                            if ($kj_rooms[12]['room_done'] == 1) {
+                                print('<image style="overflow:visible;" width="922" height="1928" xlink:href="/images/rooms/BWall.png"  transform="matrix(8.160000e-02 0 0 8.160000e-02 83.3361 472.7949)"></image>');
+                                print('<rect id="13" x="82.8" y="474.4" class="st92" width="74.2" height="156.9" onclick="trigger13d();"/>');
+                            } else {
+                                print('<text transform="matrix(1 0 0 1 96.4224 550.3057)"><tspan x="0" y="0" class="st111" onclick="trigger13();">Boulder</tspan><tspan x="43.4" y="0" class="st111" onclick="trigger13();">-</tspan><tspan x="8.7" y="14.4" class="st111" onclick="trigger13();">wand</tspan></text>');
+                                print('<rect id="13" x="82.8" y="474.4" class="st92" width="74.2" height="156.9" onclick="trigger13();"/>');
+                            }
                         else:
                             print('<rect id="13" x="82.8" y="474.4" class="st92" width="74.2" height="156.9" onclick="triggerwaitmodal();"/>');
                         endif; ?>
@@ -846,15 +857,12 @@ $Aufgabenpacket3 = true;
             </div>
             <div class="modal-body ctext cbg fw-normal">
                 <div class="px-2">
-                    <p class="text-center">Wir arbeiten aktuell noch an dieser Webseite. <i class="bi bi-cone-striped"></i><br>
-                    Nicht wundern wenn noch nicht alles funktioniert.<br>
-                    Feedback trotzdem gerne an:<br>
-                    <a href="mailto:entwicklung@kj-dvrs.de" class="link">entwicklung@kj-dvrs.de</a>
+                    <p class="text-center">Raum2Text
                     </p>
                 </div>
             </div>
             <div class="modal-footer ctext cbg fw-bold justify-content-end">
-                <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?s&kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[0]['room_id']?>';">Aufgabe Einreichen</button>
+                <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[0]['room_id']?>';">Aufgabe Einreichen</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
             </div>
         </div>
@@ -876,7 +884,7 @@ $Aufgabenpacket3 = true;
                     </div>
                 </div>
                 <div class="modal-footer ctext cbg fw-bold justify-content-end">
-                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?s&kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[1]['room_id']?>';">Aufgabe Einreichen</button>
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[1]['room_id']?>';">Aufgabe Einreichen</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
                 </div>
             </div>
@@ -897,7 +905,7 @@ $Aufgabenpacket3 = true;
                     </div>
                 </div>
                 <div class="modal-footer ctext cbg fw-bold justify-content-end">
-                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?s&kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[2]['room_id']?>';">Aufgabe Einreichen</button>
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[2]['room_id']?>';">Aufgabe Einreichen</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
                 </div>
             </div>
@@ -918,7 +926,7 @@ $Aufgabenpacket3 = true;
                     </div>
                 </div>
                 <div class="modal-footer ctext cbg fw-bold justify-content-end">
-                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?s&kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[3]['room_id']?>';">Aufgabe Einreichen</button>
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[3]['room_id']?>';">Aufgabe Einreichen</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
                 </div>
             </div>
@@ -939,7 +947,7 @@ $Aufgabenpacket3 = true;
                     </div>
                 </div>
                 <div class="modal-footer ctext cbg fw-bold justify-content-end">
-                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?s&kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[4]['room_id']?>';">Aufgabe Einreichen</button>
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[4]['room_id']?>';">Aufgabe Einreichen</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
                 </div>
             </div>
@@ -960,7 +968,7 @@ $Aufgabenpacket3 = true;
                     </div>
                 </div>
                 <div class="modal-footer ctext cbg fw-bold justify-content-end">
-                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?s&kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[5]['room_id']?>';">Aufgabe Einreichen</button>
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[5]['room_id']?>';">Aufgabe Einreichen</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
                 </div>
             </div>
@@ -983,7 +991,7 @@ $Aufgabenpacket3 = true;
                     </div>
                 </div>
                 <div class="modal-footer ctext cbg fw-bold justify-content-end">
-                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?s&kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[6]['room_id']?>';">Aufgabe Einreichen</button>
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[6]['room_id']?>';">Aufgabe Einreichen</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
                 </div>
             </div>
@@ -1004,7 +1012,7 @@ $Aufgabenpacket3 = true;
                     </div>
                 </div>
                 <div class="modal-footer ctext cbg fw-bold justify-content-end">
-                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?s&kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[7]['room_id']?>';">Aufgabe Einreichen</button>
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[7]['room_id']?>';">Aufgabe Einreichen</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
                 </div>
             </div>
@@ -1025,7 +1033,7 @@ $Aufgabenpacket3 = true;
                     </div>
                 </div>
                 <div class="modal-footer ctext cbg fw-bold justify-content-end">
-                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?s&kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[8]['room_id']?>';">Aufgabe Einreichen</button>
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[8]['room_id']?>';">Aufgabe Einreichen</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
                 </div>
             </div>
@@ -1046,7 +1054,7 @@ $Aufgabenpacket3 = true;
                     </div>
                 </div>
                 <div class="modal-footer ctext cbg fw-bold justify-content-end">
-                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?s&kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[9]['room_id']?>';">Aufgabe Einreichen</button>
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[9]['room_id']?>';">Aufgabe Einreichen</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
                 </div>
             </div>
@@ -1067,7 +1075,7 @@ $Aufgabenpacket3 = true;
                     </div>
                 </div>
                 <div class="modal-footer ctext cbg fw-bold justify-content-end">
-                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?s&kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[10]['room_id']?>';">Aufgabe Einreichen</button>
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[10]['room_id']?>';">Aufgabe Einreichen</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
                 </div>
             </div>
@@ -1090,7 +1098,7 @@ $Aufgabenpacket3 = true;
                     </div>
                 </div>
                 <div class="modal-footer ctext cbg fw-bold justify-content-end">
-                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?s&kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[11]['room_id']?>';">Aufgabe Einreichen</button>
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[11]['room_id']?>';">Aufgabe Einreichen</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
                 </div>
             </div>
@@ -1111,7 +1119,7 @@ $Aufgabenpacket3 = true;
                     </div>
                 </div>
                 <div class="modal-footer ctext cbg fw-bold justify-content-end">
-                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?s&kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[12]['room_id']?>';">Aufgabe Einreichen</button>
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[12]['room_id']?>';">Aufgabe Einreichen</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
                 </div>
             </div>
@@ -1132,7 +1140,7 @@ $Aufgabenpacket3 = true;
                     </div>
                 </div>
                 <div class="modal-footer ctext cbg fw-bold justify-content-end">
-                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?s&kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[13]['room_id']?>';">Aufgabe Einreichen</button>
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[13]['room_id']?>';">Aufgabe Einreichen</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
                 </div>
             </div>
@@ -1153,7 +1161,7 @@ $Aufgabenpacket3 = true;
                     </div>
                 </div>
                 <div class="modal-footer ctext cbg fw-bold justify-content-end">
-                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?s&kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[14]['room_id']?>';">Aufgabe Einreichen</button>
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[14]['room_id']?>';">Aufgabe Einreichen</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
                 </div>
             </div>
@@ -1174,7 +1182,7 @@ $Aufgabenpacket3 = true;
                     </div>
                 </div>
                 <div class="modal-footer ctext cbg fw-bold justify-content-end">
-                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?s&kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[15]['room_id']?>';">Aufgabe Einreichen</button>
+                    <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick="window.location.href = '/rooms.php?kj_id=<?=$_GET['id']?>&room_id=<?=$kj_rooms[15]['room_id']?>';">Aufgabe Einreichen</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
                 </div>
             </div>

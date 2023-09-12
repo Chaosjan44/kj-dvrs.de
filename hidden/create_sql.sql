@@ -47,6 +47,7 @@ CREATE TABLE `rooms` (
   `house_id` int(10) nOT NULL,
   `room_name` varchar(255),
   `room_desc` mediumtext,
+  `text` text DEFAULT "text",
   `room_solved` tinyint(1) NOT NULL DEFAULT 0,
   `room_done` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`room_id`),
@@ -57,6 +58,8 @@ CREATE TABLE `solution_pics` (
   `solution_pic_id` int(10) NOT NULL AUTO_INCREMENT,
   `room_id` int(10) NOT NULL,
   `solution_pic_path` varchar(255) NOT NULL,
+  `alt` text DEFAULT NULL,
+  `owner` text DEFAULT NULL,
   PRIMARY KEY (`solution_pic_id`),
   FOREIGN KEY (`room_id`) REFERENCES `rooms` (`room_id`)
 );
