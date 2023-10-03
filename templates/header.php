@@ -103,63 +103,13 @@ require_once("templates/imports.php");
     </div>
 </div>
 
-
-<!-- comment the following to disable under KJonstruction -->
-<div class="modal fade" id="underKJonstructionModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="underKJonstructionModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content cbg">
-            <div class="modal-header cbg">
-                <h4 class="modal-title ctext fw-bold" id="underKJonstructionModalLabel">Under KJonstruction!</h4>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" onclick='triggerCookie()'></button>
-            </div>
-            <div class="modal-body ctext cbg fw-normal">
-                <div class="px-2">
-                    <p class="text-center">Wir arbeiten aktuell noch an dieser Webseite. <i class="bi bi-cone-striped"></i><br>
-                    Nicht wundern wenn noch nicht alles funktioniert.<br>
-                    Feedback trotzdem gerne an:<br>
-                    <a href="mailto:entwicklung@kj-dvrs.de" class="link">entwicklung@kj-dvrs.de</a>
-                    </p>
-                </div>
-            </div>
-            <div class="modal-footer ctext cbg fw-bold justify-content-center">
-                <button type="button" class="btn btn-kolping" data-bs-dismiss="modal" onclick='setCookie("acceptKJonstruction", "true", 1); triggerCookie()'>Okay</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<?php if (!check_kjonstruction_cookie()): ?>
-    <script type="text/javascript">
-        function triggerKJ() {
-            const underKJonstruction = new bootstrap.Modal('#underKJonstructionModal');
-            const underKJonstructionToggle = document.getElementById('underKJonstructionModal');
-            underKJonstruction.show(underKJonstructionToggle);
-        }
-        setTimeout(triggerKJ, 2000);
-    </script>
-<?php endif; ?>
-
-<?php if (check_kjonstruction_cookie() && !check_cookie()): ?>
+<?php if (!check_cookie()): error_log("e1");?>
     <script type="text/javascript">
         function triggerCookie() {
             const myModal = new bootstrap.Modal('#cookieModal');
             const modalToggle = document.getElementById('cookieModal');
             myModal.show(modalToggle);
         }
-
         setTimeout(triggerCookie, 2000);
-    </script>
-<?php elseif (!check_cookie()): ?>
-    <script type="text/javascript">
-        function triggerCookie() {
-            const myModal = new bootstrap.Modal('#cookieModal');
-            const modalToggle = document.getElementById('cookieModal');
-            myModal.show(modalToggle);
-        }
-    </script>
-
-<?php else: ?>
-    <script type="text/javascript">
-        function triggerCookie() {}
     </script>
 <?php endif; ?>

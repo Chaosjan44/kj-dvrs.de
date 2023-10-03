@@ -9,12 +9,17 @@ ob_end_clean();
 $title = "Verbandsspiel Kolpingjugend DVRS - Räume";
 $buffer = preg_replace('/(<title>)(.*?)(<\/title>)/i', '$1' . $title . '$3', $buffer);
 echo $buffer;
-if (!isset($user)) {
+if (!isset($user) || $user != true) {
     print("<script>location.href='/login.php'</script>");
     exit;
 }
 if (!isset($_GET['kj_id'])) {
     print("<script>location.href='/login.php'</script>");
+    exit;
+}
+
+if ($_GET['kj_id'] != $user['kolpingjugend_id']) {
+    print("<script>location.href='/index.php'</script>");
     exit;
 }
 $stmt = $pdo->prepare("SELECT * FROM kolpingjugend WHERE kolpingjugend_id = ?");
@@ -44,6 +49,10 @@ if ($stmt->rowCount() < 16) {
     exit;
 }
 $kj_rooms = $stmt->fetchAll();
+$kj_rooms_aufg1 = array_slice($kj_rooms, 0, 6);
+#$kj_rooms_aufg2 = array_slice($kj_rooms, 6, 5);
+#$kj_rooms_aufg3 = array_slice($kj_rooms, 11, 5);
+
 $rooms_done = 0;
 foreach ($kj_rooms as $room) {
     if ($room['room_done'] == 1) {
@@ -78,8 +87,8 @@ function doRoom($kj_id, $room_id, $pdo) {
     
     if ($kj_room['room_done'] == 0): ?>
     <script src='/js/md5.js'></script>
-    <div class="container-xxl py-3" style="min-height: 80vh;">
-        <div class="row row-cols-1 m-4 p-2 cbg2 rounded">
+    <div class="container-xxl p-0" style="min-height: 80vh;">
+        <div class="row row-cols-1 m-3 cbg2 rounded">
             <form action="/rooms.php?kj_id=<?=$kj_id?>';" method="post" enctype="multipart/form-data">
                 <?php if (!isMobile()):?>
                     <div class="col p-2 rounded justify-content-between d-flex">
@@ -87,8 +96,8 @@ function doRoom($kj_id, $room_id, $pdo) {
                             <div class="justify-content-end d-flex">
                                 <input type="number" value="<?=$kj_id?>" name="kj_id" style="display: none;" required>
                                 <input type="number" value="<?=$kj_room['room_id']?>" name="room_id" style="display: none;" required>
-                                <button type="submit" class="btn btn-success ctext me-2" name="action" value="save" onclick="blocker = false;"><span>Speichern</span></button>
-                                <button type="button" class="btn btn-danger ctext ms-2" onclick="blocker = false; window.location.href = 'rooms.php?kj_id=<?=$kj_id?>';">Abbrechen</button>
+                                <button type="submit" class="btn btn-success ctext me-2" name="action" value="save" onclick="blocker = false;"><i class="bi bi-floppy text-light"></i></button>
+                                <button type="button" class="btn btn-danger ctext ms-2" onclick="blocker = false; window.location.href = 'rooms.php?kj_id=<?=$kj_id?>';"><i class="bi bi-x-circle text-light"></i></button>
                             </div>
                     </div>
                 <?php else: ?>
@@ -96,8 +105,11 @@ function doRoom($kj_id, $room_id, $pdo) {
                         <h3><?=$kj_room['room_name']?></h3>
                         <input type="number" value="<?=$kj_id?>" name="kj_id" style="display: none;" required>
                         <input type="number" value="<?=$kj_room['room_id']?>" name="room_id" style="display: none;" required>
-                        <button type="submit" class="btn btn-success ctext" name="action" value="save" onclick="blocker = false;"><span>Speichern</span></button>
-                        <button type="button" class="btn btn-danger ctext" onclick="blocker = false; window.location.href = 'rooms.php?kj_id=<?=$kj_id?>';">Abbrechen</button>
+                        <div>
+                            <button type="submit" class="btn btn-success ctext me-1" name="action" value="save" onclick="blocker = false;"><i class="bi bi-floppy text-light"></i></button>
+                            <button type="button" class="btn btn-danger ctext ms-1" onclick="blocker = false; window.location.href = 'rooms.php?kj_id=<?=$kj_id?>';"><i class="bi bi-x-circle text-light"></i></button>
+                        </div>
+                        
                     </div>
                 <?php endif; ?>
                 <div class="col p-2 rounded">
@@ -110,10 +122,10 @@ function doRoom($kj_id, $room_id, $pdo) {
                     </div>
                 </div>
                 <div class="col p-2 rounded">
-                    <h2>Diese Bilder werden Hinzugefügt:</h2>
+                    <h2>Diese Bilder werden Hochgeladen:</h2>
                     <div class="row row-cols-<?php if (!isMobile()) print("4"); else print("1"); ?> row-cols-md-4 g-4 py-2" id="preview">
                     </div>
-                    <h2>Diese Bilder sind aktuell vorhanden:</h2>
+                    <h2>Diese Bilder sind bereits Hochgeladen:</h2>
                     <div class="row row-cols-<?php if (!isMobile()) print("4"); else print("1"); ?> row-cols-md-4 g-4 py-2">
                         <?php for ($x = 0; $x < count($room_pics); $x++) :?>
                             <div class="col">
@@ -301,7 +313,63 @@ if(isset($_POST['action'])) {
             </div>
             <p>Räume Erledigt: <?php print($rooms_done);?></p>
             <div class="row row-cols-1 gy-4">
-                <?php foreach ($kj_rooms as $room): ?>
+                <?php foreach ($kj_rooms_aufg1 as $room): ?>
+                    <div class="col">
+                        <div class="card cbg2">
+                            <div class="card-body p-3">
+                                <h4 class="ctext card-title"><?=$room['room_name']?></h4>
+                                <div class="card-text">
+                                    <div class="row" id="<?=$room['room_id']?>">
+                                        <div class="col-6 justify-content-start">
+                                            <?php if ($room['room_done'] == 1) print('<button class="btn btn-success ctext m-0">Erledigt</button>');
+                                            else if ($room['room_solved'] == 1) print('<button class="btn btn-kolping ctext m-0">Eingereicht</button>');
+                                            else print('<button class="btn btn-secondary ctext m-0">Offen</button>');?>
+                                        </div>
+                                        <form action="rooms.php?kj_id=<?=$kj['kolpingjugend_id']?>" method="post" class="col-6 d-flex justify-content-end">
+                                            <div class="">
+                                                <input type="number" value="<?=$kj['kolpingjugend_id']?>" name="kj_id" style="display: none;" required>
+                                                <input type="number" value="<?=$room['room_id']?>" name="room_id" style="display: none;" required>
+                                                <?php if ($room['room_solved'] == 1 && $room['room_done'] == 0) print('<input type="text" value="abgeben" name="todo" style="display: none;" required><button type="submit" name="action" value="mod" class="btn btn-kolping ctext">Einreichung Editieren</button>');
+                                                    else if ($room['room_done'] == 0) print('<input type="text" value="abgeben" name="todo" style="display: none;" required><button type="submit" name="action" value="mod" class="btn btn-success ctext">Aufgabe abgeben</button>');
+                                                    else print('<input type="text" value="undo" name="todo" style="display: none;" required><button type="submit" name="action" value="mod" class="btn btn-danger ctext">Einreichung zurückziehen</button>');
+                                                ?>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach?>
+                <?php foreach ($kj_rooms_aufg2 as $room): ?>
+                    <div class="col">
+                        <div class="card cbg2">
+                            <div class="card-body p-3">
+                                <h4 class="ctext card-title"><?=$room['room_name']?></h4>
+                                <div class="card-text">
+                                    <div class="row" id="<?=$room['room_id']?>">
+                                        <div class="col-6 justify-content-start">
+                                            <?php if ($room['room_done'] == 1) print('<button class="btn btn-success ctext m-0">Erledigt</button>');
+                                            else if ($room['room_solved'] == 1) print('<button class="btn btn-kolping ctext m-0">Eingereicht</button>');
+                                            else print('<button class="btn btn-secondary ctext m-0">Offen</button>');?>
+                                        </div>
+                                        <form action="rooms.php?kj_id=<?=$kj['kolpingjugend_id']?>" method="post" class="col-6 d-flex justify-content-end">
+                                            <div class="">
+                                                <input type="number" value="<?=$kj['kolpingjugend_id']?>" name="kj_id" style="display: none;" required>
+                                                <input type="number" value="<?=$room['room_id']?>" name="room_id" style="display: none;" required>
+                                                <?php if ($room['room_solved'] == 1 && $room['room_done'] == 0) print('<input type="text" value="abgeben" name="todo" style="display: none;" required><button type="submit" name="action" value="mod" class="btn btn-kolping ctext">Einreichung Editieren</button>');
+                                                    else if ($room['room_done'] == 0) print('<input type="text" value="abgeben" name="todo" style="display: none;" required><button type="submit" name="action" value="mod" class="btn btn-success ctext">Aufgabe abgeben</button>');
+                                                    else print('<input type="text" value="undo" name="todo" style="display: none;" required><button type="submit" name="action" value="mod" class="btn btn-danger ctext">Einreichung zurückziehen</button>');
+                                                ?>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach?>
+                <?php foreach ($kj_rooms_aufg3 as $room): ?>
                     <div class="col">
                         <div class="card cbg2">
                             <div class="card-body p-3">

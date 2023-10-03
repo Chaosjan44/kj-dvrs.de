@@ -1,6 +1,8 @@
 <?php 
 chdir ($_SERVER['DOCUMENT_ROOT']);
 require_once("php/functions.php");
+$disheadercheck = true;
+$user = check_user();
 ob_start();
 require_once("templates/header.php");
 $buffer=ob_get_contents();
@@ -9,10 +11,9 @@ ob_end_clean();
 $title = "ADMIN - Verbandsspiel Kolpingjugend DVRS - Adminbreich";
 $buffer = preg_replace('/(<title>)(.*?)(<\/title>)/i', '$1' . $title . '$3', $buffer);
 echo $buffer;
-if (!isset($user)) {
+if (!isset($user) || $user != true) {
     print("<script>location.href='/login.php'</script>");
-}
-if ($user['perm_admin'] != 1) {
+} else if ($user['perm_admin'] != 1) {
     error('Unzureichende Berechtigungen!');
 }
 ?>
@@ -33,4 +34,5 @@ if ($user['perm_admin'] != 1) {
     </div>
 </div>
 
-<?php require_once("templates/footer.php"); ?>
+<?php $disheadercheck = false;
+require_once("templates/footer.php"); ?>

@@ -3,7 +3,7 @@ chdir ($_SERVER['DOCUMENT_ROOT']);
 require_once("php/functions.php");
 $user = check_user();
 $disheadercheck = true;
-if (!isset($user)) {
+if (!isset($user) || $user != true) {
     print("<script>location.href='/login.php'</script>");
 }
 if ($user['perm_admin'] != 1) {

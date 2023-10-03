@@ -2,8 +2,7 @@
 require_once("php/functions.php");
 $disheadercheck = true;
 $user = check_user();
-if (!isset($user)) {
-    error_log("sdbgfvjhedsgfjhgsdgf");
+if (!isset($user) || $user != true) {
     print("<script>location.href='/login.php'</script>");
 }
 if ($user['perm_admin'] != 1) {

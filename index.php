@@ -31,7 +31,7 @@ echo $buffer;
                 </ul>
                 <h2>Wann geht's los?</h2>
                 <ul class="dots">
-                    <li class="orange text-size-large"><span class="text-size-large">Das Kick-off-Event findet am <bold>8. Oktober 2023 um 18 Uhr online</bold> statt.</span></li>
+                    <li class="orange text-size-large"><span class="text-size-large">Das Kick-off-Event findet am 8. Oktober 2023 um 18 Uhr online statt.</span></li>
                     <li class="orange text-size-large"><span class="text-size-large">Die Siegerehrung findet auf dem Jugendfestival 2024 statt! </span></li>
                 </ul>
                 <h2>Was kann man gewinnen?</h2>

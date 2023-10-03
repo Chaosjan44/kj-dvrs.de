@@ -11,7 +11,7 @@ $title = "ADMIN - Verbandsspiel Kolpingjugend DVRS - Kolpingjugend anlegen";
 $buffer = preg_replace('/(<title>)(.*?)(<\/title>)/i', '$1' . $title . '$3', $buffer);
 echo $buffer;
 
-if (!isset($user)) {
+if (!isset($user) || $user != true) {
     print("<script>location.href='/login.php'</script>");
 }
 if ($user['perm_admin'] != 1) {

@@ -9,7 +9,7 @@ ob_end_clean();
 $title = "Verbandsspiel Kolpingjugend DVRS - Haus";
 $buffer = preg_replace('/(<title>)(.*?)(<\/title>)/i', '$1' . $title . '$3', $buffer);
 echo $buffer;
-if (!isset($user)) {
+if (!isset($user) || $user != true) {
     print("<script>location.href='/login.php'</script>");
     exit;
 }
@@ -32,8 +32,8 @@ if ($stmt->rowCount() < 16) {
 $kj_rooms = $stmt->fetchAll();
 
 $Aufgabenpacket1 = true;
-$Aufgabenpacket2 = true;
-$Aufgabenpacket3 = true;
+$Aufgabenpacket2 = false;
+$Aufgabenpacket3 = false;
 ?>
 
 <link rel="stylesheet" href="/css/haus.css">
@@ -571,6 +571,7 @@ $Aufgabenpacket3 = true;
                         endif; ?>
                         <!-- Treppe -->
                         <polygon id="Treppe" class="st88" points="190.5,686 207,686 207,703.3 224,703.3 224,719.1 259.3,719.1 259.3,631.3 157,631.3 157,651.5 172.8,651.5 172.8,668.9 190.5,668.8"/>
+                        <image style="overflow:visible;" width="3000" height="3000" xlink:href="/images/rooms/Treppe.png"  transform="matrix(3.628286e-02 0 0 3.628286e-02 153.4917 620.8831)"></image>
                         <!-- Raum 7 - Garten -->
                         <?php if ($Aufgabenpacket2 == true):
                             if ($kj_rooms[6]['room_done'] == 1) {
@@ -835,7 +836,7 @@ $Aufgabenpacket3 = true;
             </div>
             <div class="modal-body ctext cbg fw-normal">
                 <div class="px-2">
-                    <p class="text-center">Dieser Raum ist aktuell noch nicht freigegeben!<br>
+                    <p class="text-start">Dieser Raum ist aktuell noch nicht freigegeben!<br>
                     Sobald das Aufgabenpacket in welchem dieser Raum ist freigegeben ist,<br>
                     wird dieser Raum mit der Aufgabe verfügbar sein.
                     </p>
@@ -857,7 +858,9 @@ $Aufgabenpacket3 = true;
             </div>
             <div class="modal-body ctext cbg fw-normal">
                 <div class="px-2">
-                    <p class="text-center">Raum2Text
+                    <p class="text-start">
+                        Jetzt seid ihr dran!<br>
+                        Überlegt euch ein eigenes Zimmer, das zu eurer Kolpingjugend passt. Erstellt eine passende Aufgabe dazu und erfüllt diese. Vergesst nicht, euer Ergebnis mit Fotos und Videos festzuhalten. 
                     </p>
                 </div>
             </div>
@@ -879,7 +882,11 @@ $Aufgabenpacket3 = true;
                 </div>
                 <div class="modal-body ctext cbg fw-normal">
                     <div class="px-2">
-                        <p class="text-center">Raum2Text
+                        <p class="text-start">
+                            <b class="text-size-larger">It‘s party time!</b><br>
+                            Schmeißt eine Party für eure Kolpingjugend. Natürlich dürfen leckere alkoholfreie Cocktails und fetzige Tanzmusik dabei nicht fehlen.<br>
+                            Wie wäre es mit einer Mottoparty?<br>
+                            Denkt daran ausreichend Werbung zu machen und haltet den Abend in Bildern fest.
                         </p>
                     </div>
                 </div>
@@ -900,7 +907,11 @@ $Aufgabenpacket3 = true;
                 </div>
                 <div class="modal-body ctext cbg fw-normal">
                     <div class="px-2">
-                        <p class="text-center">Raum3Text
+                        <p class="text-start">
+                            Ein kalter Winterabend ist der perfekte Zeitpunkt für einen Kolpingjugend-Filmabend!<br>
+                            Ihr könnt selbst bestimmen, ob ihr einen eigenen Filmabend organisiert oder gemeinsam das Kino besucht.<br>
+                            Alternativ könnt ihr auch kreativ werden und ein eigenes Abend-Unterhaltungsprogramm planen. Zum Beispiel eine kleine Talentshow mit Tanz-, Theater- und Musikbeiträgen.<br>
+                            Vergesst nicht ein Erinnerungsbild eures Abends zu machen. 
                         </p>
                     </div>
                 </div>
@@ -921,7 +932,11 @@ $Aufgabenpacket3 = true;
                 </div>
                 <div class="modal-body ctext cbg fw-normal">
                     <div class="px-2">
-                        <p class="text-center">Raum4Text
+                        <p class="text-start">
+                            Führt einen Crêpes-, Kuchen- oder Waffel-Verkauf durch.<br>
+                            Zum Beispiel am Weihnachtsmarkt, Kolpinggedenktag oder einfach so.<br>
+                            Spendet den Erlös an eine wohltätige Organisation eurer Wahl.<br>
+                            Teilt uns mit, wie viel Geld ihr einnehmen und spenden konntet.
                         </p>
                     </div>
                 </div>
@@ -942,7 +957,7 @@ $Aufgabenpacket3 = true;
                 </div>
                 <div class="modal-body ctext cbg fw-normal">
                     <div class="px-2">
-                        <p class="text-center">Raum5Text
+                        <p class="text-start">Schlafzimmer Aufgabe :p
                         </p>
                     </div>
                 </div>
@@ -963,7 +978,8 @@ $Aufgabenpacket3 = true;
                 </div>
                 <div class="modal-body ctext cbg fw-normal">
                     <div class="px-2">
-                        <p class="text-center">Raum6Text
+                        <p class="text-start">
+                            Hier habt ihr die Möglichkeit eurer Kreativität freien Lauf zu lassen und in ein Kunstwerk eurer Wahl entstehen zu lassen. Egal ob eine Foto-Story, eine Bastelaktion oder ein großes Gemälde - je bunter und kreativer, desto besser! Dokumentiert eure Kreativaktion mit Bildern.
                         </p>
                     </div>
                 </div>
