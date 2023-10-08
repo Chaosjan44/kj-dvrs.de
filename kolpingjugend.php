@@ -1214,7 +1214,7 @@ $Aufgabenpacket3 = false;
 <?php endif; ?>
 
 <!-- Kreativ Raum Modal -->
-<div class="modal fade" id="modald1" data-bs-backdrop="static" tabindex="-1" aria-labelledby="1dLabel" aria-hidden="true">
+<div class="modal fade" id="modal1d" data-bs-backdrop="static" tabindex="-1" aria-labelledby="1dLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content cbg">
             <div class="modal-header cbg">
@@ -1330,7 +1330,7 @@ $Aufgabenpacket3 = false;
                     <button type="button" class="btn-close <?php if(check_style() == "dark") print("btn-close-white");?>" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body ctext cbg fw-normal rounded-bottom">
-                    <div class="px-2">p class="text-start">
+                    <div class="px-2"><p class="text-start">
                         <div>
                             <?php foreach($kj_rooms[5]['pics'] as $pic): ?>
                                 <img src="<?=$pic['solution_pic_path']?>" alt="" class="img-thumbnail mb-2">

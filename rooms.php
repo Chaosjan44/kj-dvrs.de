@@ -383,7 +383,7 @@ function doRoom($kj_id, $room_id, $pdo) {
                                                 <input type="number" value="<?=$room['room_id']?>" name="room_id" style="display: none;" required>
                                                 <?php if ($room['room_solved'] == 1 && $room['room_done'] == 0) print('<input type="text" value="abgeben" name="todo" style="display: none;" required><button type="submit" name="action" value="mod" class="btn btn-kolping ctext">Einreichung Editieren</button>');
                                                     else if ($room['room_done'] == 0) print('<input type="text" value="abgeben" name="todo" style="display: none;" required><button type="submit" name="action" value="mod" class="btn btn-success ctext">Aufgabe abgeben</button>');
-                                                    else print('<input type="text" value="undo" name="todo" style="display: none;" required><button type="submit" name="action" value="del" class="btn btn-danger ctext">Einreichung zurückziehen</button>');                                                ?>
+                                                    else print('<input type="text" value="del" name="todo" style="display: none;" required><button type="submit" name="action" value="del" class="btn btn-danger ctext">Einreichung zurückziehen</button>');                                                ?>
                                             </div>
                                         </form>
                                     </div>
@@ -410,7 +410,7 @@ function doRoom($kj_id, $room_id, $pdo) {
                                                 <input type="number" value="<?=$room['room_id']?>" name="room_id" style="display: none;" required>
                                                 <?php if ($room['room_solved'] == 1 && $room['room_done'] == 0) print('<input type="text" value="abgeben" name="todo" style="display: none;" required><button type="submit" name="action" value="mod" class="btn btn-kolping ctext">Einreichung Editieren</button>');
                                                     else if ($room['room_done'] == 0) print('<input type="text" value="abgeben" name="todo" style="display: none;" required><button type="submit" name="action" value="mod" class="btn btn-success ctext">Aufgabe abgeben</button>');
-                                                    else print('<input type="text" value="undo" name="todo" style="display: none;" required><button type="submit" name="action" value="del" class="btn btn-danger ctext">Einreichung zurückziehen</button>');                                                ?>
+                                                    else print('<input type="text" value="del" name="todo" style="display: none;" required><button type="submit" name="action" value="del" class="btn btn-danger ctext">Einreichung zurückziehen</button>');                                                ?>
                                             </div>
                                         </form>
                                     </div>

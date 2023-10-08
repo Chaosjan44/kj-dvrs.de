@@ -52,8 +52,8 @@ if (isset($_GET['kj_id'])) {
     }
 
     $Aufgabenpacket1 = true;
-    $Aufgabenpacket2 = false;
-    $Aufgabenpacket3 = false;
+    $Aufgabenpacket2 = true;
+    $Aufgabenpacket3 = true;
     ?>
         <link rel="stylesheet" href="/css/haus.css">
         <div class="container p-3">
@@ -824,7 +824,7 @@ if (isset($_GET['kj_id'])) {
         </div>
 
         <!-- Kreativ Raum Modal -->
-        <div class="modal fade" id="modald1" data-bs-backdrop="static" tabindex="-1" aria-labelledby="1dLabel" aria-hidden="true">
+        <div class="modal fade" id="modal1d" data-bs-backdrop="static" tabindex="-1" aria-labelledby="1dLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content cbg">
                     <div class="modal-header cbg">
@@ -940,7 +940,7 @@ if (isset($_GET['kj_id'])) {
                             <button type="button" class="btn-close <?php if(check_style() == "dark") print("btn-close-white");?>" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body ctext cbg fw-normal rounded-bottom">
-                            <div class="px-2">p class="text-start">
+                            <div class="px-2"><p class="text-start">
                                 <div>
                                     <?php foreach($kj_rooms[5]['pics'] as $pic): ?>
                                         <img src="<?=$pic['solution_pic_path']?>" alt="" class="img-thumbnail mb-2">
@@ -1172,6 +1172,11 @@ if (isset($_GET['kj_id'])) {
         <?php if ($Aufgabenpacket1 == true):?>
             <!-- Triggers for the "solution" modal's -->
             <script type="text/javascript">
+                function trigger1d() {
+                    const modal1d = new bootstrap.Modal('#modal1d');
+                    const modal1dToggle = document.getElementById('modal1d');
+                    modal1d.show(modal1dToggle);
+                }
                 function trigger2d() {
                     const modal2d = new bootstrap.Modal('#modal2d');
                     const modal2dToggle = document.getElementById('modal2d');
