@@ -19,7 +19,7 @@ echo $buffer;
                 <h2>Wie funktioniert's?</h2>
                 <ul class="dots">
                     <li class="orange text-size-large"><span class="text-size-large">Zum Start bekommt ihr den Umriss eurer Kolpingvilla als Poster zugeschickt.</span></li>
-                    <li class="orange text-size-large"><span class="text-size-large">Alle 3 Monate bekommt ihr ein Aufgabenpaket mit verschiedenen Räumen. Hinter jedem Raum verbirgt sich eine Aufgabe.</span></li>
+                    <li class="orange text-size-large"><span class="text-size-large">Alle 3 Monate bekommt ihr ein Aufgabenpaket mit verschiedenen Räumen.<br>Hinter jedem Raum verbirgt sich eine Aufgabe, die ihr gemeinsam mit eurer Kolpinggruppe lösen könnt<br>(z.B. einen Filmabend organisieren oder ein Insektenhotel bauen).</span></li>
                     <li class="orange text-size-large"><span class="text-size-large">Aus diesen Räumen könnt ihr eure Lieblingszimmer und -anbauten auswählen und die jeweilige Aufgabe meistern.</span></li>
                     <li class="orange text-size-large"><span class="text-size-large">Aus den unterschiedlichsten Räumen kannst du so mit deiner Kolpinggruppe deine Traumvilla zusammenstellen!</span></li>
                     <li class="orange text-size-large"><span class="text-size-large">Wenn ihr die Challenges & Aufgaben zum jeweiligen Zimmer gemeistert habt,<br>dann bekommt deine Gruppe eine ausgestattete Version des Raumes in bunt zugesendet.</span></li>
@@ -27,18 +27,21 @@ echo $buffer;
                 </ul>
                 <h2>Wer kann mitmachen?</h2>
                 <ul class="dots">
-                    <li class="orange text-size-large"><span class="text-size-large">Alle Kolpinggruppen - egal welchen Alters!</span></li>
+                    <li class="orange text-size-large"><span class="text-size-large">Alle Kolpinggruppen - egal wie groß, egal wie alt!</span></li>
                 </ul>
                 <h2>Wann geht's los?</h2>
                 <ul class="dots">
-                    <li class="orange text-size-large"><span class="text-size-large">Das Kick-off-Event findet am 8. Oktober 2023 um 18 Uhr online statt.</span></li>
-                    <li class="orange text-size-large"><span class="text-size-large">Die Siegerehrung findet auf dem Jugendfestival 2024 statt! </span></li>
+                    <li class="orange text-size-large"><span class="text-size-large">Das Kick-off-Event findet am 8. Oktober 2023 um 18 Uhr online statt</span></li>
+                    <li class="orange text-size-large"><span class="text-size-large">Ein Start ist jederzeit möglich!</span></li>
+                    <li class="orange text-size-large"><span class="text-size-large">Die Siegerehrung findet auf dem Jugendfestival 2024 statt!</span></li>
                 </ul>
                 <h2>Was kann man gewinnen?</h2>
+                <span class="text-size-large">Je mehr Räume ihr schafft, desto höher der Preis! </span>
                 <ul class="dots">
-                    <li class="orange text-size-large"><span class="text-size-large">Je mehr Räume ihr schafft, desto höher ist auch der Preis!</span></li>
-                    <li class="orange text-size-large"><span class="text-size-large">Es lohnt sich schon ab dem 3. Raum mitzubauen.</span></li>
-                    <li class="orange text-size-large"><span class="text-size-large">Die höchste Gewinnsumme beträgt sagenhafte 200 €, die ihr zum Beispiel für einen Ausflug einsacken könnt.<br>Also nichts wie anmelden und losbauen!</span></li>
+                    <li class="orange text-size-large"><span class="text-size-large">3 - 5 Räume: einen freshen Kolpingjugend-Sportbeutel gefüllt mit Überraschungen für jeden</span></li>
+                    <li class="orange text-size-large"><span class="text-size-large">6 - 10 Räume: einen Gutschein im Wert von 50 € für Material für eure Kolpingjugend (z.B. Spieleladen, Sportgeschäft, ...)</span></li>
+                    <li class="orange text-size-large"><span class="text-size-large">11 - 16 Räume: einen Gutschein im Wert von 200 € für einen Ausflug eurer Wahl!</span></li>
+                    <li class="orange text-size-large"><span class="text-size-large">Also nichts wie anmelden und losbauen!</span></li>
                 </ul>
                 <span class="text-size-larger">Weitere Infos und Anmeldung findest du <a href="https://jugend.kolping-dvrs.de/verbandsspiel/" class="link text-size-larger">hier</a></span>
             </div>

@@ -36,11 +36,7 @@ if (isset($_POST['action'])) {
                     setcookie("identifier",$identifier,time()+(3600*24*365),"/"); //Valid for 1 year
                     setcookie("securitytoken",$securitytoken,time()+(3600*24*365),"/"); //Valid for 1 year
                     $error_msg = "<span class='text-success'>Anmeldung Erfolgreich!<br><br></span>";
-                    if ($user['perm_admin' == 1]) {
-                        echo("<script>location.href='/admin/admin.php'</script>");
-                    } else {
-                        echo("<script>location.href='/overview.php'</script>");
-                    }
+                    echo("<script>location.href='/overview.php'</script>");
                     exit;
                 } else {
                     $error_msg = "<span class='text-danger'>Passwort passt nicht zum Anmeldename!<br><br></span>";

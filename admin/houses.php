@@ -93,7 +93,7 @@ if(isset($_POST['action'])) {
                                             </div>
                                             <form action="houses.php" method="post" class="col-6 d-flex justify-content-end">
                                                 <div class="">
-                                                    <input type="number" value="<?=$kj['kolpingjugend_id']?>" name="kj_id" style="display: none;" required>
+                                                    <input type="number" value="<?=$_POST['kj_id']?>" name="kj_id" style="display: none;" required>
                                                     <input type="number" value="<?=$room['room_id']?>" name="room_id" style="display: none;" required>
                                                     <?php if ($room['room_done'] == 0) print('<input type="text" value="set_done" name="todo" style="display: none;" required><button type="submit" name="action" value="mod" class="btn btn-kolping ctext">Erledigt setzen</button>');
                                                         else print('<input type="text" value="set_undone" name="todo" style="display: none;" required><button type="submit" name="action" value="mod" class="btn btn-kolping ctext">Offen setzen</button>');
