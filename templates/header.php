@@ -40,6 +40,9 @@ require_once("templates/imports.php");
                             <a class="nav-link clink" aria-current="page" href="/overview.php">Alle Häuser</a>
                         </li>
                         <li class="nav-item text-size-x-large mx-1">
+                            <a class="nav-link clink" href="/rooms.php?kj_id=<?=$user['kolpingjugend_id']?>">Räume</a>
+                        </li>
+                        <li class="nav-item text-size-x-large mx-1">
                             <a class="nav-link clink" href="/kolpingjugend.php?id=<?=$user['kolpingjugend_id']?>">Das Haus von <?=$kolpingjugend['kolpingjugend_name']?></a>
                         </li>
                     <?php endif;?>

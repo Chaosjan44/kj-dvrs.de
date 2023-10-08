@@ -225,8 +225,8 @@ function convertToWEBP($file, $compression_quality = 40)
 function delRoomImgs($images) {
 	global $pdo;
 	foreach ($images as $image) {
-		unlink(substr($image['source'], 1));
-		unlink(substr($image['source'] . ".webp", 1));
+		unlink(substr($image['solution_pic_path'], 1));
+		unlink(substr($image['solution_pic_path'] . ".webp", 1));
 		$stmt = $pdo->prepare('DELETE FROM solution_pics where solution_pic_id = ?');
         $stmt->bindValue(1, $image['solution_pic_id'], PDO::PARAM_INT);
         $result = $stmt->execute();

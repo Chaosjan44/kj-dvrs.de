@@ -30,6 +30,18 @@ if ($stmt->rowCount() < 16) {
     exit;
 }
 $kj_rooms = $stmt->fetchAll();
+$i = 0;
+foreach ($kj_rooms as $kj_room) {
+    $stmt = $pdo->prepare("SELECT * FROM solution_pics WHERE room_id = ?");
+    $stmt->bindValue(1, $kj_room['room_id']);
+    $result = $stmt->execute();
+    if (!$result) {
+        error_log("Fehler beim Abfragen der Datenbank - Fehler: x4");
+        exit;
+    }
+    $kj_rooms[$i]['pics'] = $stmt->fetchAll();
+    $i++;
+}
 
 $Aufgabenpacket1 = true;
 $Aufgabenpacket2 = false;
@@ -700,9 +712,8 @@ $Aufgabenpacket3 = false;
                             print('<rect id="15" x="157.1" y="310.2" class="st98" width="88.8" height="76.7" onclick="triggerwaitmodal();"/>');
                         endif; ?>
                         <!-- Raum 1 - Kreativer_Raum -->
-                        <?php if ($kj_rooms[0]['room_done'] = 1):
-                            print('<rect id="Krativer_Raum" x="263.5" y="219.5" class="st99" width="183.6" height="90.7" onclick="trigger1();"/>');
-                            print('<text transform="matrix(1 0 0 1 304.2588 269.5059)" class="st111" onclick="trigger1();">Kreativer Raum</text>');
+                        <?php if ($kj_rooms[0]['room_done'] == 1):
+                            print('<rect id="Krativer_Raum" x="263.5" y="219.5" class="st99" width="183.6" height="90.7" onclick="trigger1d();"/>');
                         else:
                             print('<rect id="Krativer_Raum" x="263.5" y="219.5" class="st99" width="183.6" height="90.7" onclick="trigger1();"/>');
                             print('<text transform="matrix(1 0 0 1 304.2588 269.5059)" class="st111" onclick="trigger1();">Kreativer Raum</text>');
@@ -820,10 +831,6 @@ $Aufgabenpacket3 = false;
         </div>
     </div>
 </div>
-
-
-
-
 
 
 <!-- Wait Modal -->
@@ -1205,6 +1212,357 @@ $Aufgabenpacket3 = false;
         </div>
     </div>
 <?php endif; ?>
+
+<!-- Kreativ Raum Modal -->
+<div class="modal fade" id="modald1" data-bs-backdrop="static" tabindex="-1" aria-labelledby="1dLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content cbg">
+            <div class="modal-header cbg">
+                <h4 class="modal-title ctext fw-bold" id="1dLabel">Kreativer Raum</h4>
+                <button type="button" class="btn-close <?php if(check_style() == "dark") print("btn-close-white");?>" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body ctext cbg fw-normal rounded-bottom">
+                <div class="px-2">
+                    <div>
+                        <?php foreach($kj_rooms[0]['pics'] as $pic): ?>
+                            <img src="<?=$pic['solution_pic_path']?>" alt="" class="img-thumbnail mb-2">
+                        <?php endforeach;?>
+                    </div>
+                    <p class="text-start mb-0"><?=$kj_rooms[0]['text']?></p>
+                </div>
+            </div>
+            <div class="modal-footer ctext cbg fw-bold justify-content-end">
+            </div>
+        </div>
+    </div>
+</div>
+<?php if ($Aufgabenpacket1 == true):?>
+    <!-- Raum2 - Partykeller -->
+    <div class="modal fade" id="modal2d" data-bs-backdrop="static" tabindex="-1" aria-labelledby="2dLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content cbg">
+                <div class="modal-header cbg">
+                    <h4 class="modal-title ctext fw-bold" id="2dLabel">Partykeller</h4>
+                    <button type="button" class="btn-close <?php if(check_style() == "dark") print("btn-close-white");?>" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ctext cbg fw-normal rounded-bottom">
+                    <div class="px-2">
+                        <div>
+                            <?php foreach($kj_rooms[1]['pics'] as $pic): ?>
+                                <img src="<?=$pic['solution_pic_path']?>" alt="" class="img-thumbnail mb-2">
+                            <?php endforeach;?>
+                        </div>
+                        <p class="text-start mb-0"><?=$kj_rooms[1]['text']?></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Raum3 - Wohnzimmer & Heimkino -->
+    <div class="modal fade" id="modal3d" data-bs-backdrop="static" tabindex="-1" aria-labelledby="3dLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content cbg">
+                <div class="modal-header cbg">
+                    <h4 class="modal-title ctext fw-bold" id="3dLabel">Wohnzimmer & Heimkino</h4>
+                    <button type="button" class="btn-close <?php if(check_style() == "dark") print("btn-close-white");?>" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ctext cbg fw-normal rounded-bottom">
+                    <div class="px-2">
+                        <div>
+                            <?php foreach($kj_rooms[2]['pics'] as $pic): ?>
+                                <img src="<?=$pic['solution_pic_path']?>" alt="" class="img-thumbnail mb-2">
+                            <?php endforeach;?>
+                        </div>
+                        <p class="text-start mb-0"><?=$kj_rooms[2]['text']?></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Raum4 - Essküche -->
+    <div class="modal fade" id="modal4d" data-bs-backdrop="static" tabindex="-1" aria-labelledby="4dLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content cbg">
+                <div class="modal-header cbg">
+                    <h4 class="modal-title ctext fw-bold" id="4dLabel">Essküche</h4>
+                    <button type="button" class="btn-close <?php if(check_style() == "dark") print("btn-close-white");?>" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ctext cbg fw-normal rounded-bottom">
+                    <div class="px-2">
+                        <div>
+                            <?php foreach($kj_rooms[3]['pics'] as $pic): ?>
+                                <img src="<?=$pic['solution_pic_path']?>" alt="" class="img-thumbnail mb-2">
+                            <?php endforeach;?>
+                        </div>
+                        <p class="text-start mb-0"><?=$kj_rooms[3]['text']?></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Raum5 - Schlafzimmer -->
+    <div class="modal fade" id="modal5d" data-bs-backdrop="static" tabindex="-1" aria-labelledby="5dLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content cbg">
+                <div class="modal-header cbg">
+                    <h4 class="modal-title ctext fw-bold" id="5dLabel">Schlafzimmer</h4>
+                    <button type="button" class="btn-close <?php if(check_style() == "dark") print("btn-close-white");?>" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ctext cbg fw-normal rounded-bottom">
+                    <div class="px-2">
+                        <div>
+                            <?php foreach($kj_rooms[4]['pics'] as $pic): ?>
+                                <img src="<?=$pic['solution_pic_path']?>" alt="" class="img-thumbnail mb-2">
+                            <?php endforeach;?>
+                        </div>
+                        <p class="text-start mb-0"><?=$kj_rooms[4]['text']?></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Raum6 - Atelier -->
+    <div class="modal fade" id="modal6d" data-bs-backdrop="static" tabindex="-1" aria-labelledby="6dLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content cbg">
+                <div class="modal-header cbg">
+                    <h4 class="modal-title ctext fw-bold" id="6dLabel">Atelier</h4>
+                    <button type="button" class="btn-close <?php if(check_style() == "dark") print("btn-close-white");?>" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ctext cbg fw-normal rounded-bottom">
+                    <div class="px-2">p class="text-start">
+                        <div>
+                            <?php foreach($kj_rooms[5]['pics'] as $pic): ?>
+                                <img src="<?=$pic['solution_pic_path']?>" alt="" class="img-thumbnail mb-2">
+                            <?php endforeach;?>
+                        </div>
+                        <p class="text-start mb-0"><?=$kj_rooms[5]['text']?></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+<?php if ($Aufgabenpacket2 == true):?>
+    <!-- Raum7 - Garten -->
+    <div class="modal fade" id="modal7d" data-bs-backdrop="static" tabindex="-1" aria-labelledby="7dLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content cbg">
+                <div class="modal-header cbg">
+                    <h4 class="modal-title ctext fw-bold" id="7dLabel">Garten</h4>
+                    <button type="button" class="btn-close <?php if(check_style() == "dark") print("btn-close-white");?>" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ctext cbg fw-normal rounded-bottom">
+                    <div class="px-2">
+                        <div>
+                            <?php foreach($kj_rooms[6]['pics'] as $pic): ?>
+                                <img src="<?=$pic['solution_pic_path']?>" alt="" class="img-thumbnail mb-2">
+                            <?php endforeach;?>
+                        </div>
+                        <p class="text-start mb-0"><?=$kj_rooms[6]['text']?></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Raum8 - Werkstatt -->
+    <div class="modal fade" id="modal8d" data-bs-backdrop="static" tabindex="-1" aria-labelledby="8dLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content cbg">
+                <div class="modal-header cbg">
+                    <h4 class="modal-title ctext fw-bold" id="8dLabel">Werkstatt</h4>
+                    <button type="button" class="btn-close <?php if(check_style() == "dark") print("btn-close-white");?>" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ctext cbg fw-normal rounded-bottom">
+                    <div class="px-2">
+                        <div>
+                            <?php foreach($kj_rooms[7]['pics'] as $pic): ?>
+                                <img src="<?=$pic['solution_pic_path']?>" alt="" class="img-thumbnail mb-2">
+                            <?php endforeach;?>
+                        </div>
+                        <p class="text-start mb-0"><?=$kj_rooms[7]['text']?></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Raum9 - Fitnessraum -->
+    <div class="modal fade" id="modal9d" data-bs-backdrop="static" tabindex="-1" aria-labelledby="9dLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content cbg">
+                <div class="modal-header cbg">
+                    <h4 class="modal-title ctext fw-bold" id="9dLabel">Fitnessraum</h4>
+                    <button type="button" class="btn-close <?php if(check_style() == "dark") print("btn-close-white");?>" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ctext cbg fw-normal rounded-bottom">
+                    <div class="px-2">
+                        <div>
+                            <?php foreach($kj_rooms[8]['pics'] as $pic): ?>
+                                <img src="<?=$pic['solution_pic_path']?>" alt="" class="img-thumbnail mb-2">
+                            <?php endforeach;?>
+                        </div>
+                        <p class="text-start mb-0"><?=$kj_rooms[8]['text']?></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Raum10 - Spielzimmer -->
+    <div class="modal fade" id="modal10d" data-bs-backdrop="static" tabindex="-1" aria-labelledby="10dLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content cbg">
+                <div class="modal-header cbg">
+                    <h4 class="modal-title ctext fw-bold" id="10dLabel">Spielzimmer</h4>
+                    <button type="button" class="btn-close <?php if(check_style() == "dark") print("btn-close-white");?>" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ctext cbg fw-normal rounded-bottom">
+                    <div class="px-2">
+                        <div>
+                            <?php foreach($kj_rooms[9]['pics'] as $pic): ?>
+                                <img src="<?=$pic['solution_pic_path']?>" alt="" class="img-thumbnail mb-2">
+                            <?php endforeach;?>
+                        </div>
+                        <p class="text-start mb-0"><?=$kj_rooms[9]['text']?></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Raum11 - Musikzimmer -->
+    <div class="modal fade" id="modal11d" data-bs-backdrop="static" tabindex="-1" aria-labelledby="11dLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content cbg">
+                <div class="modal-header cbg">
+                    <h4 class="modal-title ctext fw-bold" id="11dLabel">Musikzimmer</h4>
+                    <button type="button" class="btn-close <?php if(check_style() == "dark") print("btn-close-white");?>" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ctext cbg fw-normal rounded-bottom">
+                    <div class="px-2">
+                        <div>
+                            <?php foreach($kj_rooms[10]['pics'] as $pic): ?>
+                                <img src="<?=$pic['solution_pic_path']?>" alt="" class="img-thumbnail mb-2">
+                            <?php endforeach;?>
+                        </div>
+                        <p class="text-start mb-0"><?=$kj_rooms[10]['text']?></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+<?php if ($Aufgabenpacket3 == true):?>
+    <!-- Raum12 - Garderobe -->
+    <div class="modal fade" id="modal12d" data-bs-backdrop="static" tabindex="-1" aria-labelledby="12dLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content cbg">
+                <div class="modal-header cbg">
+                    <h4 class="modal-title ctext fw-bold" id="12dLabel">Garderobe</h4>
+                    <button type="button" class="btn-close <?php if(check_style() == "dark") print("btn-close-white");?>" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ctext cbg fw-normal rounded-bottom">
+                    <div class="px-2">
+                        <div>
+                            <?php foreach($kj_rooms[11]['pics'] as $pic): ?>
+                                <img src="<?=$pic['solution_pic_path']?>" alt="" class="img-thumbnail mb-2">
+                            <?php endforeach;?>
+                        </div>
+                        <p class="text-start mb-0"><?=$kj_rooms[11]['text']?></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Raum13 - Boulderwand -->
+    <div class="modal fade" id="modal13d" data-bs-backdrop="static" tabindex="-1" aria-labelledby="13dLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content cbg">
+                <div class="modal-header cbg">
+                    <h4 class="modal-title ctext fw-bold" id="13dLabel">Boulderwand</h4>
+                    <button type="button" class="btn-close <?php if(check_style() == "dark") print("btn-close-white");?>" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ctext cbg fw-normal rounded-bottom">
+                    <div class="px-2">
+                        <div>
+                            <?php foreach($kj_rooms[12]['pics'] as $pic): ?>
+                                <img src="<?=$pic['solution_pic_path']?>" alt="" class="img-thumbnail mb-2">
+                            <?php endforeach;?>
+                        </div>
+                        <p class="text-start mb-0"><?=$kj_rooms[12]['text']?></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Raum14 - Bad -->
+    <div class="modal fade" id="modal14d" data-bs-backdrop="static" tabindex="-1" aria-labelledby="14dLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content cbg">
+                <div class="modal-header cbg">
+                    <h4 class="modal-title ctext fw-bold" id="14dLabel">Bad</h4>
+                    <button type="button" class="btn-close <?php if(check_style() == "dark") print("btn-close-white");?>" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ctext cbg fw-normal rounded-bottom">
+                    <div class="px-2">
+                        <div>
+                            <?php foreach($kj_rooms[13]['pics'] as $pic): ?>
+                                <img src="<?=$pic['solution_pic_path']?>" alt="" class="img-thumbnail mb-2">
+                            <?php endforeach;?>
+                        </div>
+                        <p class="text-start mb-0"><?=$kj_rooms[13]['text']?></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Raum15 - Arbeitszimmer -->
+    <div class="modal fade" id="modal15d" data-bs-backdrop="static" tabindex="-1" aria-labelledby="15dLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content cbg">
+                <div class="modal-header cbg">
+                    <h4 class="modal-title ctext fw-bold" id="15dLabel">Arbeitszimmer</h4>
+                    <button type="button" class="btn-close <?php if(check_style() == "dark") print("btn-close-white");?>" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ctext cbg fw-normal rounded-bottom">
+                    <div class="px-2">
+                        <div>
+                            <?php foreach($kj_rooms[14]['pics'] as $pic): ?>
+                                <img src="<?=$pic['solution_pic_path']?>" alt="" class="img-thumbnail mb-2">
+                            <?php endforeach;?>
+                        </div>
+                        <p class="text-start mb-0"><?=$kj_rooms[14]['text']?></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Raum16 - Dachkapelle -->
+    <div class="modal fade" id="modal16d" data-bs-backdrop="static" tabindex="-1" aria-labelledby="16dLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content cbg">
+                <div class="modal-header cbg">
+                    <h4 class="modal-title ctext fw-bold" id="16dLabel">Dachkapelle</h4>
+                    <button type="button" class="btn-close <?php if(check_style() == "dark") print("btn-close-white");?>" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ctext cbg fw-normal rounded-bottom">
+                    <div class="px-2">
+                        <div>
+                            <?php foreach($kj_rooms[15]['pics'] as $pic): ?>
+                                <img src="<?=$pic['solution_pic_path']?>" alt="" class="img-thumbnail mb-2">
+                            <?php endforeach;?>
+                        </div>
+                        <p class="text-start mb-0"><?=$kj_rooms[15]['text']?></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
+
+
+
+
+
+
 
 <script type="text/javascript">
     function triggerwaitmodal() {
