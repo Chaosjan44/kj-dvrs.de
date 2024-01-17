@@ -964,7 +964,11 @@ $Aufgabenpacket3 = false;
                 </div>
                 <div class="modal-body ctext cbg fw-normal">
                     <div class="px-2">
-                        <p class="text-start">Schlafzimmer Aufgabe :p
+                        <p class="text-start">
+                            Dream big, denn Phantasie bringt dich wohin du willst.<br>
+                            Führt eine Traum-oder Phantasiereise durch.<br>
+                            Ganz egal ob dabei gemalt, gebastelt oder einfach entspannt geträumt wird.<br>
+                            Take a picture und zeigt uns eure Traumbilder Oder die Träumer während ihrer Reise.
                         </p>
                     </div>
                 </div>
