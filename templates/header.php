@@ -13,7 +13,7 @@ if (isset($user) && $user != null) {
     $stmt->bindValue(1, $user['kolpingjugend_id']);
     $stmt->execute();
     if ($stmt->rowCount() != 1) {
-        errorPage('Du scheinst keiner Kolpingjugend zugeordnet zu sein, melde dich bitte bei <a href="mailto:admin@kj-dvrs.de" class="link">admin@kj-dvrs.de</a>');
+        errorPage('Du scheinst keiner Kolpingjugend zugeordnet zu sein, melde dich bitte bei <a href="mailto:jan@schniebs.com" class="link">jan@schniebs.com</a>');
     }
     $kolpingjugend = $stmt->fetch();
     if ($user['perm_admin'] == 1) {
